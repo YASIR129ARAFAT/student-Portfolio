@@ -8,8 +8,8 @@ const pressure = document.getElementById("pressure");
 const humidity = document.getElementById("humidity");
 const max_temp = document.getElementById("max_temp");
 const middlelayer=document.getElementById("middlelayer");
-// const temp_status=document.getElementById("temp_status");
-// const city_name = document.getElementById("city_name");
+ const sunrise=document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
 console.log("parwez");
 const getinfo = async (event) => {
   event.preventDefault();
@@ -33,8 +33,9 @@ const getinfo = async (event) => {
       pressure.innerText = arrdata[0].main.pressure;
       humidity.innerText = arrdata[0].main.humidity;
       const status_weather = arrdata[0].weather[0].main;
-      console.log(new Date(arrdata[0].sys.sunrise));
-
+       console.log(new Date(arrdata[0].sys.sunrise));
+      sunrise.innerText=new Date(arrdata[0].sys.sunrise);
+      sunset.innerText = new Date(arrdata[0].sys.sunset);
       if (status_weather == "Clouds") {
         temp_status.innerHTML = `<i class="fa-solid fa-cloud" style="color: blue; margin: auto; font-size:40px">`;
       } else if (status_weather == "Clear") {
