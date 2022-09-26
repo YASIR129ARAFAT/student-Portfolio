@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+*{
+
+
+    margin: 0px;
+    padding:0px ;
+    
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+h3{
+    color: pink;
+
+}
+img{
+    height: 100vh;
+    width:100vw;
+
+}
+
+html{
+     font-size: 100%   ; 
+     /* responsive font size */
+}
+
+.row{
+    margin: 0;
+}
+.main_menu{
+    background-color: rgb(87, 49, 174);
+}
+.navbar{
+    color: bisque;
+    background-color: rgb(76, 37, 166);
+    padding: 2rem 0;
+}
+.navbar li{
+    margin-left: 2rem;
+}
+.navbar a{
+    font-size: 1.8rem;
+}
+.navbar li:hover{
+     transition: all 1s;
+    background-color: blue;
+    border-radius: 20%;
+}
+.navbar a:hover{
+  color: chartreuse;
+}
+.fa-snowflake{
+    transition: all linear;
+  animation: rot 1s linear infinite;
+}
+@keyframes rot{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform:rotate( 360deg);
+    }
+}
+.main_header{
+    margin-top: 100px;
+}
+p{
+font-size: medium;
+}
+
+.main_header_left{
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center ;
+}
+.main_header_left p{
+    font-size: 1.2rem;
+    color: crimson;
+    font-weight: bolder;
+     margin: 1rem 0 4rem 0;
+
+}
+.main_header_left h3{
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: deeppink;
+    font-weight: bolder;
+    margin: 1rem 0 4rem 0;
+
+}
+.main_header_left .spans{
+    color: aqua;
+    font-weight: bolder;
+}
+.main_header_right{
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center ;
+}
+.main_header_left a button{
+    color: rgb(189, 21, 135);
+  font-size: 1.2rem;
+    font-weight:bolder ;
+    padding: 3px 1px;
+    background-color: rgb(18, 147, 217);
+    border-radius: 10%;
+    box-shadow: 0px 8px 6px -6px black;
+     /* box-shadow: 1px -8px 6px -6px black; */
+}
+.main_header_left a button:hover{
+    background-color: rgb(234, 14, 205);
+    transition: all 1s;
+box-shadow: 0px 8px 6px -6px black;
+}
+.footer{
+    width: 100%;
+    background-color: rgb(15, 16, 16);
+    margin-top: auto;
+
+}
+.footer p{
+    
+    color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    
+}
+
+
+/* WEATHER PAGE CSS */
+.main_content{
+    display: flex;
+   justify-content: center;
+   
+   align-items: center;
+   height: auto;
+   width: auto;
+}
+
+.main_content .info input{
+    background-color: rgb(38, 164, 196);
+    padding: 10px 10px;
+    color: rgb(139, 0, 5);
+    font-weight: bolder;
+
+    margin-left: 30px;
+    /* border-radius: 50%; */
+
+
+}
+
+#cityname:hover{
+    background-color: aqua;
+    transition: all 1s linear;
+}
+#submitbtn{
+    border-radius: 20%;
+}
+ #submitbtn:hover{
+  background-color: aqua;
+    transition: all 1s linear;
+}
+
+.main_content .info ::placeholder{
+    color: rgb(255, 0, 43);
+    font-weight: bolder;
+}
+
+
+#infocontainer{
+    border: 1px solid pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    width: auto;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 50px;
+    background-color: darkblue;
+    font-weight: bolder;
+    height: 300px;
+}
+#toplayer{
+    display: flex;
+    flex-direction: column;
+    word-spacing: 0.5rem;
+    margin-top: 10px;
+    color: aqua;
+    
+text-transform: capitalize;
+
+}
+
+
+
+#middlelayer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+color: aqua;
+text-transform: capitalize;
+}
+#middle{
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+    justify-content: center;
+    
+}
+
+
+
+
+
+
+/* responsive code */
+@media(max-width:768px){
+    .main_header_left{
+        height: auto;
+        margin: 5rem 0;
+    }
+      .main_header_right{
+        height: auto;
+        margin-top: 3rem 0;
+    }
+}
