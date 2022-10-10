@@ -1,60 +1,16 @@
-<!DOCTYPE html>
 <html lang="en">
-
-<head>
-   {{>headerlinks}}
-</head>
-
-<body>
-     {{>navbar}} 
-    <!-- main header -->
-     <div class="container-fluid  main_header">
-         <div class="row">
-             <div class="col-md-10 col-12 mx-auto">
-
-                <div class="row">
-                    <div class="col-md-6 col-12 main_header_left">
-
-                        <p >welcome to weather app</p>
-                        <h3>get the latest<span class="spans"> Weather</span> Info of city</h3>
-
-                        <a href="/weather"> <button>check now</button></a>
-                    </div>
-                      <div class="col-md-6 col-12 main_header_right">
-
-
-                        <!-- use of carousel in bootstrap -->
-
-                       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"  >
-                           <div class="carousel-inner">
-                               <div class="carousel-item active" style="justify-content: centre;">
-                                   <img src="images/img1.png" class=" w-50 h-50" alt="...">
-                               </div>
-                               <div class="carousel-item">
-                                   <img src="images/img2.png" class=" w-50 h-50" alt="...">
-                               </div>
-                               <div class="carousel-item">
-                                   <img src="images/img1.png" class=" w-50 h-50" alt="...">
-                               </div>
-                           </div>
-                           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                               data-bs-slide="prev">
-                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                               <span class="visually-hidden">Previous</span>
-                           </button>
-                           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                               data-bs-slide="next">
-                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                               <span class="visually-hidden">Next</span>
-                           </button>
-                       </div>
-                      </div>
-                </div>
-             </div>
-         </div>
-     </div>
-
-    {{>footer}}
-</body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/save" method="post">
+      <input type="text" name="name" placeholder="name"/>
+      <input type="email" name="email" id="email" placeholder="email">
+      <input type="password" name="password" id="password" placeholder="password">
+      <input type="submit" value="submit">
+    </form>
+  </body>
 </html>

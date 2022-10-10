@@ -7,7 +7,8 @@ const min_temp = document.getElementById("min_temp");
 const pressure = document.getElementById("pressure");
 const humidity = document.getElementById("humidity");
 const max_temp = document.getElementById("max_temp");
-const middlelayer=document.getElementById("middlelayer");
+ const middlelayer=document.querySelector(".middle_layer");
+
  const sunrise=document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 console.log("parwez");
@@ -17,6 +18,7 @@ const getinfo = async (event) => {
   console.log("cityval");
   if (cityval === "") {
     city_name.innerText = `plz write the city name before you search`;
+    // datahide.classList.add('data_hide');
   } else {
     try {
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityval}&appid=589630b36dd939167844e0b8eb0f7848`;
@@ -47,8 +49,10 @@ const getinfo = async (event) => {
       }
       console.log(status_weather);
       // console.log(arrdata[0].main.temp);
+      //  datahide.classList.remove("data_hide");
     } catch {
       city_name.innerText = `city name doesnt exist`;
+      //  datahide.classList.add("data_hide");
     }
   }
 };
