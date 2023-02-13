@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: #0a7878;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 50px;
+      }
+
+      form {
+        width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+
+      label {
+        font-size: 20px;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 12px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px 20px;
+        background-color: #ff9933;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+        .forms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        }
+    </style>
+  </head>
+  <body>
+
+    <div class="forms">
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    </div>
+    </div>
+    <h1>LOGIN</h1>
+    <form action="/login" method="post" name="login">
+      <label for="custid">Customer Id:</label>
+      <input type="text" id="username" name="custid"><br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+
+      <input type="submit" value="Submit">
+      <button><span>Don't have an account?</span><a href="register" >Register</a></button>
+    </form>
+  </body>
+</html>

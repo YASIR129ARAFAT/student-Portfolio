@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+
+  </head>
+  <style>
+    table, th, td { border:1px solid black; 
+    background-color: aqua;
+    } th{ width:auto; } table{
+    margin-top: 30px; }
+  </style>
+  <body>
+{{>navbar}}
+    <div class="hh1">
+      <h1>ALL USERS</h1>
+    </div>
+    <table style="color:rgb(0, 0, 0);width:100%; margin-top:10px">
+      <thead>
+        <tr>
+          <th>fname</th>
+          <th>lname</th>
+          <th>email</th>
+          <th>adress</th>
+          <th>contact number</th>
+          <th>aadhar number</th>
+          <th>dob</th>
+
+        </tr>
+      </thead>
+
+      <tbody id="table-container">
+
+        {{#each result}}
+          <tr>
+
+            <td> {{this.fname}}</td>
+            <td> {{this.lname}}</td>
+            <td> {{this.email}}</td>
+            <td> {{this.address}}</td>
+            <td> {{this.number}}</td>
+            <td> {{this.aadhar_number}}</td>
+            <td> {{this.dob}}</td>
+          </tr>
+        {{/each}}
+
+      </tbody>
+
+    </table>
+    <script>
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+      {{>navbar}}
+    
+     
+      <div class="forms" >
+
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+  
+</div>
+           <form  action="/save_account" method="POST">
+           <div class="logo">
+            <h1>open new account</h1>
+           </div>
+
+
+           
+  <label class="label1" for="fname">First name:</label>      
+  <input class="label2" type="text" id="fname" name="fname"><br><br>
+  <label class="label1" for="lname">Last name:</label>
+   <input  class="label2" type="text" id="lname" name="lname"><br><br>
+  <label class="label1" for="email">Email:</label>
+   <input class="label2" type="email" id="email" name="email"><br><br>
+   <label class="label1" for="address">Address:</label>
+   <input class="label2" type="text" id="address" name="address"><br><br>
+   <label class="label1" for="number">Contact Number:</label>
+   <input  class="label2" type="number" id="number" name="number"><br><br>
+     <label class="label1" for="aadhar_number">Aadhar Number:</label>
+   <input  class="label2" type="number" id=" aaddhar_umber" name="aadhar_number"><br><br>
+   <label class="label1" for="dob">DOB:</label>
+  <input  class="label2" type="text" id="dob" name="dob">
+  <br><br>
+   <label class="label1" for="branch">Branch:</label>      
+  <input class="label2" type="text" id="branch" name="branch"><br><br>
+   <label class="label1" for="AnnualIncome">Annual Income:</label>
+   <input  class="label2" type="number" id="income" name="AnnualIncome"><br><br>
+
+   <label  class="label1" for="gender">Gender</label>
+<select class="label2" id="gender" name="gender" >
+  <option value="male">Male</option>
+  <option value="female">female</option>
+  <option value="other">other</option>
+  
+
+</select>
+<br><br>
+ <label class="label1" for="amount">Opening Amount:</label>
+   <input  class="label2" type="number" id="amount" name="amount"><br><br>
+      <input style="display: inline;" id="submitButton5" type="submit" value="create">
+            
+          
+          <button id="submitButton2" type="cancel">
+            cancel
+          </button>
+            <button id="submitButton3" type="reset">
+            reset
+          </button>
+           </form>
+           
+
+      </div>
+      </div>
+      
+</body>
+</html>

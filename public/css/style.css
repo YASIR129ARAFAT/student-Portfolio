@@ -1,242 +1,345 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
-*{
-
-
-    margin: 0px;
-    padding:0px ;
-    
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-    height: 100vh;
+
+body,
+button,
+input {
+  font-family: "Courier New", Courier, monospace;
+  text-decoration: solid;
+
+}
+
+
+body {
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+background-color: #ffffff;
+
+}
+input,
+label {
+  display: block;
+  
+}
+label {
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+  text-decoration: solid;
+}
+.forms {
+  height: 100vh;
+  width: 100vw;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 10px;  */
+  /* border: 2px solid pink; */
+background-color: #ffffff;
+}
+
+
+.forms2 {
+  height: 100vh;
+  width: 100vw;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 10px;  */
+  /* border: 2px solid pink; */
+ background-color: #ffffff;
+}
+
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+#logo {
+  height: 4rem;
+}
+form {
+  background-color: #b0949476;
+  padding: 3rem 4rem;
+}
+.forms .logo h1 {
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+}
+input {
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 1rem;
+  height: 2rem;
+  border: 1px solid blue;
+  color: rgb(0, 0, 0);
+}
+#submitButton1 {
+  border-radius: 10px;
+  background-color: darkorange;
+  border: 1px solid blue;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 2rem;
+ font-weight: bold;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+    /* text-transform: uppercase; */
+}
+#submitButton2 {
+  border-radius: 10px;
+  background-color: darkorange;
+  border: 1px solid blue;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 2rem;
+ font-weight: bold;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+    /* text-transform: uppercase; */
+}
+#submitButton3 {
+  border-radius: 10px;
+  background-color: darkorange;
+  border: 1px solid blue;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 2rem;
+ font-weight: bold;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+    /* text-transform: uppercase; */
+}
+#submitButton4 {
+  border-radius: 10px;
+  background-color: darkorange;
+  border: 1px solid blue;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 2rem;
+ font-weight: bold;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+    /* text-transform: uppercase; */
+}
+#submitButton5 {
+  border-radius: 10px;
+  background-color: darkorange;
+  border: 1px solid blue;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 2rem;
+ font-weight: bold;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+    /* text-transform: uppercase; */
+}
+#submitButton1:hover {
+  background-color: rgb(231, 163, 80);
+}
+#submitButton2:hover {
+  background-color: rgb(231, 163, 80);
+}
+#submitButton3:hover {
+  background-color: rgb(231, 163, 80);
+}
+
+#submitButton4:hover {
+  background-color: rgb(231, 163, 80);
+}
+#submitButton5:hover {
+  background-color: rgb(231, 163, 80);
+}
+#span {
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* navbar */
+.nav1{
     display: flex;
-    flex-direction: column;
-
-
+    background-color: #cacaf0;
+    margin-top: 0.2rem;
+    height: 3rem;
+  border-radius: 10px;
+  align-items: center;
+ 
+   text-decoration:solid;
+  
+  
+}
+.websitename{
+    margin-left: 1rem;
 }
 
-h3{
-    color: pink;
 
-}
-img{
-    height: 100vh;
-    width:100vw;
 
-}
-
-html{
-     font-size: 100%   ; 
-     /* responsive font size */
-}
-
-.row{
-    margin: 0;
-}
-.main_menu{
-    background-color: rgb(87, 49, 174);
+#login_link {
+  text-decoration: none;
+   font-weight: bold;
+  color: rgb(0, 0, 0);
 }
 .navbar{
-    color: bisque;
-    background-color: rgb(76, 37, 166);
-    padding: 1rem 0;
-}
-.navbar li{
-    margin-left: 2rem;
-}
-.navbar a{
-    font-size: 1.8rem;
-}
-.navbar li:hover{
-     transition: all 1s;
-    background-color: blue;
-    border-radius: 20%;
-}
-.navbar a:hover{
-  color: chartreuse;
-}
-.fa-snowflake{
-    transition: all linear;
-  animation: rot 1s linear infinite;
-}
-@keyframes rot{
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform:rotate( 100deg);
-    }
-}
-
-.main_header{
-    margin-top: 100px;
-}
-p{
-font-size: medium;
-}
-
-.main_header_left{
-    height: 250px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:center ;
-}
-.main_header_left p{
-    font-size: 1.2rem;
-    color: crimson;
-    font-weight: bolder;
-     margin: 1rem 0 4rem 0;
-
-}
-.main_header_left h3{
-    text-transform: capitalize;
-    font-size: 1.5rem;
-    color: deeppink;
-    font-weight: bolder;
-    margin: 1rem 0 4rem 0;
-
-}
-.main_header_left .spans{
-    color: aqua;
-    font-weight: bolder;
-}
-.main_header_right{
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:center ;
-}
-.main_header_left a button{
-    color: rgb(255, 255, 255);
-  font-size: 1.2rem;
-    font-weight:bolder ;
-    padding: 3px 1px;
-    background-color: rgb(18, 147, 217);
-    border-radius: 10%;
-    box-shadow: 0px 8px 6px -6px black;
-     /* box-shadow: 1px -8px 6px -6px black; */
-}
-.main_header_left a button:hover{
-    background-color: rgb(51, 14, 234);
-    transition: all 1s;
-box-shadow: 0px 8px 6px -6px black;
-}
-.footer{
-    width: 100%;
-    background-color: rgb(15, 16, 16);
-    margin-top: auto;
-
-}
-.footer p{
+    gap: 3rem;
+     
     
-    color: aqua;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bolder;
-    
-}
-
-
-/* WEATHER PAGE CSS */
-.main_content{
-    display: flex;
-   justify-content: center;
    
-   align-items: center;
-   height: auto;
-   width: auto;
 }
-
-.main_content .info input{
-    background-color: rgb(24, 14, 134);
-    padding: 10px 10px;
-    color: rgb(255, 255, 255);
-    font-weight: bolder;
-
-    margin-left: 30px;
-    /* border-radius: 50%; */
-
+.nav_list{
+      display: flex;
+      justify-content: center;
+       align-items: center;
+       gap: 3rem;
 
 }
-
-#cityname:hover{
-    background-color: rgb(26, 88, 220);
-    transition: all 1s linear;
+a{
+    text-decoration: none;
+    text-transform: uppercase;
+  
 }
-#submitbtn{
-    border-radius: 20%;
+ul{
+ list-style-type: none;
+ color: rgb(0, 0, 0);
 }
- #submitbtn:hover{
-  background-color: rgb(26, 26, 232);
-    transition: all 1s linear;
-}
-
-.main_content .info ::placeholder{
-    color: rgb(255, 255, 255);
-    font-weight: bolder;
+a:link {
+  color: rgb(156, 41, 41);
+  background-color: transparent;
+  text-decoration: solid;
+  
 }
 
-
-#infocontainer{
-    /* border: 1px solid pink; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-    width: auto;
-    margin-left: 150px;
-    margin-right: 150px;
-    margin-top: 50px;
-    background-color: rgb(23, 5, 104);
-    font-weight: bolder;
-    height: 310px;
-}
-#toplayer{
-    display: flex;
-    flex-direction: column;
-    word-spacing: 0.5rem;
-    margin-top: 10px;
-    color: rgb(252, 255, 255);
-    
-text-transform: capitalize;
+a:visited {
+  color: rgb(118, 16, 33);
+  background-color: transparent;
 
 }
 
-
-
-#middlelayer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-color: rgb(255, 255, 255);
-text-transform: capitalize;
+a:hover {
+  color: rgb(187, 73, 73);
+  background-color: transparent;
+ 
 }
-.middle_layer{
-    display: flex;
-    flex-direction: column;
-     align-items: center;
-    justify-content: center;
-    
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  
+}
+.label1{
+  float: left;
+}
+.label2{
+  float: right;
+}
+
+
+.account_number{
+  height: auto;
+  width: auto;
+
+ 
+  padding: 1rem 2rem;
+  width: 40%;
+}
+.table_row{
+  display: flex;
+  width: 100%;
+  border: 1px solid green;
+ justify-content: space-between;
+
+
+}
+.hh1{
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+.depo{
+  display: flex;
+  align-items: center;
 }
 
 
 
+/* flipcard */
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  background-color: aqua;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+
+/* alert message */
+#alert_message{
+  color: blue;
+  color:rgb(228, 5, 43);
+  text-transform: uppercase;
+}
 
 
 
-/* responsive code */
-@media(max-width:768px){
-    .main_header_left{
-        height: auto;
-        margin: 5rem 0;
-    }
-      .main_header_right{
-        height: auto;
-        margin-top: 3rem 0;
-    }
+
+
+
+/* alert */
+.alert {
+  padding: 20px;
+  background-color: #9fece5; /* Red */
+  color: rgb(0, 0, 0);
+  padding: 1rem 2rem ;
+text-transform: uppercase;
+  
+  
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
 }

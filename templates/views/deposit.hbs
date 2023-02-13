@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+   {{>navbar}}
+
+   <div class="forms2">
+   <div class="alert">
+   <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+</div>
+
+
+  <form action="/deposit_amount" method="POST" class="forms2">
+
+    <div class="depo">
+      <h1 >DEPOSIT</h1>
+    </div>
+       <div class="account_number">
+        
+        <label class="label1" for="account_number">Account Number</label>
+        
+         <input class="label2" type="number" name="account_number" id="account_number">
+       </div>
+        <div class="account_number">
+        <label class="label1" for="ifsc">IFSC CODE</label>
+        
+         <input class="label2" type="text" name="ifsc" >
+       </div>
+        <div class="account_number">
+        <label class="label1" for="username">username</label>
+        
+         <input class="label2" type="text" name="username" >
+       </div>
+        <div class="account_number">
+        <label class="label1" for="password">password</label>
+        
+         <input class="label2" type="password" name="password" >
+       </div>
+       <div class="account_number">
+       <input id="submitButton5" type="submit" value="Deposit"> 
+      
+       <br>
+      
+      
+   </div>
+   </form>
+
+   </div>
+     <script>
+     
+
+     </script>
+</body>
+</html>

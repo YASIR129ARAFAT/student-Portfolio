@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <title>PNB BANK</title>
+        <script>
+          function validateForm() {
+            var customerId = document.forms["register"]["customerId"].value;
+            var firstName = document.forms["register"]["firstName"].value;
+            var middleName = document.forms["register"]["middleName"].value;
+            var lastName = document.forms["register"]["lastName"].value;
+            var city = document.forms["register"]["city"].value;
+            var email = document.forms["register"]["email"].value;
+            var mobileNumber = document.forms["register"]["mobileNumber"].value;
+            var occupation = document.forms["register"]["occupation"].value;
+            var dob = document.forms["register"]["dob"].value;
+            var password = document.forms["register"]["password"].value;
+            var confirmPassword = document.forms["register"]["confirmPassword"].value;
+    
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var mobileNumberRegex = /^[6-9]\d{9}$/;
+            var passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+    
+            if (!customerId || !firstName || !lastName || !city || !email || !mobileNumber || !occupation || !dob || !password || !confirmPassword) {
+              alert("All fields are required");
+              return false;
+            }
+    
+            if (!emailRegex.test(email)) {
+              alert("Enter a valid email address");
+              return false;
+            }
+    
+            if (!mobileNumberRegex.test(mobileNumber)) {
+              alert("Enter a valid mobile number");
+              return false;
+            }
+    
+            if (password != confirmPassword) {
+              alert("Password and confirm password must match");
+              return false;
+            }
+    
+            return true;
+          }
+        </script>
+      </head> 
+
+
+  <head>
+    <style>
+         body {
+        background-color: #0a7878;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 50px;
+      }
+
+      form {
+        width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+
+      label {
+        font-size: 20px;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="date"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px 20px;
+        background-color: #ff9933;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 12px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+
+              .forms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        }
+    </style>
+  </head>
+  <body>
+
+ <div class="forms">
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    </div>
+    </div>
+
+    <h1>PNB BANK</h1>
+
+
+    <form  action="/save" method="post" name="register" onsubmit="return validateForm()">
+      <label for="customerId">Customer ID:</label>
+      <input type="text" id="customerId" name="customerId"><br><br>
+
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName"><br><br>
+
+      <label for="middleName">Middle Name:</label>
+      <input type="text" id="middleName" name="middleName"><br><br>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName"><br><br>
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city"><br><br>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email"><br><br>
+
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" id="mobileNumber" name="mobileNumber"><br><br>
+
+      <label for="occupation">Occupation:</label>
+      <input type="text" id="occupation" name="occupation"><br><br>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob"><br><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+      <input type="submit" value="Submit">
+
+       <button><span>Already have an account </span><a href="login" >Login</a></button>
+
+    </form>
+  </body>
+</html>
