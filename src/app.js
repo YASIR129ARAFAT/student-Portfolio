@@ -10,6 +10,8 @@ const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({ extended: true }));
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
+var userkiId;
+var genereted_account_no;
 
 //sql database connection
 var mysql = require("mysql2");
@@ -54,6 +56,33 @@ app.use(flush());
 
 const port = 80; //IF PROCESS.ENV NOT AVAILABLE THEN GOES ON 3000
 
+
+
+
+function generateSortedString() {
+  let numbers = [];
+  for (let i = 1; i <= 5; i++) {
+    numbers.push(Math.floor(Math.random() * 10));
+  }
+  numbers.sort();
+  return numbers.join("");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var gname;
+
 app.get("/register", (req, res) => {
   res.render("register", { message: req.flash("message") });
 });
@@ -63,19 +92,36 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/bank", (req, res) => {
-  res.render("bank", { message: req.flash("message") });
+  res.render("bank", { gname:gname });
 });
 
 app.get("/new_account", (req, res) => {
-  res.render("new_account", { message: req.flash("message") });
+  
+  res.render("new_account",{ message: req.flash("message")} );
 });
 
 app.get("/deposit", (req, res) => {
   res.render("deposit");
 });
+app.get("/alredyHaveAcc", (req, res) => {
+  res.render("alredyHaveAcc");
+});
+app.get("/transfer", (req, res) => {
+  res.render("transfer");
+});
+app.get("/withdraw", (req, res) => {
+  res.render("withdraw");
+});
+
+app.get("/congrats_message", (req, res) => {
+  res.render("congrats_message", {genereted_account_no:genereted_account_no});
+});
 
 app.post("/login", async (req, res) => {
-  var user = req.body.custid;
+    userkiId = req.body.custid;
+    console.log(userkiId);
+
+    var user = req.body.custid;
   if (user.length == 0) {
     req.flash("message", "please enter  custid");
     res.redirect("login");
@@ -84,7 +130,7 @@ app.post("/login", async (req, res) => {
   var pass = req.body.password;
   console.log(user + " " + pass);
 
-  var sql = `select fname, password from customer where custid="${user}"`;
+  var sql = `select fname,  password from customer where custid="${user}"`;
 
   db.query(sql, function (err, result) {
     if (err) {
@@ -97,26 +143,19 @@ app.post("/login", async (req, res) => {
       if (result.length == 0) {
         req.flash("message", "please enter valid password");
         res.redirect("login");
-      }
-      console.log(result[0]);
-      let gg = result[0].password;
-
-      if (gg.localeCompare(pass) == 0) {
-     
-         
-
-
-
-
-
-
-    var  kk=result[0].fname;
-
-        res.redirect("bank", {kk : kk});
       } else {
-        console.log("username or password doesnot matched");
-        req.flash("message", "username and password does not match");
-        res.redirect("login");
+        console.log(result[0].password);
+        let gg = result[0].password;
+
+        if (gg.localeCompare(pass) == 0) {
+          var kk=result[0].fname;
+          gname=kk;
+          res.redirect("bank", );
+        } else {
+          console.log("username or password doesnot matched");
+          req.flash("message", "username and password does not match");
+          res.redirect("login");
+        }
       }
     }
   });
@@ -148,32 +187,58 @@ app.post("/save", function (req, res, next) {
 });
 
 //
-app.post("/save_account", async (req, res) => {
-  var fname = req.body.fname;
-  var lname = req.body.lname;
-  var email = req.body.email;
-  var address = req.body.address;
-  var number = req.body.number;
-  var aadhar_number = req.body.aadhar_number;
-  var dob = req.body.dob;
-  var branch = req.body.branch;
-  var AnnualIncome = req.body.AnnualIncome;
-  var gender = req.body.gender;
-  var amount = req.body.amount;
+// app.post("/save_account", async (req, res) => {
+//   var fname = req.body.fname;
+//   var lname = req.body.lname;
+//   var email = req.body.email;
+//   var address = req.body.address;
+//   var number = req.body.number;
+//   var aadhar_number = req.body.aadhar_number;
+//   var dob = req.body.dob;
+//   var branch = req.body.branch;
+//   var AnnualIncome = req.body.AnnualIncome;
+//   var gender = req.body.gender;
+//   var amount = req.body.amount;
 
-  var sql = `INSERT INTO register_account (fname, lname, email, address, number, aadhar_number, dob, branch, AnnualIncome, gender, amount) VALUES ("${fname}",
-   "${lname}", "${email}", "${address}", "${number}", "${aadhar_number}", "${dob}", "${branch}", "${AnnualIncome}", "${gender}", "${amount}")`;
-  db.query(sql, function (err, result) {
-    if (err) {
-      req.flash("message", "cannot insert enter the valid input");
-      res.redirect("new_account");
-    } else {
-      console.log("record inserted");
-      req.flash("message", "record succesffuly saved");
-      res.redirect("new_account");
-    }
-  });
+//   var sql = `INSERT INTO register_account (fname, lname, email, address, number, aadhar_number, dob, branch, AnnualIncome, gender, amount) VALUES ("${fname}",
+//    "${lname}", "${email}", "${address}", "${number}", "${aadhar_number}", "${dob}", "${branch}", "${AnnualIncome}", "${gender}", "${amount}")`;
+//   db.query(sql, function (err, result) {
+//     if (err) {
+//       req.flash("message", "cannot insert enter the valid input");
+//       res.redirect("new_account");
+//     } else {
+//       console.log("record inserted");
+//       req.flash("message", "record succesffuly saved");
+//       res.redirect("new_account");
+//     }
+//   });
+// });
+app.post("/save_account", async (req, res) => {
+ var accno = generateSortedString();
+ genereted_account_no=accno;
+
+ var openbal = req.body.accountOpeningBalance;
+ var atype = req.body.accountType;
+ var acstatus = "open";
+ var aod = req.body.accountOpeningDate;
+ var adhno = req.body.Aadharnumber;
+//  console.log(user);
+ var sql = `INSERT INTO account VALUES ("${accno}" , "${userkiId}" , ${openbal} , '${aod}' , "${atype}" , "${acstatus}" , "${adhno}");`;
+ db.query(sql, function (err, result) {
+   if (err){
+     console.log(err);
+   }
+   // console.log(id,' ',name,' ',email,' ',message,'\n');
+
+   else{
+   console.log("Row has been updated");
+   req.flash("success", "Data stored!");
+
+   res.redirect("congrats_message");
+   }
+ });
 });
+
 
 app.get("/users", async (req, res) => {
   db.query("SELECT * FROM register_account", function (err, result, fields) {
@@ -183,9 +248,19 @@ app.get("/users", async (req, res) => {
   });
 });
 
+
+
+
+
+
 app.get("/", (req, res) => {
   res.render("bank");
 });
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`listening to ${port} `);
