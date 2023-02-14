@@ -13,7 +13,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-margin-top: 150px;
+        margin: 23% auto;
         padding: 20px;
         background-color: whitesmoke;
         border-radius: 10px;
@@ -55,10 +55,12 @@ margin-top: 150px;
         border-radius: 5px;
         cursor: pointer;
     }
-    body{
+
+    body {
         background-color: #0a7878;
     }
-    .btn{
+
+    .btn {
         background-color: #ff9933;
         /* Set background color */
         border: none;
@@ -82,46 +84,64 @@ margin-top: 150px;
         border-radius: 10px;
         width: 68%;
     }
-    .container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
-        
-    }
+      .forms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        }
 </style>
 
 <body>
-  <div class="container">
+
+
+   <div class="forms">
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    </div>
+    </div>
     <div id="box">
         <h3 id="heading">Enter the details of account</h3>
-        <form action="">
+        <form action="deposit" name="myForm" onsubmit="return isValid()" method="post">
             <div>
                 <label for="nAccNo">Account Number</label>
-                <input id="fAccNo" type="number" name="nAccNo">
-                &ThickSpace;<p class="errText" style="color: red;">error message</p>
+                <input id="fAccNo" type="number" name="nAccNo" required>
+                &ThickSpace;<p class="errText" id="AccErr" style="color: red;"></p>
             </div>
             <div>
-                <label for="nAmount">Amount</label>
-                <input id="fAmount" type="number" name="nAmount">
+                <label for="nAmount">Deposit Amount</label>
+                <input id="fAmount" type="number" name="nAmount" required>
+                &ThickSpace;<p class="errText" id="AmtErr" style="color: red;"></p>
             </div>
             <div>
-                <input class="btn" type="submit" value="Submit">
+                <input class="btn" type="submit" value="Deposit">
             </div>
         </form>
     </div>
-    </div>
-      <script>
-        function clearErrors() {
-    let errors = document.getElementsByClassName('errText');
-    for (let item of errors) {
-        item.innerHTML = "";
-    }
-}
-
-clearErrors();
-
-    </script>
 </body>
+<script>
+    function setError(id, message){
+        let element=document.getElementById(id);
+        element.innerHTML=message;
+    }
+    function isValid() {
+        let returnValue=true;
+
+        let accountNo = document.getElementById("fAccNo").value;
+        if (accountNo.length < 5) {
+            returnValue=false;
+            setError("AccErr","Invalid Account Number");
+        }
+
+        let depositeAmt = document.getElementById("fAmount").value;
+        if(depositeAmt>100000){
+            returnValue=false;
+            setError("AmtErr","Deposite limit is 1 lakh");
+        }
+
+        return returnValue;
+    }
+</script>
 
 </html>

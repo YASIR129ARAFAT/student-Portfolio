@@ -79,16 +79,34 @@
 
         
     }
+     .forms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        }
 </style>
 
 <body>
+
+
+     <div class="forms">
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    </div>
+    </div>
     <div class="container">
     <div id="box">
         <h3 id="heading">Enter the details of account</h3>
-        <form action="">
+        <form action="/transfer" method="post">
             <div>
-                <label for="nAccNo">Account Number</label>
-                <input id="fAccNo" type="number" name="nAccNo">
+                <label for="nAccNo1">from Account</label>
+                <input id="fAccNo" type="number" name="nAccNo1">
+                &ThickSpace;<p class="errText" style="color: red;">error</p>
+            </div>
+                    <div>
+                <label for="nAccNo2">To Account</label>
+                <input id="fAccNo" type="number" name="nAccNo2">
                 &ThickSpace;<p class="errText" style="color: red;">error</p>
             </div>
             <div>

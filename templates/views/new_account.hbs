@@ -192,12 +192,24 @@ input[type="submit"]:hover {
   color: #444;
   border: 1px solid white;
 }
+ .forms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        }
  
 </style>
 
 
 </head>
 <body>
+ <div class="forms">
+        <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    </div>
+    </div>
+
 	<h1>New Account</h1>
  
 	<form method="post" action="/save_account" id="accountForm" onsubmit="return validateForm()">
@@ -223,16 +235,13 @@ input[type="submit"]:hover {
 	</form>
     <script>
     function validateForm() {
-        var accountNumber = document.getElementById("accountNumber").value;
+      
         var aadharNumber = document.getElementById("Aadharnumber").value;
         var accountOpeningDate = document.getElementById("accountOpeningDate").value;
         var accountType = document.getElementById("accountType").value;
         var accountOpeningBalance = document.getElementById("accountOpeningBalance").value;
     
-        if (accountNumber === "") {
-            alert("Account number must be filled out");
-            return false;
-        }
+      
     
         if (aadharNumber === "") {
             alert("Aadhar number must be filled out");

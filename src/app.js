@@ -56,9 +56,6 @@ app.use(flush());
 
 const port = 80; //IF PROCESS.ENV NOT AVAILABLE THEN GOES ON 3000
 
-
-
-
 function generateSortedString() {
   let numbers = [];
   for (let i = 1; i <= 5; i++) {
@@ -67,19 +64,6 @@ function generateSortedString() {
   numbers.sort();
   return numbers.join("");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var gname;
 
@@ -92,12 +76,11 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/bank", (req, res) => {
-  res.render("bank", { gname:gname });
+  res.render("bank", { gname: gname });
 });
 
 app.get("/new_account", (req, res) => {
-  
-  res.render("new_account",{ message: req.flash("message")} );
+  res.render("new_account", { message: req.flash("message") });
 });
 
 app.get("/deposit", (req, res) => {
@@ -110,18 +93,20 @@ app.get("/transfer", (req, res) => {
   res.render("transfer");
 });
 app.get("/withdraw", (req, res) => {
-  res.render("withdraw");
-});
+  res.render("withdraw", { message: req.flash('message')});
+})
 
 app.get("/congrats_message", (req, res) => {
-  res.render("congrats_message", {genereted_account_no:genereted_account_no});
+  res.render("congrats_message", {
+    genereted_account_no: genereted_account_no,
+  });
 });
 
 app.post("/login", async (req, res) => {
-    userkiId = req.body.custid;
-    console.log(userkiId);
+  userkiId = req.body.custid;
+  console.log(userkiId);
 
-    var user = req.body.custid;
+  var user = req.body.custid;
   if (user.length == 0) {
     req.flash("message", "please enter  custid");
     res.redirect("login");
@@ -148,9 +133,9 @@ app.post("/login", async (req, res) => {
         let gg = result[0].password;
 
         if (gg.localeCompare(pass) == 0) {
-          var kk=result[0].fname;
-          gname=kk;
-          res.redirect("bank", );
+          var kk = result[0].fname;
+          gname = kk;
+          res.redirect("bank");
         } else {
           console.log("username or password doesnot matched");
           req.flash("message", "username and password does not match");
@@ -186,81 +171,144 @@ app.post("/save", function (req, res, next) {
   });
 });
 
-//
-// app.post("/save_account", async (req, res) => {
-//   var fname = req.body.fname;
-//   var lname = req.body.lname;
-//   var email = req.body.email;
-//   var address = req.body.address;
-//   var number = req.body.number;
-//   var aadhar_number = req.body.aadhar_number;
-//   var dob = req.body.dob;
-//   var branch = req.body.branch;
-//   var AnnualIncome = req.body.AnnualIncome;
-//   var gender = req.body.gender;
-//   var amount = req.body.amount;
-
-//   var sql = `INSERT INTO register_account (fname, lname, email, address, number, aadhar_number, dob, branch, AnnualIncome, gender, amount) VALUES ("${fname}",
-//    "${lname}", "${email}", "${address}", "${number}", "${aadhar_number}", "${dob}", "${branch}", "${AnnualIncome}", "${gender}", "${amount}")`;
-//   db.query(sql, function (err, result) {
-//     if (err) {
-//       req.flash("message", "cannot insert enter the valid input");
-//       res.redirect("new_account");
-//     } else {
-//       console.log("record inserted");
-//       req.flash("message", "record succesffuly saved");
-//       res.redirect("new_account");
-//     }
-//   });
-// });
 app.post("/save_account", async (req, res) => {
- var accno = generateSortedString();
- genereted_account_no=accno;
+  var accno = generateSortedString();
+  genereted_account_no = accno;
 
- var openbal = req.body.accountOpeningBalance;
- var atype = req.body.accountType;
- var acstatus = "open";
- var aod = req.body.accountOpeningDate;
- var adhno = req.body.Aadharnumber;
-//  console.log(user);
- var sql = `INSERT INTO account VALUES ("${accno}" , "${userkiId}" , ${openbal} , '${aod}' , "${atype}" , "${acstatus}" , "${adhno}");`;
- db.query(sql, function (err, result) {
-   if (err){
-     console.log(err);
-   }
-   // console.log(id,' ',name,' ',email,' ',message,'\n');
+  var openbal = req.body.accountOpeningBalance;
+  var atype = req.body.accountType;
+  var acstatus = "open";
+  var aod = req.body.accountOpeningDate;
+  var adhno = req.body.Aadharnumber;
+  //  console.log(user);
+  var sql = `INSERT INTO account VALUES ("${accno}" , "${userkiId}" , ${openbal} , '${aod}' , "${atype}" , "${acstatus}" , "${adhno}");`;
+  db.query(sql, function (err, result) {
+    if (err) {
+      console.log("err");
+    }
+    // console.log(id,' ',name,' ',email,' ',message,'\n');
+    else {
+      console.log("Row has been updated");
+      req.flash("success", "Data stored!");
 
-   else{
-   console.log("Row has been updated");
-   req.flash("success", "Data stored!");
-
-   res.redirect("congrats_message");
-   }
- });
+      res.redirect("congrats_message");
+    }
+  });
 });
 
+app.post("/deposit", function (req, res, next) {
+  var tno = generateSortedString();
+  var accno = req.body.nAccNo;
+  var transamount = req.body.nAmount;
+  var sql = `INSERT INTO trandetails VALUES ("${tno}" , "${accno}" , NOW() , "Deposit" , ${transamount});`;
+  db.query(sql, function (err, result) {
+    if (err) throw err;
+    // console.log(id,' ',name,' ',email,' ',message,'\n');
+    console.log("Row has been updated");
+    req.flash("success", "Data stored!");
+    // res.redirect('/welcome.ejs')
+  });
+  var sql = `update account set opening_balance = opening_balance + ${transamount} where acnumber = "${accno}";`;
+  db.query(sql, function (err, result) {
+    if (err) throw err;
+    // console.log(id,' ',name,' ',email,' ',message,'\n');
+    console.log("Row has been updated");
+    req.flash("success", "Data stored!");
+    res.redirect("alredyHaveAcc");
+  });
+});
 
 app.get("/users", async (req, res) => {
-  db.query("SELECT * FROM register_account", function (err, result, fields) {
+  db.query("SELECT * FROM customer", function (err, result, fields) {
     if (err) throw err;
     //  console.log(result);
     res.render("users", { result: result });
   });
 });
 
+app.post("/transfer", function (req, res, next) {
+  var tno = generateSortedString();
+  var accno1 = req.body.nAccNo1;
+  var accno2 = req.body.nAccNo2;
+
+  var transamount = req.body.nAmount;
+  var sql = `select opening_balance from account where acnumber="${accno1}"`;
+  db.query(sql, function (err, result) {
+    if (err) {
+      console.log("enter correct account");
+    } else {
+      if (result[0].opening_balance >= transamount) {
+        var sql1 = `update account set opening_balance = opening_balance + ${transamount} where acnumber = "${accno2}";`;
+        db.query(sql1, function (err, result1) {
+          if (err) {
+            console.log("transfer not succesffull or account not exist");
+          } else {
+            var sql2 = `update account set opening_balance = opening_balance - ${transamount} where acnumber = "${accno1}";`;
+            db.query(sql2, function (err, result2) {
+              if (err) {
+              } else {
+                console.log("succesfully upadated;");
+              }
+            });
+          }
+        });
+      } else {
+        console.log("insufficient balance");
+      }
+    }
+    // res.redirect('/welcome.ejs')
+  });
+});
+
+app.post("/withdraw", function (req, res, next) {
+  var tno = generateSortedString();
+  var accno = req.body.nAccNo;
+  var transamount = req.body.nAmount;
+  var sql = `select opening_balance from account where acnumber="${accno}"`;
+  db.query(sql, function (err, result) {
+    if (err) {
+      console.log("erroor");
+      req.flash('success', "some error occured!");
+      res.render("withdraw")
+    } else {
 
 
 
+      if (result[0].opening_balance >= transamount) {
+        var sql1 = `update account set opening_balance = opening_balance - ${transamount} where acnumber = "${accno}";`;
+        db.query(sql1, function (err, result1) {
+          if (err) {
+            console.log("transfer not succesffull or account not exist");
+              req.flash('success', "transfer not successful!");
+              res.render("withdraw");
+          } else {
+              console.log("successfully withdrawn")
+              req.flash('success', "successfully withdrawn!");
+              res.render("withdraw" );
+          }
+        });
+      } else {
+        console.log("insufficient balance");
+         req.flash("success", "sinsuffient balance!");
+         res.render("withdraw");
+      }
+    }
+    // res.redirect('/welcome.ejs')
+  });
+ 
+});
 
+app.get("/users", async (req, res) => {
+  db.query(`SELECT * FROM account where custid="${userkiId}"`, function (err, result, fields) {
+    if (err) throw err;
+      console.log(result);
+    res.render("users", { result: result });
+  });
+});
 
 app.get("/", (req, res) => {
   res.render("bank");
 });
-
-
-
-
-
 
 app.listen(port, () => {
   console.log(`listening to ${port} `);

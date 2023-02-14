@@ -21,13 +21,11 @@
     <table style="color:rgb(0, 0, 0);width:100%; margin-top:10px">
       <thead>
         <tr>
-          <th>fname</th>
-          <th>lname</th>
-          <th>email</th>
-          <th>adress</th>
-          <th>contact number</th>
-          <th>aadhar number</th>
-          <th>dob</th>
+           <th>accnumber</th>
+          <th>custid</th>
+       
+          <th>balance</th>
+         
 
         </tr>
       </thead>
@@ -36,14 +34,10 @@
 
         {{#each result}}
           <tr>
-
-            <td> {{this.fname}}</td>
-            <td> {{this.lname}}</td>
-            <td> {{this.email}}</td>
-            <td> {{this.address}}</td>
-            <td> {{this.number}}</td>
-            <td> {{this.aadhar_number}}</td>
-            <td> {{this.dob}}</td>
+            <td> {{this.acnumber}}</td>
+            <td> {{this.custid}}</td>
+            <td> {{this.opening_balance}}</td>
+           
           </tr>
         {{/each}}
 
