@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Page</title>
+	<style>
+		body {
+			
+			background-size: cover;
+			background-position: center;
+			color: white;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-decoration: #020319;
+			font-size: 5rem;
+			margin-top: 0;
+			padding-top: 5rem;
+			text-align: center;
+			text-shadow: 2px 2px #000000;
+		}
+		p {
+			font-size: 2rem;
+			text-align: center;
+			text-shadow: 2px 2px #000000;
+		}
+		.container {
+			margin: 0 auto;
+			max-width: 80rem;
+			padding: 2rem;
+		}
+		.btn {
+			background-color: #f12283;
+			border: none;
+			color: white;
+			padding: 1rem 2rem;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 1.5rem;
+			border-radius: 2rem;
+			margin-top: 3rem;
+			box-shadow: 2px 2px #000000;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: #cc1b7a;
+		}
+		img{
+			height: 20px;
+			width: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 >Welcome {{email}}</h1>
+		<a href="logout">logout</a>
+		<img src={{picture}} alt="">
+		<!-- <p>Explore the world of web development with me</p> -->
+		<a href="#" class="btn">Get Started</a>
+	</div>
+</body>
+</html>

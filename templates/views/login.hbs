@@ -1,9 +1,13 @@
 <html>
   <head>
     <style>
-      body {
-        background-color: #0a7878;
+      body{
+        
+    background-image: url('images/pexels-francesco-ungaro-281260.jpg');
+    background-repeat: no-repeat;
+background-size: cover;
       }
+     
 
       h1 {
         text-align: center;
@@ -15,8 +19,9 @@
         width: 500px;
         margin: 0 auto;
         padding: 30px;
-        background-color: #ffffff;
-        border: 1px solid #ccc;
+       opacity: 1;
+  
+      background-color: white;
         border-radius: 10px;
       }
 
@@ -25,6 +30,7 @@
         width: 100%;
         text-align: left;
         margin-bottom: 10px;
+        
       }
 
       input[type="text"],
@@ -35,23 +41,36 @@
         margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        color: #000000;
       }
 
       input[type="submit"] {
         width: 100%;
+       
         padding: 12px 20px;
-        background-color: #4CAF50;
-        color: white;
+        background-color: #6ebbeb;
+        color: rgb(255, 255, 255);
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 18px;
       }
+      img{
+        height:100vh;
+        width: 100vw;
+      }
+      label{
+        text-transform: capitalize;
+        color: #b08585;
+      }
+      a{
+        text-decoration: none;
+      }
 
       button {
         width: 100%;
         padding: 12px 20px;
-        background-color: #ff9933;
+        background-color: #52b6d7;
         color: white;
         border: none;
         border-radius: 5px;
@@ -65,25 +84,71 @@
         align-items: center;
 
         }
+        h1{
+          color: rgb(255, 0, 106);
+        }
+        img{
+          height:20px;
+          width: 20px;
+        }
+        .social_account{
+          display: flex;
+          height: 30px;
+          align-items: center;
+          justify-content: center;
+          margin-block-start: 10px;
+          padding: 10px 10px;
+        }
+        a{
+          margin-left: 30px;
+        }
+        h4{
+          color: #6ebbeb;
+        }
     </style>
   </head>
   <body>
-
+     
     <div class="forms">
         <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}  &times;</span>
     </div>
+
     </div>
+
+
+    <div class="main">
+
+    
+     <div class="container">
+
+     </div>
+     <div class="container2">
     <h1>LOGIN</h1>
+    
     <form action="/login" method="post" name="login">
-      <label for="custid">Customer Id:</label>
-      <input type="text" id="username" name="custid"><br><br>
+      {{!-- <label for="custid">enrollment</label> --}}
+      
+      <input type="text" id="username" name="custid" placeholder="Enrollment Number"><br><br>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password"><br><br>
+      {{!-- <label for="password">Password:</label> --}}
+      <input type="password" id="password" name="password"placeholder="Password"><br><br>
 
-      <input type="submit" value="Submit">
+      <input type="submit" value="Login">
       <button><span>Don't have an account?</span><a href="register" >Register</a></button>
+      
+
+      <button><a href="/api/auth/forget-password/" >Forget Password</a></button>
+  <div class="social_account">
+       <h4>Sign in With Socail Account</h1>
+       <a href="/auth/google" ><img src="images/google.png" alt=""></a>
+       <a href="/auth/facebook" ><img src="images/facebook.png" alt=""></a>
+       <a href="/auth/github" ><img src="images/github-logo.png" alt=""></a>
+  </div>
+
+      
     </form>
+    </div>
+     </div>
   </body>
 </html>

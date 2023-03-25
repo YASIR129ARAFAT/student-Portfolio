@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+   
+	
+    <style>
+
+.background-image {
+
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.login-btn {
+  background-color: #2196F3;
+}
+
+.register-btn {
+  background-color: #f44336;
+}
+
+.admin-btn {
+  background-color: #9c27b0;
+}
+
+    </style>
+</head>
+
+
+
+<body>
+    <div class="background-image"></div>
+
+	<div class="container">
+        
+		<h1>Login/Register</h1>
+		<div class="button-container">
+			<button class="login-btn">Login</button>
+			<button class="register-btn">Register</button>
+			<button class="admin-btn">Login as Admin</button>
+		</div>
+	</div>
+
+    <script>
+		var loginButton = document.querySelector('.login-btn');
+		loginButton.addEventListener('click', function() {
+			window.location.href = "login";
+		});
+
+        var loginButton = document.querySelector('.register-btn');
+		loginButton.addEventListener('click', function() {
+			window.location.href = "register";
+		});
+
+        var loginButton = document.querySelector('.admin-btn');
+		loginButton.addEventListener('click', function() {
+			window.location.href = "admin_reg.html";
+		});
+
+	</script>
+</body>
+</html>
