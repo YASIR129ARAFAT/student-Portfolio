@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="/images/student-portfolio-logo.png" class="logoimage" alt="logo" />
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a href="index.html">home</a>
+                </li>
+                <li>
+                    <a href="about.html">about</a>
+                </li>
+                <li>
+                    <a href="projects.html">projects</a>
+                </li>
+                <li>
+                    <a href="contact.html">contact</a>
+                </li>
+            </ul>
+            <!-- social media -->
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-sketch"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+     
+   <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown link
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Edit</a>
+    <a class="dropdown-item" href="#">Delete</a>
+    <a class="dropdown-item" href="#">Update</a>
+  </div>
+</div>
+    <div class="container">
+         
+        
+
+        <div class="view" id="cgpaDiv">
+
+            <div id="cgpaHeadingDiv">
+                <image id="cgpaImg" src="/images/cgpa.png"></image>
+                <h4 id="cgpaHeading" style="display: inline-block;">CGPA Overview</h4>
+            </div>
+
+            <div id="cgpaList">
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading1">Semester 1: </h4>
+                    <div class="ListedSemCG" id="sem1cgpa"><em>7.98</em></div>
+                    <a   class="anchor" href="sem1">check Result</a>
+                </div>
+
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading2">Semester 2: </h4>
+                    <div class="ListedSemCG" id="sem2cgpa"><em>7.98</em></div>
+                        <a   class="anchor" href="sem1">check Result</a>
+                </div>
+
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading3">Semester 3: </h4>
+                    <div class="ListedSemCG" id="sem3cgpa"><em>7.98</em></div>
+                        <a   class="anchor" href="sem1">check Result</a>
+                </div>
+
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading4">Semester 4: </h4>
+                    <div class="ListedSemCG" id="sem4cgpa"><em>7.98</em></div>
+                        <a  class="anchor"  href="sem1">check Result</a>
+                </div>
+
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading5">Semester 5: </h4>
+                    <div class="ListedSemCG" id="sem5cgpa"><em>7.98</em></div>
+                        <a   class="anchor" href="sem1">check Result</a>
+                </div>
+
+
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading6">Semester 6: </h4>
+                    <div class="ListedSemCG" id="sem6cgpa"><em>7.98</em></div>
+                        <a   class="anchor" href="sem1">check Result</a>
+                </div>
+
+                <div class="listItem">
+                    <h4 class="ListedSemesterHeading" id="semHeading7">Semester 7: </h4>
+                    <div class="ListedSemCG" id="sem7cgpa"><em>7.98</em></div>
+                        <a   class="anchor" href="sem1">check Result</a>
+                </div>
+            </div>
+
+            <!-- overall cgpa div -->
+            <div id="overallCgpaDiv">
+                <div id="OverallCgpaHeadingDiv">
+                    <h4 id="overallCgpaHeading">Overall</h4>
+                </div>
+                <span id="overallCgpa"><b>8.65</b></span>
+            </div>
+
+            <!-- end of cgpa -->
+
+
+          
+        </div>
+       
+    <!-- end of project overview -->
+    <!--  -->
+    <!-- javascript -->
+    <script>
+        const navToggle = document.querySelector('.nav-toggle')
+        const links = document.querySelector('.links')
+
+        navToggle.addEventListener('click', function () {
+            links.classList.toggle('show-links')
+        })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -7,9 +7,8 @@ const JWT_SECRET = "parwez";
 
 var enroll_no;
 
-var firstName;
-var middleName;
-var lastName;
+var Name;
+
 var city;
 var email;
 var mobNo;
@@ -20,14 +19,13 @@ var pass;
 //register user
 
 router.get("/register", async (req, res, next) => {
-  res.render("register");
+  res.render("register", { message: req.flash("message") });
 });
 router.post("/register", async (req, res, next) => {
  enroll_no = req.body.customerId;
 
- firstName = req.body.firstName;
- middleName = req.body.middleName;
- lastName = req.body.lastName;
+ Name = req.body.Name;
+ 
  city = req.body.city;
  email = req.body.email;
  mobNo = req.body.mobileNumber;
@@ -58,7 +56,8 @@ router.post("/register", async (req, res, next) => {
           res.render("register");
         } else {
           console.log("email has been sent", info.response);
-          res.render("congrats_message");
+           req.flash("message", "Check Your Mail to confirm register");
+           res.render("register");
         }
       });
     
@@ -90,6 +89,7 @@ router.get("/confirm_register/:id/:token", async (req, res, next) => {
   }
 });
 
+
 router.post("/confirm_register/:id/:token", async (req, res, next) => {
     const id = req.params.id;
     const token = req.params.token;
@@ -103,16 +103,17 @@ router.post("/confirm_register/:id/:token", async (req, res, next) => {
 
     console.log("hello");
 
-   var sql = `INSERT INTO student_data VALUES ("${enroll_no}","${firstName}", "${middleName}", "${lastName}", "${city}" , "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${pass}");`;
+   var sql = `INSERT INTO student_data VALUES ("${enroll_no}", "${city}" , "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${pass}", "${Name}");`;
    db.query(sql, function (err, result) {
      if (err) {
        req.flash("message", "customer Id already exist");
        res.redirect("register");
      } else {
-       // console.log(id,' ',name,' ',email,' ',message,'\n');
-       console.log("Row has been updated");
       
-       res.send("succesfully registered");
+       console.log("Row has been updated");
+       req.flash("message", "seccessfully registered");
+       res.render("login");
+
      }
    });
   } catch (error) {

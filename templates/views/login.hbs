@@ -1,11 +1,12 @@
 <html>
   <head>
+    <title>Login</title>
+    
     <style>
       body{
-        
-    background-image: url('images/pexels-francesco-ungaro-281260.jpg');
-    background-repeat: no-repeat;
-background-size: cover;
+       height: 100vh;
+       width: 100vw;
+ background-color: white;
       }
      
 
@@ -16,12 +17,12 @@ background-size: cover;
       }
 
       form {
-        width: 500px;
+        width: 400px;
         margin: 0 auto;
         padding: 30px;
        opacity: 1;
   
-      background-color: white;
+      background-color: rgb(243, 243, 243);
         border-radius: 10px;
       }
 
@@ -82,6 +83,10 @@ background-size: cover;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #ffffff;
+        color: #000000;
+        border-radius: 20px;
+        text-transform: uppercase;
 
         }
         h1{
@@ -102,8 +107,8 @@ background-size: cover;
         a{
           margin-left: 30px;
         }
-        h4{
-          color: #6ebbeb;
+        h1{
+          color: #92a5b0;
         }
     </style>
   </head>
@@ -132,9 +137,9 @@ background-size: cover;
       <input type="text" id="username" name="custid" placeholder="Enrollment Number"><br><br>
 
       {{!-- <label for="password">Password:</label> --}}
-      <input type="password" id="password" name="password"placeholder="Password"><br><br>
+      <input type="password" id="password" name="password"placeholder="&#61442;"><br><br>
 
-      <input type="submit" value="Login">
+      <input id="btn" type="submit" value="Login">
       <button><span>Don't have an account?</span><a href="register" >Register</a></button>
       
 
@@ -150,5 +155,10 @@ background-size: cover;
     </form>
     </div>
      </div>
+     <script>
+    
+    console.log({{email}});
+
+     </script>
   </body>
 </html>

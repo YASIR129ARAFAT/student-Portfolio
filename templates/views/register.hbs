@@ -1,181 +1,235 @@
 <html>
-    <head>
-        <title>PNB BANK</title>
-        <script>
-          function validateForm() {
-            var customerId = document.forms["register"]["customerId"].value;
-            var firstName = document.forms["register"]["firstName"].value;
-            var middleName = document.forms["register"]["middleName"].value;
-            var lastName = document.forms["register"]["lastName"].value;
-            var city = document.forms["register"]["city"].value;
-            var email = document.forms["register"]["email"].value;
-            var mobileNumber = document.forms["register"]["mobileNumber"].value;
-            var occupation = document.forms["register"]["occupation"].value;
-            var dob = document.forms["register"]["dob"].value;
-            var password = document.forms["register"]["password"].value;
-            var confirmPassword = document.forms["register"]["confirmPassword"].value;
-    
-            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            var mobileNumberRegex = /^[6-9]\d{9}$/;
-            var passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
-    
-            if (!customerId || !firstName || !lastName || !city || !email || !mobileNumber || !occupation || !dob || !password || !confirmPassword) {
-              alert("All fields are required");
-              return false;
-            }
-    
-            if (!emailRegex.test(email)) {
-              alert("Enter a valid email address");
-              return false;
-            }
-    
-            if (!mobileNumberRegex.test(mobileNumber)) {
-              alert("Enter a valid mobile number");
-              return false;
-            }
-    
-            if (password != confirmPassword) {
-              alert("Password and confirm password must match");
-              return false;
-            }
-    
-            return true;
-          }
-        </script>
-      </head> 
-
+  <head>
+    <title>Register</title>
+    <script>
+      function validateForm() { var customerId =
+      document.forms["register"]["customerId"].value; var firstName =
+      document.forms["register"]["firstName"].value; var middleName =
+      document.forms["register"]["middleName"].value; var lastName =
+      document.forms["register"]["lastName"].value; var city =
+      document.forms["register"]["city"].value; var email =
+      document.forms["register"]["email"].value; var mobileNumber =
+      document.forms["register"]["mobileNumber"].value; var occupation =
+      document.forms["register"]["occupation"].value; var dob =
+      document.forms["register"]["dob"].value; var password =
+      document.forms["register"]["password"].value; var confirmPassword =
+      document.forms["register"]["confirmPassword"].value; var emailRegex =
+      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; var mobileNumberRegex =
+      /^[6-9]\d{9}$/; var passwordRegex =
+      /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/; if
+      (!customerId || !firstName || !lastName || !city || !email ||
+      !mobileNumber || !occupation || !dob || !password || !confirmPassword) {
+      alert("All fields are required"); return false; } if
+      (!emailRegex.test(email)) { alert("Enter a valid email address"); return
+      false; } if (!mobileNumberRegex.test(mobileNumber)) { alert("Enter a valid mobile number"); return false; } if (password != confirmPassword) {
+      alert("Password and confirm password must match"); return false; } return
+      true; }
+    </script>
+  </head>
 
   <head>
     <style>
-         body {
-       background-image: url('images/bg-01.jpg');
-    background-repeat: no-repeat;
-    background-size: 200%;
-      }
-
-      h1 {
-        text-align: center;
-        font-size: 36px;
-        margin-bottom: 50px;
-      }
-
-      form {
-        width: 500px;
-        margin: 0 auto;
-        padding: 30px;
-        background-color: #f2f2f2;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-      }
-
-      label {
-        font-size: 20px;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 10px;
-      }
-
-      input[type="text"],
-      input[type="password"],
-      input[type="date"] {
-        width: 100%;
-        padding: 12px;
-        font-size: 18px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      button {
-        width: 100%;
-        padding: 12px 20px;
-        background-color: #ff9933;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-        margin-top: 20px;
-      }
-
-
-      input[type="submit"] {
-        width: 100%;
-        padding: 12px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-      }
-
-
-              .forms{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        }
-        .register{
-          display: flex;
-          color: #ff9933;
-          justify-content: center;
-          align-items: center;
-        }
+      body { background-color: white; } h1 { text-align: center; font-size:
+      36px; margin-bottom: 50px; } form { width: 500px; margin: 0 auto; padding:
+      30px; background-color: rgb(243, 243, 243); border: 1px solid #ccc;
+      border-radius: 10px; } label { font-size: 20px; width: 100%; text-align:
+      left; margin-bottom: 10px; } 
+      
+      
+      input[type="text"], input[type="password"], input[type="number"],
+      input[type="date"] { width: 100%; padding: 12px; font-size: 18px;
+      margin-bottom: 12px; border: 1px solid #ccc; border-radius: 5px; } button
+      { width: 100%; padding: 12px 20px; background-color: #ff9933; color:
+      white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;
+      margin-top: 20px; } 
+      
+      input[type="submit"] { width: 100%; padding: 12px
+      20px; background-color: #4CAF50; color: white; border: none;
+      border-radius: 5px; cursor: pointer; font-size: 18px; }
+      
+      
+       .forms{ display:
+      flex; justify-content: center; align-items: center; } .register{ display:
+      flex; color: #ff9933; justify-content: center; align-items: center; }
+      .lab{ font-size: 10px; width: 100%; top: 0; text-align: left;
+      text-transform: capitalize; color: red; display: none; } h1{ }
     </style>
   </head>
   <body>
-   <div class="register">
-    <h1>Register</h1>
-   </div>
- <div class="forms">
-        <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}   &times;</span>
+    <div class="forms">
+      <div class="alert">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+        > {{message}} &times;</span>
+      </div>
     </div>
+    <div class="register">
+      <h1>Register</h1>
     </div>
 
+    <form
+      action="/api/registerauth/register"
+      method="post"
+      name="register"
+      onsubmit="return validateForm()"
+    >
     
-
-
-    <form  action="/api/registerauth/register" method="post" name="register" onsubmit="return validateForm()">
-      <label for="customerId">Customer ID:</label>
-      <input type="text" id="customerId" name="customerId"><br><br>
-
-      <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" name="firstName"><br><br>
-
-      <label for="middleName">Middle Name:</label>
-      <input type="text" id="middleName" name="middleName"><br><br>
-
-      <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" name="lastName"><br><br>
+      <label for="customerId">Enrollment No:</label>
+      <input type="text" id="customerId" oninput="func1()" name="customerId" />
+      <p class="lab" id="ans1"></p>
+      <br /><br />
+      <label for="Name">Name:</label>
+      <input type="text" id="Name" oninput="func2()" name="Name" />
+      <p class="lab" id="ans2"></p>
+      <br /><br />
 
       <label for="city">City:</label>
-      <input type="text" id="city" name="city"><br><br>
+      <input type="text" id="city" oninput="func3()"name="city" />
+      <p class="lab" id="ans3"></p>
+      <br /><br />
 
       <label for="email">Email:</label>
-      <input type="text" id="email" name="email"><br><br>
+      <input type="text" id="email" oninput="func4()" name="email" />
+      <p class="lab" id="ans4"></p>
+      <br /><br />
 
       <label for="mobileNumber">Mobile Number:</label>
-      <input type="text" id="mobileNumber" name="mobileNumber"><br><br>
+      <input type="number" id="mobileNumber" oninput="func5()" name="mobileNumber" />
+      <p class="lab" id="ans5"></p>
+      <br /><br />
 
       <label for="occupation">Occupation:</label>
-      <input type="text" id="occupation" name="occupation"><br><br>
+      <input type="text" id="occupation" oninput="func6()" name="occupation" />
+      <p class="lab" id="ans6"></p>
+      <br /><br />
 
       <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob"><br><br>
+      <input type="date" id="dob" oninput="func7()" name="dob" />
+      <p class="lab" id="ans7"></p>
+      <br /><br />
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password"><br><br>
+      <input type="password" oninput="func9()" id="password" name="password" />
+      <p class="lab" id="ans8"></p>
+      <br /><br />
 
       <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+      <input type="password"  id="confirmPassword" oninput="func8()" name="confirmPassword" />
+      <p class="lab" id="ans9"></p>
+      <br /><br />
 
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" />
 
-       <button><span>Already have an account </span><a href="login" >Login</a></button>
+      <button><span>Already have an account </span><a
+          href="login"
+        >Login</a></button>
 
     </form>
+    <script>
+      function func2(){
+         var name=document.getElementById('Name'); 
+     
+   
+   
+    
+     
+   
+      
+      
+       if(name.value.length==0){
+      document.getElementById('ans2').style.display='block';
+
+       document.getElementById('ans2').innerHTML="name should not be empty"; } else{
+      document.getElementById('ans2').style.display='none';
+       }
+
+      
+      }
+       function func1(){
+var cus=document.getElementById('customerId'); 
+    if(cus.value.length==0){
+      document.getElementById('ans1').style.display='block';
+
+      document.getElementById('ans1').innerHTML="enrollment no should not be empty";
+      } else{ document.getElementById('ans1').style.display='none';
+       }
+       }
+
+ function func4(){
+    var email=document.getElementById('email'); 
+      if(email.value.length==0){
+      document.getElementById('ans4').style.display='block';
+
+       document.getElementById('ans4').innerHTML="email should not be empty"; 
+       } else{
+      document.getElementById('ans4').style.display='none' ;
+
+      }
+ }
+ function func3(){
+  var city=document.getElementById('city'); 
+      if(city.value.length==0){
+      document.getElementById('ans3').style.display='block';
+       document.getElementById('ans3').innerHTML="city should not be empty";
+        } else{
+      document.getElementById('ans3').style.display='none';
+
+       }
+ }
+ function func5(){
+ var mobile_number=document.getElementById('mobileNumber');
+      if((mobile_number.value.length)<10){
+      document.getElementById('ans5').style.display='block'
+      document.getElementById('ans5').innerHTML="mobile number of atleast 10 digit"; 
+      } else{
+      document.getElementById('ans5').style.display='none';
+       }
+ }
+ function func6(){
+ var occupation=document.getElementById('occupation'); 
+      if(occupation.value.length==0){
+      document.getElementById('ans6').style.display='block';
+
+       document.getElementById('ans6').innerHTML="occupation should not be empty"; } 
+       else{
+      document.getElementById('ans6').style.display='none' ;
+      }
+ }
+ function func7(){
+  var dob=document.getElementById('dob'); 
+     
+      if(dob.value.length==0){
+      document.getElementById('ans7').style.display='block'
+       document.getElementById('ans7').innerHTML="dob is required"; } else{
+      document.getElementById('ans7').style.display='none';
+       }
+ }
+ function func8(){
+ 
+     var confimPassword=document.getElementById('confirmPassword');
+      if(confirmPassword.value.length==0){
+      document.getElementById('ans9').style.display='block';
+    document.getElementById('ans9').innerHTML="password  should not be empty"; 
+    }
+       else{
+      document.getElementById('ans9').style.display='none' }
+       }
+       
+
+
+       function func9(){
+ 
+     var confimPassword=document.getElementById('password');
+      if(confirmPassword.value.length==0){
+      document.getElementById('ans8').style.display='block';
+    document.getElementById('ans8').innerHTML="password  should not be empty"; 
+    }
+       else{
+      document.getElementById('ans8').style.display='none' }
+       }
+       
+
+    </script>
   </body>
 </html>

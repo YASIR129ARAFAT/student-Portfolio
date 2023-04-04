@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const JWT_SECRET = "parwez";
 const transport = require("../src/mailer/mailsend");
 var db = require("../src/database/db");
-// connecting to database->
-//  const passport=require('passport');
+require("./auth");
+
 
 var userkiId;
 var genereted_account_no;
@@ -35,6 +35,8 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 app.use(express.static(staticpath));
 hbs.registerPartials(partialpath);
+var global_enroll;
+
 app.use(
   session({
     secret: "secret",
@@ -58,7 +60,6 @@ function isloggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
 
-require("./auth");
 //google authenticate
 app.get(
   "/auth/google",
@@ -67,7 +68,7 @@ app.get(
 app.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/homepage",
+    successRedirect: "/student_profile",
     failureRedirect: "/auth/failure",
   })
 );
@@ -83,6 +84,7 @@ app.get(
     failureRedirect: "/auth/failure",
   })
 );
+
 // facebook authenticate
 
 app.get(
@@ -115,21 +117,31 @@ app.get("/logout", (req, res) => {
 app.get("/register", (req, res) => {
   res.render("register", { message: req.flash("message") });
 });
+
+// student personal details
+app.get("/student_data", (req, res) => {
+  res.render("student_data");
+
+});
+
+
+
+
+
+//render login page
 app.get("/login", (req, res) => {
   res.render("login", { message: req.flash("message") });
 });
 app.get("/homepage", isloggedIn, (req, res) => {
   var profile_pic;
-     if(req.user.picture==null){
-         profile_pic=req.user.photos[0].value;
+  if (req.user.picture == null) {
+    profile_pic = req.user.photos[0].value;
+  } else {
+    profile_pic = req.user.picture;
+  }
+  console.log(profile_pic);
 
-     }
-     else{
-      profile_pic=req.user.picture;
-     }
-     console.log(profile_pic);
-
-  res.render("homepage", { email: req.user.email, picture:profile_pic });
+  res.render("homepage", { email: req.user.email, picture: profile_pic });
 });
 app.get("/home2", (req, res) => {
   res.render("home2", { message: req.flash("message") });
@@ -140,15 +152,26 @@ app.get("/congrats_message", (req, res) => {
   });
 });
 
-// forgot password
+// forgot passwords
+//using router file
+app.use("/api/projectauth", require("./router/projectauth"));
 app.use("/api/auth", require("./router/auth"));
 app.use("/api/registerauth", require("./router/registerauth"));
 
-/////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+////////
+
+//post request on login
 
 app.post("/login", async (req, res) => {
   console.log(userkiId);
-
+  
   var user = req.body.custid;
   if (user.length == 0) {
     req.flash("message", "please enter  custid");
@@ -156,13 +179,13 @@ app.post("/login", async (req, res) => {
   } else {
     var pass = req.body.password;
     console.log(user + " " + pass);
-
+    
     var sql = `select   password from student_data where enroll_no="${user}"`;
-
+    
     db.query(sql, function (err, result) {
       if (err) {
         console.log(err);
-
+        
         console.log("username password doesnot matched");
         req.flash("message", "username and password does not match");
         res.redirect("login");
@@ -177,10 +200,15 @@ app.post("/login", async (req, res) => {
           if (gg.localeCompare(pass) == 0) {
             var kk = result[0].fname;
             gname = kk;
-            res.redirect("/auth/google");
+            res.render('student_profile')
+            // res.send("successfully registered");
           } else {
             console.log("username or password doesnot matched");
-            req.flash("message", "username and password does not match");
+            global_enroll=user;
+            req.flash("message", {
+              email: '1',
+              picture: profile_pic,
+            });
             res.redirect("login");
           }
         }
@@ -189,8 +217,32 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
 //////////////////////////////////////////////////////////////////////////////////////
+app.get("/student_profile", (req, res) => {
+  res.render("student_profile");
+});
+app.get("/student_achievement", (req, res) => {
+  res.render("student_achievement");
+});
+
+app.get("/student_cgpa", (req, res) => {
+  res.render("student_cgpa");
+});
+
+app.get("/student_non_academic_skill", (req, res) => {
+  res.render("student_non_academic_skill");
+});
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`listening to ${port} `);
