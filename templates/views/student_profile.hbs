@@ -10,7 +10,23 @@
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
-   
+   <style>
+    .listItem{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+         text-transform: capitalize;
+        
+    }
+    #allProjectItems{
+          text-transform: uppercase;
+    }
+    
+    #project1Desc{
+        margin-top: 20px;
+    }
+   </style>
 </head>
 
 <body>
@@ -221,7 +237,7 @@
         </div>
 </a>
         <!-- div for non academic achievements -->
-  <a href="student_non_academic_skill">
+  <a href="/api/nonacademicauth/student_non_academic_skill">
         <div class="view" id="nonAcadSkillsDiv">
 
             <div id="nonSkillHeadingDiv">
@@ -230,78 +246,12 @@
             </div>
 
             <div id="allNonAcadAchievItems">
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill1">Skill1</h4>
-                    <div class="ListedSkillDescription" id="nonSkill1Desc"><em>This is skill1 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
+               
 
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill2">Skill2</h4>
-                    <div class="ListedSkillDescription" id="nonSkill2Desc"><em>This is skill2 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill3">Skill3</h4>
-                    <div class="ListedSkillDescription" id="nonSkill3Desc"><em>This is skill3 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill4">Skill4</h4>
-                    <div class="ListedSkillDescription" id="nonSkill4Desc"><em>This is skill4 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
+             
 
 
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill5">Skill5</h4>
-                    <div class="ListedSkillDescription" id="nonSkill5Desc"><em>This is skill5 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill6">Skill6</h4>
-                    <div class="ListedSkillDescription" id="nonSkill6Desc"><em>This is skill6 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill7">Skill7</h4>
-                    <div class="ListedSkillDescription" id="nonSkill7Desc"><em>This is skill7 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSkillHeading" id="nonSkill8">Skill8</h4>
-                    <div class="ListedSkillDescription" id="nonSkill8Desc"><em>This is skill8 description lorem30 Human
-                            beings are
-                            the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
+              
 
             </div>
 
@@ -379,15 +329,7 @@
             </div>
 
             <div id="allProjectItems">
-                <div class="listItem">
-                    <h4 class="ListedProjectHeading" id="project1">Project1</h4>
-                    <div class="ListedProjectDescription" id="project1Desc"><em>This is"Project1 description lorem30
-                            Human
-                            beings
-                            are the most powerful of all the creatures that rely on and make use of the earth's natural
-                            resources. </em>
-                    </div>
-                </div>
+               
 
               
               
@@ -402,6 +344,7 @@
     </a>
     <!-- end of project overview -->
     <!--  -->
+
     <!-- javascript -->
     <script src="/js/main.js"></script>
     <script>
@@ -411,6 +354,75 @@
         navToggle.addEventListener('click', function () {
             links.classList.toggle('show-links')
         })
+
+func1();
+func2();
+
+function func2(){
+        var start_index=0;
+        var number_of_records=10;
+
+ const request=new XMLHttpRequest();
+  request.open('Get', `/api/projectauth/get_data?start_index=${start_index}&num_record=${number_of_records}`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+   // console.log(results);
+
+     
+     let html=``;
+     if(results.length>0){
+
+        results.forEach(result=>{
+             html+=`<div class="listItem">
+                    <h4 class="ListedProjectHeading" id="project1" style="text-transform:uppercase;">${result.title }</h4>
+                    <div class="ListedProjectDescription"   style="text-transform:capitalize;"    id="project1Desc"><em>${result.desription}</em>
+                    </div>
+                </div>`
+        });
+     var data=document.getElementById('allProjectItems');
+       data.innerHTML+=html;
+
+ 
+     }
+     
+  };
+
+  
+  request.send()
+}
+function func1(){
+var sttart_index=0;
+numberr_of_records=10;
+
+const request=new XMLHttpRequest();
+  request.open('Get', `/api/nonacademicauth/get_data?start_index=${sttart_index}&num_record=${numberr_of_records}`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+   // console.log(results);
+
+     
+     let html=``;
+     if(results.length>0){
+
+        results.forEach(result=>{
+             html+=` <div class="listItem">
+                    <h4 class="ListedSkillHeading" id="nonSkill1">${result.title}</h4>
+                    <div class="ListedSkillDescription" id="nonSkill1Desc"><em>${result.description} </em>
+                    </div>
+                </div>
+`
+        });
+     var data=document.getElementById('allNonAcadAchievItems');
+       data.innerHTML+=html;
+
+     }
+     
+  };
+  request.send()
+
+}
+
+
     </script>
 </body>
 

@@ -103,9 +103,10 @@ router.post("/confirm_register/:id/:token", async (req, res, next) => {
 
     console.log("hello");
 
-   var sql = `INSERT INTO student_data VALUES ("${enroll_no}", "${city}" , "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${pass}", "${Name}");`;
+   var sql = `INSERT INTO student_data VALUES ("${city}", "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${pass}", "${Name}","${enroll_no}");`;
    db.query(sql, function (err, result) {
      if (err) {
+      console.log(err)
        req.flash("message", "customer Id already exist");
        res.redirect("register");
      } else {
@@ -117,6 +118,7 @@ router.post("/confirm_register/:id/:token", async (req, res, next) => {
      }
    });
   } catch (error) {
+    console.log("ppask")
     console.log(error.message);
     res.send(error.message);
   }

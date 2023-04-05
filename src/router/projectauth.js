@@ -21,17 +21,79 @@ router.get("/get_data", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(result);
+      //  console.log(result);
 
       res.json(result);
     }
   });
 });
 
+let particular_project_id;
+
+
+router.get("/get_data_particular", (req, res) => {
+  const project_count = req.query.project_id;
+ console.log(project_count);
+  var sql = `select   * from project_overview where project_count="${project_count}"`;
+  db.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      // console.log(result);
+       particular_project_id=result[0].project_count;
+
+      res.json(result);
+    }
+  });
+});
+
+
+
+//to update project details
 router.post("/update_project", (req, res, next) => {
   
-
+  var title = req.body.title;
+   // var project_count = req.body.project_count;
+  // var enroll = req.body.enroll;
+  var description = req.body.description;
+   var sql = `update project_overview  set title="${title}", desription="${description}"where project_count="${particular_project_id}" `;
+  db.query(sql, function (err, result) {
+    if (err) {
+      //  req.flash("message", "customer Id already exist");
+       res.render("student_project");
+      console.log(err);
+    } else {
+      console.log("Row has been updated");
+      res.render("student_project");
+      //  req.flash("message", "seccessfully registered");
+      //  res.render("student_project");
+    }
+  });
 });
+
+
+//to delete a particular project
+router.post("/delete_project", (req, res, next) => {
+  
+  
+  console.log()
+
+  var sql = `delete from project_overview where project_count="${particular_project_id}" `;
+  db.query(sql, function (err, result) {
+    if (err) {
+      //  req.flash("message", "customer Id already exist");
+      res.render("student_project");
+      console.log(err);
+    } else {
+      console.log("Row has been updated");
+      res.render("student_project");
+    
+    }
+  });
+});
+
+
+
 
 
 

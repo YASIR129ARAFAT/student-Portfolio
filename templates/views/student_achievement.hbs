@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+     <style>
+    
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+    position: relative;
+    z-index: 9;
+    top: -25px;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+
+
+
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+
+
+/* The Modal (background) */
+.modal {
+    display: none;
+ 
+  position: relative; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 60vw; /* Full width */
+  height: 30vh; /* Full height */
+   /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+#projectDiv{
+    height: 40vh;
+    width: 30vw;
+    display: inline-block;
+   
+    margin: 50px 20px 50px 40px;
+    border-radius: 10px;
+    left: 440px;
+    top: 427px;
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    border: 2px black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
+.projectDiv{
+    height: 40vh;
+    width: 30vw;
+    display: inline-block;
+   
+    margin: 50px 20px 50px 40px;
+    border-radius: 10px;
+    left: 440px;
+    top: 427px;
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    border: 2px black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
+
+#allProjectItems{
+        overflow: auto;
+  height : 29vh;
+    width: 29vw;
+    margin-top: 15px;
+    word-break: break-all;
+}
+
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+#dropdown{
+    float:right;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+     width: 100%;
+  }
+}
+#container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="/images/student-portfolio-logo.png" class="logoimage" alt="logo" />
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a href="index.html">home</a>
+                </li>
+                <li>
+                    <a href="about.html">about</a>
+                </li>
+                <li>
+                    <a href="projects.html">projects</a>
+                </li>
+                <li>
+                    <a href="contact.html">contact</a>
+                </li>
+            </ul>
+            <!-- social media -->
+            <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-sketch"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+     
+
+   <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle"onclick="openForm()" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add Project
+  </a>
+
+ 
+</div>
+
+
+    <div class="container">
+        
+<div class="form-popup" id="myForm">
+  <form  id="form_edit_delete" method="post" action="/api/projectauth/add_project" class="form-container">
+  <div class="container"> <h3 id="heading">k</h3>
+</div>
+  
+
+    <label for="title"><b>Title</b></label>
+    <input  id="title_change"  type="text" placeholder="title" name="title" required>
+<label  for="enroll"><b>Enrollment</b></label>
+    <input id="enroll_disable" type="text" placeholder="enroll" name="enroll" >
+
+    <label for="description"><b>Description</b></label>
+    <input  id="description_change"   type="text" placeholder="description" name="description" required>
+
+    <input id="add_edit_delete" type="submit" value="add" class="btn">
+    <button  type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+     
+      <p>Are you sure you want to skill?</p>
+    
+      <div class="clearfix">
+        <button type="button" onclick="closeForm()" class="cancelbtn">Cancel</button>
+        <button type="button" onclick="closeForm()" class="deletebtn">Delete</button>
+      </div>
+    </div>
+  </form>
+
+ 
+
+</div>
+
+
+
+ <div id="container2" class="container2">
+
+ 
+  
+
+ 
+ 
+
+</div>
+   <button type="button"
+  id="load_more" >load more</button>
+    <!-- end of project overview -->
+    <!--  -->
+    <!-- javascript -->
+    <script>
+        const navToggle = document.querySelector('.nav-toggle')
+        const links = document.querySelector('.links')
+
+        navToggle.addEventListener('click', function () {
+            links.classList.toggle('show-links')
+        })
+
+
+        
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+   document.getElementById("container2").style.display = "none";
+  document.getElementById("load_more").style.display = "none";
+   document.getElementById("enroll_disable").disabled=false;
+ document.getElementById("title_change").disabled=false;
+       document.getElementById("description_change").disabled=false;
+ document.getElementById("id01").style.display = "none";
+  document.getElementById("add_edit_delete").value = "add";
+  document.getElementById("heading").innerText = "New Skill";
+ 
+}
+function openForm2(d) {
+  document.getElementById("title_change").disabled=false;
+       document.getElementById("description_change").disabled=false;
+    document.getElementById("myForm").style.display = "block";
+  document.getElementById("container2").style.display = "none";
+  document.getElementById("add_edit_delete").value = "edit";
+document.getElementById("id01").style.display = "none";
+document.getElementById("heading").innerText = "Edit Skill";
+ document.getElementById("load_more").style.display = "none";
+ console.log(d);
+
+
+
+//getting container value at edit form
+
+ const request=new XMLHttpRequest();
+  request.open('Get', `/api/projectauth/get_data_particular?project_id=${d}`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+     console.log(results);
+     
+     let html=``;
+     if(results.length>0){
+     //   document.getElementById("enroll_disable").value=d;
+       document.getElementById("enroll_disable").disabled=true;
+       document.getElementById('title_change').value=results[0].title;
+         document.getElementById('description_change').value=results[0].desription;
+
+ 
+    document.getElementById("add_edit_delete").addEventListener('click', ()=>{
+    document.getElementById('form_edit_delete').action="/api/projectauth/update_project"
+
+    });
+     }
+  
+  };
+  request.send()
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function openForm3(d) {
+  
+  document.getElementById("title_change").disabled=true;
+  document.getElementById("description_change").disabled=true;
+  document.getElementById("enroll_disable").disabled=true;
+  document.getElementById("myForm").style.display = "block";
+  document.getElementById("add_edit_delete").value = "Delete";
+  document.getElementById("heading").innerText = "Delete Skill";
+  document.getElementById("container2").style.display = "none";
+  document.getElementById("load_more").style.display = "none";
+  document.getElementById("add_edit_delete").addEventListener('click', ()=>{
+  document.getElementById('form_edit_delete').action=`/api/projectauth/delete_project`
+
+  const request=new XMLHttpRequest();
+  request.open('Get', `/api/projectauth/get_data_particular?project_id=${d}`);
+  request.onload =()=>{
+  const results=JSON.parse(request.responseText);
+  console.log(results);
+  let html=``;
+  if(results.length>0){
+     //   document.getElementById("enroll_disable").value=d;
+  }
+  
+  };
+  request.send()
+  });
+
+
+
+
+
+  
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+   document.getElementById("container2").style.display = "block";
+   document.getElementById("id01").style.display = "none";
+    document.getElementById("load_more").style.display = "block";
+}
+
+
+
+
+
+//getting data fwith ajax
+
+
+
+const post_data=document.getElementById('container2');
+const load_button=document.getElementById('load_button');
+var start_index=0;
+var number_of_records=10;
+load_data();
+
+function load_data(){
+  const request=new XMLHttpRequest();
+  request.open('Get', `/api/projectauth/get_data?start_index=${start_index}&num_record=${number_of_records}`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+   // console.log(results);
+
+     
+     let html=``;
+     if(results.length>0){
+       results.forEach(result=>{
+         html+=`<div class="view, projectDiv" id="projectDiv${result.project_count}">
+                
+            <div id="skillHeadingDiv">
+                <image id="projectImg" src="/images/project.png"></image>
+                <h4 id="skillHeading" style="display: inline-block;"> ${result.title}</h4>
+              
+            </div>
+
+            <div id="allProjectItems">
+                <div class="listItem">
+                  
+                    <div class="ListedProjectDescription" id="project1Desc"><em>${result.desription}
+                         
+. </em>
+                    </div>
+                </div>
+
+                
+
+            </div>
+            
+
+
+ <div class="dropdown show"id="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Tools
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+ 
+   <button class="dropdown-item" id="${result.project_count}" onclick="openForm2(${result.project_count})">Edit</button>
+   <button class="dropdown-item" id="${result.project_count}" onclick="openForm3(${result.project_count})">Delete</button>
+  </div>
+</div>
+
+
+     </div>
+ 
+`
+  start_index++;
+
+       });
+
+     }
+     else{
+      html+='<h1>no record found</h1>';
+      load_button.remove();
+
+
+     }
+      post_data.innerHTML+=html;
+  };
+  request.send()
+}
+
+
+
+
+//
+//for updating
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    {{!-- <script src="/js/main.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

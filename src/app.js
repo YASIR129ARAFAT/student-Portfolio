@@ -127,7 +127,6 @@ app.get("/student_data", (req, res) => {
 
 
 
-
 //render login page
 app.get("/login", (req, res) => {
   res.render("login", { message: req.flash("message") });
@@ -157,15 +156,7 @@ app.get("/congrats_message", (req, res) => {
 app.use("/api/projectauth", require("./router/projectauth"));
 app.use("/api/auth", require("./router/auth"));
 app.use("/api/registerauth", require("./router/registerauth"));
-
-
-
-
-
-
-
-
-////////
+app.use("/api/nonacademicauth", require("./router/nonacademicauth"));
 
 //post request on login
 
@@ -200,8 +191,9 @@ app.post("/login", async (req, res) => {
           if (gg.localeCompare(pass) == 0) {
             var kk = result[0].fname;
             gname = kk;
-            res.render('student_profile')
-            // res.send("successfully registered");
+            res.render("homepage");
+
+                     // res.send("successfully registered");
           } else {
             console.log("username or password doesnot matched");
             global_enroll=user;
@@ -229,9 +221,6 @@ app.get("/student_cgpa", (req, res) => {
   res.render("student_cgpa");
 });
 
-app.get("/student_non_academic_skill", (req, res) => {
-  res.render("student_non_academic_skill");
-});
 
 
 
