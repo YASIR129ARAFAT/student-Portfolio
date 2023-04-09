@@ -124,4 +124,7 @@ router.post("/confirm_register/:id/:token", async (req, res, next) => {
   }
 });
 
+
+
+
 module.exports = router;

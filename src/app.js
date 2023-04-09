@@ -8,6 +8,7 @@ const transport = require("../src/mailer/mailsend");
 var db = require("../src/database/db");
 require("./auth");
 
+var global_enrollment;
 
 var userkiId;
 var genereted_account_no;
@@ -128,9 +129,7 @@ app.get("/student_data", (req, res) => {
 
 
 //render login page
-app.get("/login", (req, res) => {
-  res.render("login", { message: req.flash("message") });
-});
+
 app.get("/homepage", isloggedIn, (req, res) => {
   var profile_pic;
   if (req.user.picture == null) {
@@ -153,73 +152,24 @@ app.get("/congrats_message", (req, res) => {
 
 // forgot passwords
 //using router file
+
 app.use("/api/projectauth", require("./router/projectauth"));
 app.use("/api/auth", require("./router/auth"));
 app.use("/api/registerauth", require("./router/registerauth"));
 app.use("/api/nonacademicauth", require("./router/nonacademicauth"));
+app.use("/api/cgpa", require("./router/cgpa"));
+app.use("/api/achievementsauth", require("./router/achievementsauth"));
+app.use("/api/loginauth", require("./router/loginauth"));
 
 //post request on login
 
-app.post("/login", async (req, res) => {
-  console.log(userkiId);
-  
-  var user = req.body.custid;
-  if (user.length == 0) {
-    req.flash("message", "please enter  custid");
-    res.redirect("login");
-  } else {
-    var pass = req.body.password;
-    console.log(user + " " + pass);
-    
-    var sql = `select   password from student_data where enroll_no="${user}"`;
-    
-    db.query(sql, function (err, result) {
-      if (err) {
-        console.log(err);
-        
-        console.log("username password doesnot matched");
-        req.flash("message", "username and password does not match");
-        res.redirect("login");
-      } else {
-        if (result.length == 0) {
-          req.flash("message", "please enter valid password");
-          res.redirect("login");
-        } else {
-          // console.log(result[0].password);
-          let gg = result[0].password;
-          console.log(gg);
-          if (gg.localeCompare(pass) == 0) {
-            var kk = result[0].fname;
-            gname = kk;
-            res.render("homepage");
-
-                     // res.send("successfully registered");
-          } else {
-            console.log("username or password doesnot matched");
-            global_enroll=user;
-            req.flash("message", {
-              email: '1',
-              picture: profile_pic,
-            });
-            res.redirect("login");
-          }
-        }
-      }
-    });
-  }
-});
 
 //////////////////////////////////////////////////////////////////////////////////////
 app.get("/student_profile", (req, res) => {
   res.render("student_profile");
 });
-app.get("/student_achievement", (req, res) => {
-  res.render("student_achievement");
-});
 
-app.get("/student_cgpa", (req, res) => {
-  res.render("student_cgpa");
-});
+
 
 
 
@@ -236,3 +186,7 @@ app.get("/student_cgpa", (req, res) => {
 app.listen(port, () => {
   console.log(`listening to ${port} `);
 });
+// module.exports.global_enrollment=global_enrollment;
+
+
+

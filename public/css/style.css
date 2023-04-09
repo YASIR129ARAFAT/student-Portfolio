@@ -50,7 +50,9 @@
 Global Styles
 ===============
 */
-
+*::-webkit-scrollbar{
+    display: none;
+}
         *,
         ::after,
         ::before {

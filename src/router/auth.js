@@ -66,6 +66,7 @@ router.post("/forget-password", async (req, res, next)=>{
           console.log("invalid email");
           // console.log(error);
           res.render("forget-password");
+          
 
 
         } else {

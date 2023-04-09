@@ -15,7 +15,8 @@
         align-items: center;
         background-color:#0a385a;
         color: #fff;
-        padding: 24px;
+        padding: 8px;
+        height: 60px;
       }
 
       .navbar-brand {
@@ -38,7 +39,7 @@
         font-size: 1.5rem;
         color: #fff;
         padding: 0;
-        margin: 0;
+        margin: 20px;
       }
 
       .navbar-toggle:focus {
@@ -74,11 +75,11 @@
         justify-content: center;
         align-items: center;
         position: absolute;
-        top: 74px;
+        top: 21px;
         left: -22%;
         width: 15%;
 		height: 20px;
-        height: calc(100vh - 52px);
+        height: calc(100vh - 20px);
         background-color: #0a385a;
         transition: all 0.3s ease;
       }
@@ -105,40 +106,49 @@
       .nav-link:hover {
         background-color: #444;
       }
+	  .cont{
+		display: flex;
+		margin-left: 10px;
+	  }
 	  #menu-bar{
 		width: 30px;
 		height: 30px;
 	  }
     </style>
   </head>
-  <body>
-    <nav class="navbar">
+  <body >
+    <nav id="body" class="navbar">
+		<div class="cont">
+
       <a class="navbar-brand" href="#">
         My Website
       </a>
-	  <div class="logo">
-		 <img id="menu-bar"src="/images/list.png" alt="Logo">
-	  </div>
+	 
       <button class="navbar-toggle" id="navbar-toggle">
        <img id="menu-bar"src="/images/list.png" alt="Logo">
       </button>
+		</div>
       <ul class="navbar-nav" id="navbar-nav">
         
 		<li class="nav-item">  <img src="your-image-url-here" alt="Logo"></li>
         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/student_profile">View Profile</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Log out</a></li>
       </ul>
     </nav>
 
     <script>
+      const body=document.getElementById("body");
       const navbarToggle = document.getElementById("navbar-toggle");
       const navbarNav = document.getElementById("navbar-nav");
-
+       
       navbarToggle.addEventListener("click", () => {
         navbarNav.classList.toggle("active");
       });
+    
+
+
     </script>
   </body>
 </html>

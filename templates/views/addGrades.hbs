@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Add Grades</title>
+</head>
+<style>
+    /* .subject-field {
+        border: 1px solid black;
+        padding: 10px;
+        margin-bottom: 10px;
+    } */
+    body {
+        background-color: #24568a;
+    }
+ 
+    #input-form {
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #164a83;
+        border-radius: 5px;
+    }
+ 
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #164a83;
+    }
+ 
+    input[type="text"],
+    input[type="number"],
+    select {
+        display: block;
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 99%;
+        border: 1.5px solid #164a83;
+        border-radius: 5px;
+    }
+ 
+    input[type="submit"] {
+        display: block;
+        margin-top: -30px;
+        padding: 10px;
+        background-color: #164a83;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        border: 1px solid gray;
+        cursor: pointer;
+    }
+ 
+    .subject-field {
+        border: 1px solid #164a83;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+ 
+    .Btn {
+        color: white;
+        background: #164a83;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px;
+        margin: 10px auto;
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+ 
+    .Btn:hover {
+        color: #164a83;
+        background: #fdfdfd;
+    }
+</style>
+ 
+<body>
+    <a href="/cgpa" style="text-decoration:none;"><span style="color: #fdfdfd; font-size:30px;">&#8592;</span></a>
+    <h1 style="text-align: center; color: white;">Add Semester's Grades</h1>
+    {{#if flag}}
+    <h4 id="successMessage" style="text-align: center; color: rgb(212, 117, 28);">Succesfully added</h4>
+    {{/if}}
+    <form id="input-form" action="/api/cgpa/addGrades" method="post">
+        <label for="semester">Semester:</label>
+        <input type="number" name="semester" required placeholder="Semester number"><br>
+ 
+        <label for="enrollment">Enrollment Number:</label>
+        <input type="text" name="enrollment" required placeholder="enrollment number"><br>
+ 
+        <label for="num_subjects">Number of Subjects:</label>
+        <select id="num-subjects" name="num_subjects" required>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select><br><br>
+ 
+        <div id="subject-fields"></div>
+ 
+        <button class="Btn" id="add-subject-btn" type="button">Add Subject</button>
+        <button class="Btn" id="remove-subject-btn" type="button" disabled>Remove Subject</button>
+ 
+        <br><br>
+        <input class="Btn" type="submit" value="Submit">
+    </form>
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var numSubjects = document.getElementById('num-subjects');
+            var subjectFields = document.getElementById('subject-fields');
+            var addSubjectBtn = document.getElementById('add-subject-btn');
+            var removeSubjectBtn = document.getElementById('remove-subject-btn');
+ 
+            var subjectFieldTemplate = `
+                <div class="subject-field">
+                    <label for="sub">Subject Name</label><br>
+                    <input type="text" name="sub" required><br>
+ 
+                    <label for="subcode">Subject Code</label><br>
+                    <input type="text" name="subcode" required><br>
+ 
+                    <label for="cgpa">CGPA</label><br>
+                    <input type="text" name="cgpa" required><br>
+ 
+                    <label for="credits">Credits</label><br>
+                    <input type="number" name="credits" required><br><br>
+                </div>
+            `;
+ 
+            function updateSubjectFields() {
+                var num = parseInt(numSubjects.value);
+                var fields = '';
+                for (var i = 0; i < num; i++) {
+                    fields += subjectFieldTemplate;
+                }
+                subjectFields.innerHTML = fields;
+ 
+                if (num === 1) {
+                    removeSubjectBtn.disabled = true;
+                } else {
+                    removeSubjectBtn.disabled = false;
+                }
+            }
+ 
+            updateSubjectFields();
+ 
+            numSubjects.addEventListener('change', updateSubjectFields);
+ 
+            addSubjectBtn.addEventListener('click', function () {
+                var num = parseInt(numSubjects.value);
+                num++;
+                numSubjects.value = num;
+                updateSubjectFields();
+            });
+ 
+            removeSubjectBtn.addEventListener('click', function () {
+                var num = parseInt(numSubjects.value);
+                num--;
+                numSubjects.value = num;
+                updateSubjectFields();
+                if (num === 5) {
+                    removeSubjectBtn.disabled = true;
+                } else {
+                    removeSubjectBtn.disabled = false;
+                }
+            });
+        });
+ 
+        //setting duration for success message
+        var successMessage = document.getElementById('successMessage');
+        setTimeout(function () {
+            successMessage.innerHTML = "";
+        }, 2000);
+ 
+    </script>
+</body>
+ 
+</html>
