@@ -2,10 +2,12 @@ const express = require("express");
 var con = require("../database/db");
 const router = express.Router();
 var store = require("store-js");
+
+const middlewares = require("../utils/verifyUser.js");
 //to render project page
-router.get("/student_non_academic_skill", async (req, res) => {
+router.get("/student_non_academic_skill", middlewares.verifyUser, async (req, res) => {
   try {
-    var sql = `SELECT * FROM non_academic_achievements`;
+    var sql = `SELECT * FROM non_academic_achievements  where enrolment_no="${req.user.enroll_no}"`;
     con.query(sql, (error, result) => {
       if (error) {
         console.log(error);
@@ -23,7 +25,7 @@ router.get("/student_non_academic_skill", async (req, res) => {
 });
 
 
-router.post("/add_project", (req, res, next) => {
+router.post("/add_project",middlewares.verifyUser, (req, res, next) => {
   //console.log(data);
 
   var title = req.body.skillTitle;
@@ -32,11 +34,11 @@ router.post("/add_project", (req, res, next) => {
   // var enroll=req.body.enrolment_no;
   
   //console.log(global.global_enrollment);
-  var enr = store.get("global_enrollment");
-  console.log(enr);
+  //var enr = store.get("global_enrollment");
+  //console.log(enr);
 
   
-  var sql = `insert into non_academic_achievements  (skillTitle,skillDescription , enrolment_no) values ( "${title}","${projectDes}",${enr})`;
+  var sql = `insert into non_academic_achievements  (skillTitle,skillDescription , enrolment_no) values ( "${title}","${projectDes}","${req.user.enroll_no}")`;
   con.query(sql, function (err, result) {
     if (err) {
       //  req.flash("message", "customer Id already exist");
@@ -80,7 +82,7 @@ router.get("/get_data", (req, res, next) => {
     con.query(sql, [id], (error, result) => {
       if (error) console.log(error);
       else {
-        console.log(result);
+     //   console.log(result);
 
         res.json(result);
       }
@@ -91,7 +93,26 @@ router.get("/get_data", (req, res, next) => {
     }
   }
 });
+router.get("/get_data2", middlewares.verifyUser, (req, res, next) => {
+  try {
+    var id = req.query.id;
 
+    var sql = `SELECT * FROM  non_academic_achievements where enrolment_no="${req.user.enroll_no}"   `;
+    con.query(sql, [id], (error, result) => {
+      if (error) console.log(error);
+      else {
+       // console.log("pa")
+      //  console.log(result);
+
+        res.json(result);
+      }
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+});
 
 
 //

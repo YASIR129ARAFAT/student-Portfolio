@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    article {
+      --img-scale: 1.001;
+      --title-color: black;
+      --link-icon-translate: -20px;
+      --link-icon-opacity: 0;
+      margin-top: 30%;
+      position: relative;
+      border-radius: 16px;
+      box-shadow: none;
+      background: #aed6e9;
+      transform-origin: center;
+      transition: all 0.4s ease-in-out;
+      overflow: hidden;
+    }
+    .logout-btn {
+      background-color: #eff2f3;
+      border: none;
+      color: #000000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 8px 16px;
+    }
+    .logout-btn img {
+      margin-right: 18px;
+      width: 24px;
+      height: 24px;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+      background-color: #50b3fa;
+      /* background-image: linear-gradient(45deg, #9297e0, #ff73b3); */
+      /* background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423); */
+      color: #fff;
+      padding: 0 20px;
+    }
+    .logo img {
+      margin-top: 5%;
+      margin-left: 50%;
+      height: 500%;
+      width: 70%;
+    }
+    .title {
+      text-align: center;
+      flex-grow: 1;
+    }
+    article a::after {
+      position: absolute;
+      inset-block: 0;
+      inset-inline: 0;
+      cursor: pointer;
+      content: "";
+    }
+    /* basic article elements styling */
+    article h2 {
+      margin: 0 0 18px 0;
+      font-family: "Bebas Neue", cursive;
+      font-size: 1.9rem;
+      letter-spacing: 0.06em;
+      color: var(--title-color);
+      transition: color 0.3s ease-out;
+    }
+    figure {
+      margin: 0;
+      padding: 0;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+    article img {
+      max-width: 100%;
+      transform-origin: center;
+      transform: scale(var(--img-scale));
+      transition: transform 0.4s ease-in-out;
+    }
+    .article-body {
+      padding: 24px;
+    }
+    article a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #28666e;
+    }
+    article a:focus {
+      outline: 1px dotted #28666e;
+    }
+    article a .icon {
+      min-width: 24px;
+      width: 24px;
+      height: 24px;
+      margin-left: 5px;
+      transform: translateX(var(--link-icon-translate));
+      opacity: var(--link-icon-opacity);
+      transition: all 0.3s;
+    }
+    /* using the has() relational pseudo selector to update our custom properties */
+    article:has(:hover, :focus) {
+      --img-scale: 1.1;
+      --title-color: #28666e;
+      --link-icon-translate: 0;
+      --link-icon-opacity: 1;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
+    /************************ 
+Generic layout (demo looks)
+************************* */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      /* padding: 48px 0; */
+      font-family: "Figtree", sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      /* background-image: linear-gradient(45deg, #9297e0, #ff73b3); */
+      /* background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423); */
+      background: linear-gradient(180deg, #14f1f5, 5%, #119dff, 50%, #107cca);
+      min-height: 100vh;
+    }
+    .articles {
+      display: grid;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    /* @media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+} */
+    .sr-only:not(:focus):not(:active) {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  </style>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 78px;
+      background: #07426c;
+      padding: 6px 14px;
+      z-index: 99;
+      transition: all 0.5s ease;
+    }
+    .sidebar.open {
+      width: 250px;
+    }
+    .sidebar .logo-details {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .sidebar .logo-details .icon {
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .sidebar .logo-details .logo_name {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .sidebar.open .logo-details .icon,
+    .sidebar.open .logo-details .logo_name {
+      opacity: 1;
+    }
+    .sidebar .logo-details #btn {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      font-size: 22px;
+      transition: all 0.4s ease;
+      font-size: 23px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.5s ease;
+    }
+    .sidebar.open .logo-details #btn {
+      text-align: right;
+    }
+    .sidebar i {
+      color: #fff;
+      height: 60px;
+      min-width: 50px;
+      font-size: 28px;
+      text-align: center;
+      line-height: 60px;
+    }
+    .sidebar .nav-list {
+      margin-top: 20px;
+      height: 100%;
+    }
+    .sidebar li {
+      position: relative;
+      margin: 8px 0;
+      list-style: none;
+    }
+    .sidebar li .tooltip {
+      position: absolute;
+      top: -20px;
+      left: calc(100% + 15px);
+      z-index: 3;
+      background: #0c5376;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 400;
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: 0s;
+    }
+    .sidebar li:hover .tooltip {
+      opacity: 1;
+      pointer-events: auto;
+      transition: all 0.4s ease;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .sidebar.open li .tooltip {
+      display: none;
+    }
+    .sidebar input {
+      font-size: 15px;
+      color: #FFF;
+      font-weight: 400;
+      outline: none;
+      height: 50px;
+      width: 100%;
+      width: 50px;
+      border: none;
+      border-radius: 12px;
+      transition: all 0.5s ease;
+      background: #1d1b31;
+    }
+    .sidebar.open input {
+      padding: 0 20px 0 50px;
+      width: 100%;
+    }
+    .sidebar .bx-search {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      font-size: 22px;
+      background: #1d1b31;
+      color: #FFF;
+    }
+    .sidebar.open .bx-search:hover {
+      background: #50b3fa;
+      color: #FFF;
+    }
+    .sidebar .bx-search:hover {
+      background: #FFF;
+      color: #11101d;
+    }
+    .sidebar li a {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      border-radius: 12px;
+      align-items: center;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      background: #06263e;
+    }
+    .sidebar li a:hover {
+      background: #FFF;
+    }
+    .sidebar li a .links_name {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 400;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s;
+    }
+    .sidebar.open li a .links_name {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sidebar li a:hover .links_name,
+    .sidebar li a:hover i {
+      transition: all 0.5s ease;
+      color: #11101D;
+    }
+    .sidebar li i {
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      border-radius: 12px;
+    }
+    .sidebar li.profile {
+      position: fixed;
+      height: 60px;
+      width: 78px;
+      left: 0;
+      bottom: -8px;
+      padding: 10px 14px;
+      background: #1d1b31;
+      transition: all 0.5s ease;
+      overflow: hidden;
+    }
+    .sidebar.open li.profile {
+      width: 250px;
+    }
+    .sidebar li .profile-details {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+    .sidebar li img {
+      height: 45px;
+      width: 45px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+    .sidebar li.profile .name,
+    .sidebar li.profile .job {
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .sidebar li.profile .job {
+      font-size: 12px;
+    }
+    .sidebar .profile #log_out {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      background: #1d1b31;
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 0px;
+      transition: all 0.5s ease;
+    }
+    .sidebar.open .profile #log_out {
+      width: 50px;
+      background: none;
+    }
+    .home-section {
+      position: relative;
+      background: #E4E9F7;
+      min-height: 100vh;
+      top: 0;
+      left: 78px;
+      width: calc(100% - 78px);
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+    .sidebar.open~.home-section {
+      left: 250px;
+      width: calc(100% - 250px);
+    }
+    .home-section .text {
+      display: inline-block;
+      color: #11101d;
+      font-size: 25px;
+      font-weight: 500;
+      margin: 18px
+    }
+    
+		#hey {
+			color: red;
+		}
+    @media (max-width: 420px) {
+      .sidebar li .tooltip {
+        display: none;
+      }
+    }
+    .container1{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+      s
+    }
+    #articles{
+      
+
+    }
+    ::-webkit-scrollbar{
+    display: none;
+}
+  </style>
+  <title>Sample Articles</title>
+</head>
+
+
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/893/893505.png" alt="your-logo">
+    </div>
+    <div class="title">
+      <h1>Student Portfolio</h1>
+      <h3>(Admin Home)</h3>
+    </div>
+    <div class="input-group">
+
+      <div class="sidebar">
+        <div class="logo-details">
+          <i class='bx bx-book-bookmark icon'></i>
+          <div class="logo_name">Hello</div>
+          <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+          <li>
+            <i class='bx bx-search'></i>
+           
+              <input  onchange="func4()" id="searchUser" name="val" type="search" placeholder="Search...">
+            
+            <span class="tooltip">Search</span>
+          </li>
+          <li>
+            <a href="/api/adminRegisterAuth/admin_home">
+              <i class='bx bx-grid-alt'></i>
+              <span class="links_name">Dashboard</span>
+            </a>
+            <span class="tooltip">Dashboard</span>
+          </li>
+          <li>
+            <a href="/api/adminRegisterAuth/change_password">
+              <i class='bx bx-user' ></i>
+              <span class="links_name">Change Password</span>
+            </a>
+            <span class="tooltip">Change Password</span>
+          </li>
+          <li>
+            <a href="/api/adminRegisterAuth/login_admin">
+              <i class='bx bx-log-out' ></i>
+              <span class="links_name">Log out</span>
+            </a>
+            <span class="tooltip">Log out</span>
+          </li>
+         
+          <li class="profile">
+            <div class="profile-details">
+
+              <div class="name_job">
+                <div class="name">Student Portfolio</div>
+                <div class="job">Version 1.0</div>
+              </div>
+            </div>
+            <!-- <i class='bx bx-log-out' id="log_out"></i> -->
+            <i class='bx bx-book-bookmark' id="log_out"></i>
+          </li>
+        </ul>
+      </div>
+
+      <script>
+        let sidebar = document.querySelector(".sidebar");
+        let closeBtn = document.querySelector("#btn");
+        let searchBtn = document.querySelector(".bx-search");
+        closeBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("open");
+          menuBtnChange();//calling the function(optional)
+        });
+        searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
+          sidebar.classList.toggle("open");
+          menuBtnChange(); //calling the function(optional)
+        });
+        // following are the code to change sidebar button(optional)
+        function menuBtnChange() {
+          if (sidebar.classList.contains("open")) {
+            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+          } else {
+            closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
+          }
+        }
+      </script>
+
+
+      <!-- <button type="button" class="btn btn-outline-primary" id="search">search</button> -->
+    </div>
+  </header>
+
+  <section id="articles" class="articles">
+   
+        <article>
+          <div class="article-wrapper">
+            <figure>
+              <img src="https://img.freepik.com/free-icon/user_318-175743.jpg" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2>New User</h2>
+              <p>
+                Add a New User
+              </p>
+              <a href="/api/adminRegisterAuth/admin_add_new_user" class="read-more">
+                Add User <span class="sr-only">about this is some title</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill="currentColor"
+                    d="M9 4a1 1 0 011 1v3h3a1 1 0 010 2h-3v3a1 1 0 01-2 0v-3H4a1 1 0 010-2h3V5a1 1 0 011-1z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+  </section>
+  <section class="articles">
+  </section>
+
+
+  <script>
+  var flg=0;
+  
+   function func4(){
+var key=document.getElementById('searchUser').value;
+console.log(key);
+
+
+const request=new XMLHttpRequest();
+  request.open('Get', `/api/adminRegisterAuth/search/${key}`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+   console.log(results);
+
+      let html=``;
+     console.log(results.length);
+
+     if(results.length>0){
+
+        results.forEach(result=>{
+             html+= `
+              <article>
+        <div class="article-wrapper">
+          <figure>
+            <img src="https://picsum.photos/id/1011/800/450" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>
+              ${result.name}
+            </h2>
+            <p>
+              Enrollment Number : ${result.enroll_no}
+                <br>
+                Programme :${result.degree}
+                  <br>
+                  Department : ${result.department}
+                    <br>
+                    Semester : ${result.semester}
+            </p>
+            <a onclick="getDetails('${result.enroll_no}')" class="read-more">
+              Read more <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+            
+          </div>
+        </div>
+      </article>
+             
+              `
+
+        });
+         flg=1;
+
+     var data=document.getElementById('articles');
+       data.innerHTML=html;
+
+     }
+
+     
+     else{
+
+               
+              var data=document.getElementById('articles');
+       data.innerHTML=` <div class="container1">
+   <h1 id="hey">No Data Found</h1>
+	
+</div>`;
+     }
+     
+  };
+  request.send()
+
+}
+
+
+   func3();
+
+
+
+
+  
+
+
+   function func3(){
+var sttart_index=0;
+numberr_of_records=10;
+
+const request=new XMLHttpRequest();
+  request.open('Get', `/api/adminRegisterAuth/get_data2`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+   console.log(results);
+
+      let html=``;
+    
+     if(results.length>0){
+         
+        results.forEach(result=>{
+             html+= `
+              <article>
+        <div class="article-wrapper">
+          <figure>
+            <img src="https://picsum.photos/id/1011/800/450" alt="" />
+          </figure>
+          <div class="article-body">
+            <h2>
+              ${result.name}
+            </h2>
+            <p>
+              Enrollment Number : ${result.enroll_no}
+                <br>
+                Programme :${result.degree}
+                  <br>
+                  Department : ${result.department}
+                    <br>
+                    Semester : ${result.semester}
+            </p>
+            <a onclick="getDetails('${result.enroll_no}')" class="read-more">
+              Read more <span class="sr-only">about this is some title</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+            
+          </div>
+        </div>
+      </article>
+             
+              `
+
+        });
+     var data=document.getElementById('articles');
+       data.innerHTML+=html;
+
+     }
+     
+  };
+  request.send()
+
+}
+async function XMLGET(url){
+  return new Promise((Resolve,Reject)=>{
+    let XHML= new XMLHttpRequest();
+  XHML.open('Get', url);
+ XHML.onload =()=>{
+     const results=JSON.parse(XHML.responseText);
+      Resolve(results);}
+  XHML.send();
+  })
+}
+async function getDetails(key){
+
+window.location.replace(`/api/adminRegisterAuth/details/${key}`)
+}
+  </script>
+</body>
+
+</html>

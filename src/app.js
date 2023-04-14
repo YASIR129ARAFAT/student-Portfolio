@@ -1,12 +1,15 @@
 const express = require("express");
 const app = express();
 const hbs = require("hbs");
+const ejs = require("ejs");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = "parwez";
 const transport = require("../src/mailer/mailsend");
 var db = require("../src/database/db");
 require("./auth");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 
 var global_enrollment;
 
@@ -30,13 +33,14 @@ const { profile } = require("console");
 const staticpath = path.join(__dirname, "../public");
 const partialpath = path.join(__dirname, "../templates/partials");
 const templatepath = path.join(__dirname, "../templates/views");
+
 app.set("view engine", "hbs");
 app.set("views", templatepath);
 app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 app.use(express.static(staticpath));
 hbs.registerPartials(partialpath);
-var global_enroll;
+
 
 app.use(
   session({
@@ -124,7 +128,9 @@ app.get("/student_data", (req, res) => {
   res.render("student_data");
 
 });
-
+app.get("/landing", (req, res) => {
+  res.render("landing");
+});
 
 
 
@@ -152,15 +158,17 @@ app.get("/congrats_message", (req, res) => {
 
 // forgot passwords
 //using router file
-
+const {router2} = require('./router/loginauth.js')
 app.use("/api/projectauth", require("./router/projectauth"));
 app.use("/api/auth", require("./router/auth"));
 app.use("/api/registerauth", require("./router/registerauth"));
 app.use("/api/nonacademicauth", require("./router/nonacademicauth"));
 app.use("/api/cgpa", require("./router/cgpa"));
 app.use("/api/achievementsauth", require("./router/achievementsauth"));
-app.use("/api/loginauth", require("./router/loginauth"));
-
+app.use("/api/loginauth", router2);
+app.use("/api/resetpasswordauth", require("./router/resetpasswordauth"));
+app.use("/api/adminRegisterAuth", require("./router/adminRegisterAuth"));
+app.use("/api/studentProfileAuth", require("./router/studentProfileAuth"));
 //post request on login
 
 
@@ -168,12 +176,6 @@ app.use("/api/loginauth", require("./router/loginauth"));
 app.get("/student_profile", (req, res) => {
   res.render("student_profile");
 });
-
-
-
-
-
-
 
 
 

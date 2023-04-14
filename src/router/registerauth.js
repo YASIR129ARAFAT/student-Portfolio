@@ -4,6 +4,9 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const transport = require("../mailer/mailsend");
 const JWT_SECRET = "parwez";
+const CryptoJS = require("crypto-js");
+const key = "12345";
+
 
 var enroll_no;
 
@@ -15,8 +18,39 @@ var mobNo;
 var occ ;
 var dob ;
 var pass;
+var dept;
+var sem;
+
 //route 1
 //register user
+
+
+var crypt = {
+  // (B1) THE SECRET KEY
+  secret: "CIPHERKEY",
+
+  // (B2) ENCRYPT
+  encrypt: (clear) => {
+    var cipher = CryptoJS.AES.encrypt(clear, crypt.secret);
+    return cipher.toString();
+  },
+
+  // (B3) DECRYPT
+  decrypt: (cipher) => {
+    var decipher = CryptoJS.AES.decrypt(cipher, crypt.secret);
+    return decipher.toString(CryptoJS.enc.Utf8);
+  },
+};
+
+
+
+
+
+
+
+
+
+
 
 router.get("/register", async (req, res, next) => {
   res.render("register", { message: req.flash("message") });
@@ -32,8 +66,9 @@ router.post("/register", async (req, res, next) => {
  occ = req.body.occupation;
  dob = req.body.dob;
  pass = req.body.password;
+ dept=req.body.department;
+ sem=req.body.semester
 
- 
      
       const secret = JWT_SECRET + pass;
       const payload = {
@@ -100,10 +135,10 @@ router.post("/confirm_register/:id/:token", async (req, res, next) => {
     // here we can simply find the user with the payload and finally update the passwrod
     //always hash the password;
     const payload = jwt.verify(token, secret);
-
+   var cipher = crypt.encrypt(pass);
     console.log("hello");
 
-   var sql = `INSERT INTO student_data VALUES ("${city}", "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${pass}", "${Name}","${enroll_no}");`;
+   var sql = `INSERT INTO student_data VALUES ("${city}", "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${cipher}", "${Name}","${enroll_no}" ,"${sem}", "${dept}" );`;
    db.query(sql, function (err, result) {
      if (err) {
       console.log(err)

@@ -270,7 +270,7 @@
     <p style="color: red; font-weight:800;">Unverified!! <span>&#10539;&#10539;</span></p>
     {{/if}}
     <div>
-      <a class="edit-btn" href="/edit">Edit</a>
+      <button id="editBtn" onclick="func({{this.id}})" class="edit-btn">Edit</button>
       <a class="delete-btn" href="/api/achievementsauth/deleteAcadSkill?id={{this.id}}">Delete</a>
     </div>
   </div>
@@ -332,6 +332,60 @@
       })
     }
     //////////////////////////////
+//edit
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+         //   window.location.href = '/api/projectauth/addProjects';
+            document.getElementById('cont1').style.display='block';
+            document.getElementById('cont2').style.display='none';
+        });
+
+
+  var id;
+
+            function func(d){
+               console.log(d);
+             document.body.style.backgroundColor = " #063670"
+             document.getElementById('cont1').style.display='none';
+            document.getElementById('cont2').style.display='block';
+
+             
+            const request=new XMLHttpRequest();
+  request.open('Get', `/api/achievementsauth/get_data?id=${d}`);
+  request.onload =()=>{
+     const results=JSON.parse(request.responseText);
+   // console.log(results);
+  console.log(results);
+     
+     let html=``;
+     if(results.length>0){
+
+         document.getElementById('project-title').value=results[0].skillTitle;
+          document.getElementById('project-description').value=results[0].skillDescription;
+        
+               document.getElementById('form1').action=`/api/achievementsauth/updateProjects?id=${results[0].id}`;
+            
+
+     }
+     
+  };
+  request.send()
+
+
+                  
+            }
+       
+
+       
+          
+           // var    
+
+ 
+
+
+
+
+
  
   </script>
 </body>

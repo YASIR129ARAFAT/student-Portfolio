@@ -99,11 +99,30 @@
       <p class="lab" id="ans5"></p>
       <br /><br />
 
-      <label for="occupation">Occupation:</label>
+      <label for="occupation">Degree:</label>
       <input type="text" id="occupation" oninput="func6()" name="occupation" />
       <p class="lab" id="ans6"></p>
       <br /><br />
 
+       <label for="department">Department:</label>
+      <input type="text" id="department" oninput="func13()" name="department" />
+      <p class="lab" id="ans13"></p>
+      <br /><br />
+
+       <label for="semester">Choose semester:</label>
+        <br /><br />
+  <input list="browser" name="semester" id="semester">
+  <datalist id="browser">
+    <option value="1">
+    <option value="2">
+    <option value="3">
+    <option value="4">
+    <option value="5">
+      <option value="6">
+        <option value="7">
+          <option value="8">
+  </datalist>
+  <br /><br />
       <label for="dob">Date of Birth:</label>
       <input type="date" id="dob" oninput="func7()" name="dob" />
       <p class="lab" id="ans7"></p>
@@ -227,6 +246,30 @@ var cus=document.getElementById('customerId');
     }
        else{
       document.getElementById('ans8').style.display='none' }
+       }
+
+
+       
+       function func13(){
+ 
+     var confimPassword=document.getElementById('department');
+      if(confirmPassword.value.length==0){
+      document.getElementById('ans13').style.display='block';
+    document.getElementById('ans13').innerHTML="password  should not be empty"; 
+    }
+       else{
+      document.getElementById('ans13').style.display='none' }
+       }
+         
+       function func14(){
+ 
+     var confimPassword=document.getElementById('semester');
+      if(confirmPassword.value.length==0){
+      document.getElementById('ans14').style.display='block';
+    document.getElementById('ans14').innerHTML="password  should not be empty"; 
+    }
+       else{
+      document.getElementById('ans14').style.display='none' }
        }
        
 

@@ -7,7 +7,7 @@ var transport = nodemailer.createTransport({
   requireTLS: true,
   auth: {
     user: "iit2021113@iiita.ac.in",
-    pass: "parwez321@",
+    pass: "3531@huma",
   },
 });
 

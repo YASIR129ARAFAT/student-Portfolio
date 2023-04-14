@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Radius - Signin/Signup</title>
+    <!-- <link rel="stylesheet" href="/dbms-main/style.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/dbms-main/style.css"> -->
+    <script>
+        function checkCombination(Password) {
+            let flag_alpha = false;
+            let flag_num = false;
+            let flag_nonalphanum = false;
+            for (let i = 0; i < Password.length; ++i) {
+                if ('0' <= Password[i] && Password[i] <= '9') {
+                    flag_num = true;
+                }
+                if (('a' <= Password[i] && Password[i] <= 'z') || ('A' <= Password[i] && Password[i] <= 'Z')) {
+                    flag_alpha = true;
+                } else {
+                    flag_nonalphanum = true;
+                }
+            }
+            return flag_alpha && flag_nonalphanum && flag_num;
+        }
+
+        function validateForm() {
+            var fullName = document.forms["register"]["fullName"].value;
+            var email = document.forms["register"]["email"].value;
+            var Password = document.forms["register"]["Password"].value;
+
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            var mobileNumberRegex = /^[6-9]\d{9}$/;
+            var passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+
+            if (!fullName || !email || !Password) {
+                alert("All fields are required");
+                return false;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert("Enter a valid email address");
+                return false;
+            }
+
+            if (!checkCombination(Password)) {
+                alert("Password must conatain alpha, num, non-alphanumerics");
+                return false;
+            }
+
+            if (Password.length < 8) {
+                alert("Password must be of 8 or more characters");
+                return false;
+            }
+            const xhr = new XMLHttpRequest();
+            xhr.open("post", "/checkemail");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.exists) {
+                        document.getElementById("emailError").innerHTML =
+                            "This email is already taken. Please choose a different email.";
+                        alert("This email is already taken. Please choose a different email");
+                        return false;
+                    } else {
+                        document.getElementById("emailError").innerHTML = "";
+                        document.getElementById("myForm").submit();
+                    }
+                } else {
+                    document.getElementById("emailError").innerHTML =
+                        "Error occurred while checking email. Please try again later.";
+                    alert("Error occurred while checking email. Please try again later");
+                    return false;
+                }
+            };
+            xhr.send(JSON.stringify({
+                email: email
+            }));
+            return true;
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            height: 120%;
+            width: 100%;
+            background: linear-gradient(180deg, #14f1f5, 5%, #119dff, 50%, #107cca);
+            position: absolute;
+        }
+
+        .wrapper h1 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            word-spacing: 2px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 888;
+            text-transform: uppercase;
+        }
+
+        .wrapper div {
+            height: 50px;
+            width: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            animation: 4s linear infinite;
+        }
+
+        div .dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 20%;
+            right: 20%;
+        }
+
+        .wrapper div:nth-child(1) {
+            top: 20%;
+            left: 20%;
+            animation: animate 8s linear infinite;
+        }
+
+        .wrapper div:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation: animate 10s linear infinite;
+        }
+
+        .wrapper div:nth-child(3) {
+            top: 40%;
+            left: 40%;
+            animation: animate 3s linear infinite;
+        }
+
+        .wrapper div:nth-child(4) {
+            top: 66%;
+            left: 30%;
+            animation: animate 7s linear infinite;
+        }
+
+        .wrapper div:nth-child(5) {
+            top: 90%;
+            left: 10%;
+            animation: animate 9s linear infinite;
+        }
+
+        .wrapper div:nth-child(6) {
+            top: 30%;
+            left: 60%;
+            animation: animate 5s linear infinite;
+        }
+
+        .wrapper div:nth-child(7) {
+            top: 70%;
+            left: 20%;
+            animation: animate 8s linear infinite;
+        }
+
+        .wrapper div:nth-child(8) {
+            top: 75%;
+            left: 60%;
+            animation: animate 10s linear infinite;
+        }
+
+        .wrapper div:nth-child(9) {
+            top: 50%;
+            left: 50%;
+            animation: animate 6s linear infinite;
+        }
+
+        .wrapper div:nth-child(10) {
+            top: 45%;
+            left: 20%;
+            animation: animate 10s linear infinite;
+        }
+
+        .wrapper div:nth-child(11) {
+            top: 10%;
+            left: 90%;
+            animation: animate 9s linear infinite;
+        }
+
+        .wrapper div:nth-child(12) {
+            top: 20%;
+            left: 70%;
+            animation: animate 7s linear infinite;
+        }
+
+        .wrapper div:nth-child(13) {
+            top: 20%;
+            left: 20%;
+            animation: animate 8s linear infinite;
+        }
+
+        .wrapper div:nth-child(14) {
+            top: 60%;
+            left: 5%;
+            animation: animate 6s linear infinite;
+        }
+
+        .wrapper div:nth-child(15) {
+            top: 90%;
+            left: 80%;
+            animation: animate 9s linear infinite;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: scale(0) translateY(0) rotate(70deg);
+            }
+
+            100% {
+                transform: scale(1.3) translateY(-100px) rotate(360deg);
+            }
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f6f5f7;
+            background-image: url(back.jpg);
+            background-size: cover;
+            background-position: center center;
+            /* background-image: url('https://c4.wallpaperflare.com/wallpaper/410/867/750/vector-forest-sunset-forest-sunset-forest-wallpaper-preview.jpg')center center cover no-repeat fixed; */
+            /* background-repeat: no-repeat; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: -20px 0 50px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 100;
+            line-height: 20px;
+            letter-spacing: .5px;
+            margin: 20px 0 30px;
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        a {
+            color: #0e263d;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
+            position: relative;
+            overflow: hidden;
+            width: 768px;
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .form-container form {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .social-container {
+            margin: 20px 0;
+        }
+
+        .social-container a {
+            border: 1px solid #f9f8f8;
+            border-radius: 100%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+            overflow: hidden;
+            /* added */
+
+        }
+
+        .social-container img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        .form-container input {
+            background: #eee;
+            border: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            width: 100%;
+        }
+
+        button {
+            border-radius: 20px;
+            border: 1px solid #008ecf;
+            background: #008ecf;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+          #button {
+            border-radius: 20px;
+            border: 1px solid #008ecf;
+            background-color: #008ecf;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+  #button1 {
+            border-radius: 20px;
+            border: 1px solid #008ecf;
+            background-color: #008ecf;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+        button:active {
+            transform: scale(.95);
+        }
+          #button:active {
+            transform: scale(.95);
+        }
+
+        button:focus {
+            outline: none;
+        }
+         #button:focus {
+            outline: none;
+        }
+
+        button.ghost {
+            background: transparent;
+            border-color: #fff;
+        }
+          #button.ghost {
+            background: transparent;
+            border-color: #fff;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all .6s ease-in-out;
+        }
+
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+        }
+
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            z-index: 1;
+            opacity: 0;
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform .6s ease-in-out;
+            z-index: 100;
+        }
+
+        .overlay {
+            background: #ff416c;
+            background: linear-gradient(to right, #008ecf, #008ecf) no-repeat 0 0 / cover;
+            color: #fff;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateY(0);
+            transition: transform .6s ease-in-out;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 40px;
+            height: 100%;
+            width: 50%;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform .6s ease-in-out;
+        }
+
+        .overlay-right {
+            right: 0;
+            transform: translateY(0);
+        }
+
+        .overlay-left {
+            transform: translateY(-20%);
+        }
+
+        /* Move signin to right */
+        .container.right-panel-active .sign-in-container {
+            transform: translateY(100%);
+        }
+
+        /* Move overlay to left */
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        /* Bring signup over signin */
+        .container.right-panel-active .sign-up-container {
+            transform: translateX(100%);
+            opacity: 1;
+            z-index: 5;
+        }
+
+        /* Move overlay back to right */
+        .container.right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        /* Bring back the text to center */
+        .container.right-panel-active .overlay-left {
+            transform: translateY(0);
+        }
+
+        /* Same effect for right */
+        .container.right-panel-active .overlay-right {
+            transform: translateY(20%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <h1>Bubbles Animation</h1>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+        <div><span class="dot"></span></div>
+    </div>
+
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="/api/adminRegisterAuth/register" method="post" id="register" onsubmit="return validateForm()">
+                <h1>Create Account</h1>
+                <br>
+                <span>or use your social account for registration</span>
+                <div class="social-container">
+                    <a href="#" class="social"><img src="https://img.freepik.com/free-icon/search_318-265146.jpg"><i
+                            class="fab fa-google-plus-g"></i></a>
+                    <!-- <a href="#" class="social"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><img
+                            src="https://static-00.iconduck.com/assets.00/linkedin-icon-512x512-vkm0drb1.png"><i
+                            class="fab fa-linkedin-in"></i></a> -->
+                </div>
+                <input name="email" placeholder="Email" type="text" />
+                <input name="fullName" placeholder="Full Name" type="text" />
+                <input name="Password" placeholder="Password" type="Password" />
+                 <input  id="button" value="Sign Up" type="submit" />
+              
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="/api/adminRegisterAuth/login" method="post" id="login">
+                <h1>Sign in</h1>
+                <br>
+                <span>or use your account
+                </span>
+
+                <div class="social-container">
+                    <a href="#" class="social"><img src="https://img.freepik.com/free-icon/search_318-265146.jpg"><i
+                            class="fab fa-google-plus-g"></i></a>
+                    <!-- <a href="#" class="social"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><img
+                            src="https://static-00.iconduck.com/assets.00/linkedin-icon-512x512-vkm0drb1.png"><i
+                            class="fab fa-linkedin-in"></i></a> -->
+                </div>
+
+                <!-- <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" /> -->
+                <input name="email" placeholder="Email" type="text" />
+                <input name="Password" placeholder="Password" type="Password" />
+                <a href="">Forgot your password?</a>
+             <input  id="button1" class="btn" type="submit" value="Sign In" >
+               
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="/dbms-main/script.js"></script> -->
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () =>
+            container.classList.add('right-panel-active'));
+
+        signInButton.addEventListener('click', () =>
+            container.classList.remove('right-panel-active'));
+    </script>
+</body>
+
+</html>
