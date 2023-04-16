@@ -88,7 +88,7 @@ router.post("/logout", function (req, res, next) {
 router.post("/register", function (req, res, next) {
   var email = req.body.email;
   var name = req.body.fullName;
- // var username = req.body.Username;
+  // var username = req.body.Username;
   var pass = req.body.Password;
   var cipher = crypt.encrypt(pass);
 
@@ -161,13 +161,17 @@ router.post("/new_user_admin", function (req, res, next) {
   var dept = req.body.dept;
   var year = req.body.year;
   var sem = req.body.Semester;
+  var cipher = crypt.encrypt(roll);
 
-  var sql = `insert into student_data values ("${roll}", "${name}", "${address}", "${email}", "${mobile}", '${dob}', "${roll}", "${program}", "${dept}", "${year}", "${sem}");`;
+  var sql = `insert into student_data values ("${roll}", "${name}", "${address}", "${email}", "${mobile}", '${dob}', "${cipher}", "${program}", "${dept}", "${year}", "${sem}");`;
   db.query(sql, function (err, result) {
-    if (err) throw err;
+    if (err) {
+      console.log("error")
+      throw err;
+    }
 
     console.log("Row has been updated");
-    res.redirect("admin_add_new_user");
+    res.redirect("admin_home");
   });
 });
 
@@ -180,7 +184,7 @@ router.get("/search/:key", function (req, res, next) {
     if (error) throw error;
     // Render the HTML template with the customer details
     const record = results;
-  res.json(results);
+    res.json(results);
 
   });
 });
@@ -281,16 +285,16 @@ router.get("/details/:key", (req, res, next) => {
     db.query(sql, [id], (error, result) => {
       if (error) console.log(error);
       else {
-     //   console.log("i m in")
-      //  console.log(result);
-       // req.user=result;
+        //   console.log("i m in")
+        //  console.log(result);
+        // req.user=result;
 
-       //  console.log(req.user+" "+"users");
-       
-            let token = jwt.sign(result[0], "parwez");
-            res
-              .cookie("access_token", token, { httpOnly: true })
-              .render("student_profile");
+        //  console.log(req.user+" "+"users");
+
+        let token = jwt.sign(result[0], "parwez");
+        res
+          .cookie("access_token", token, { httpOnly: true })
+          .render("student_profile");
       }
     });
   } catch (error) {
@@ -300,8 +304,4 @@ router.get("/details/:key", (req, res, next) => {
   }
 });
 
-
-
-
-
-module.exports=router;
+module.exports = router;

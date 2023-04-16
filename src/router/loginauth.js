@@ -37,7 +37,31 @@ var flash = require("connect-flash");
 router2.get("/login", (req, res) => {
   res.render("login", { message: req.flash("message") });
 });
-router2.post("/login", async (req, res) => {
+
+
+// for rendering the main login page after user sign in
+router2.get("/user_land",middlewares.verifyUser, async (req, res) => {
+  try {
+
+        
+    var sql = `SELECT * FROM student_data where enroll_no="${req.user.enroll_no}" `;
+    con.query(sql, (error, result) => {
+      if (error) console.log(error);
+      else {
+        res.render("user_land", {
+          results: result
+        });
+      }
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+});
+
+
+router2.post("/login",  (req, res) => {
   //  console.log(userkiId);
 
   var user = req.body.custid;
@@ -46,7 +70,6 @@ router2.post("/login", async (req, res) => {
     res.redirect("login");
   } else {
     var pass = req.body.password;
-    console.log(user + " " + pass);
 
     var sql = `select   * from student_data where enroll_no="${user}"`;
 
@@ -79,8 +102,8 @@ router2.post("/login", async (req, res) => {
             let token = jwt.sign(result[0], "parwez");
             res
               .cookie("access_token", token, { httpOnly: true })
-              .render("homepage");
-
+              .redirect("user_land");
+              console.log("login successful")
             // res.send("successfully registered");
           } else {
 

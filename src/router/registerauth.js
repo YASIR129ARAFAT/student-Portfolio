@@ -15,8 +15,8 @@ var Name;
 var city;
 var email;
 var mobNo;
-var occ ;
-var dob ;
+var occ;
+var dob;
 var pass;
 var dept;
 var sem;
@@ -56,47 +56,47 @@ router.get("/register", async (req, res, next) => {
   res.render("register", { message: req.flash("message") });
 });
 router.post("/register", async (req, res, next) => {
- enroll_no = req.body.customerId;
+  enroll_no = req.body.customerId;
 
- Name = req.body.Name;
- 
- city = req.body.city;
- email = req.body.email;
- mobNo = req.body.mobileNumber;
- occ = req.body.occupation;
- dob = req.body.dob;
- pass = req.body.password;
- dept=req.body.department;
- sem=req.body.semester
+  Name = req.body.Name;
 
-     
-      const secret = JWT_SECRET + pass;
-      const payload = {
-        id: enroll_no,
-        email: email,
-      };
-      const token = jwt.sign(payload, secret, { expiresIn: "15m" });
-      const link = `http://localhost:80/api/registerauth/confirm_register/${enroll_no}/${token}`;
-      console.log(email);
-      var mailOptions = {
-        from: "iit2021113@iiita.ac.in",
-        to: `"${email}"`,
-        subject: "confirm regiter",
-        text: `confirm register link ===>${link}`,
-      };
-      transport.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log("invalid email");
-          // console.log(error);
-          res.render("register");
-        } else {
-          console.log("email has been sent", info.response);
-           req.flash("message", "Check Your Mail to confirm register");
-           res.render("register");
-        }
-      });
-    
-  
+  city = req.body.city;
+  email = req.body.email;
+  mobNo = req.body.mobileNumber;
+  occ = req.body.occupation;
+  dob = req.body.dob;
+  pass = req.body.password;
+  dept = req.body.department;
+  sem = req.body.semester
+
+
+  const secret = JWT_SECRET + pass;
+  const payload = {
+    id: enroll_no,
+    email: email,
+  };
+  const token = jwt.sign(payload, secret, { expiresIn: "15m" });
+  const link = `http://localhost:80/api/registerauth/confirm_register/${enroll_no}/${token}`;
+  console.log(email);
+  var mailOptions = {
+    from: "iit2021113@iiita.ac.in",
+    to: `"${email}"`,
+    subject: "confirm regiter",
+    text: `confirm register link ===>${link}`,
+  };
+  transport.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log("invalid email");
+      // console.log(error);
+      res.render("register");
+    } else {
+      console.log("email has been sent", info.response);
+      req.flash("message", "Check Your Mail to confirm register");
+      res.render("register");
+    }
+  });
+
+
 });
 
 // setting the new password
@@ -126,8 +126,8 @@ router.get("/confirm_register/:id/:token", async (req, res, next) => {
 
 
 router.post("/confirm_register/:id/:token", async (req, res, next) => {
-    const id = req.params.id;
-    const token = req.params.token;
+  const id = req.params.id;
+  const token = req.params.token;
 
   const secret = JWT_SECRET + pass;
   try {
@@ -135,31 +135,29 @@ router.post("/confirm_register/:id/:token", async (req, res, next) => {
     // here we can simply find the user with the payload and finally update the passwrod
     //always hash the password;
     const payload = jwt.verify(token, secret);
-   var cipher = crypt.encrypt(pass);
+    var cipher = crypt.encrypt(pass);
     console.log("hello");
 
-   var sql = `INSERT INTO student_data VALUES ("${city}", "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${cipher}", "${Name}","${enroll_no}" ,"${sem}", "${dept}" );`;
-   db.query(sql, function (err, result) {
-     if (err) {
-      console.log(err)
-       req.flash("message", "customer Id already exist");
-       res.redirect("register");
-     } else {
-      
-       console.log("Row has been updated");
-       req.flash("message", "seccessfully registered");
-       res.render("login");
+    // var sql = `INSERT INTO student_data VALUES ("${city}", "${email}" ,  "${mobNo}" , "${occ}" , '${dob}' , "${cipher}", "${Name}","${enroll_no}" ,"${sem}", "${dept}" );`;
+    var sql = `insert into student_data values ("${enroll_no}", "${Name}", "${city}", "${email}", "${mobNo}", '${dob}', "${cipher}", "${occ}", "${dept}", "2", "${sem}");`;
+    db.query(sql, function (err, result) {
+      if (err) {
+        console.log(err)
+        req.flash("message", "customer Id already exist");
+        res.redirect("register");
+      } else {
 
-     }
-   });
+        console.log("Row has been updated");
+        req.flash("message", "seccessfully registered");
+        res.render("login");
+
+      }
+    });
   } catch (error) {
     console.log("ppask")
     console.log(error.message);
     res.send(error.message);
   }
 });
-
-
-
 
 module.exports = router;

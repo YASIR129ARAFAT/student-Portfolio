@@ -5,28 +5,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar</title>
-    
-    
-   
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
-   <style>
-    .listItem{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-         text-transform: capitalize;
-        
-    }
-    #allProjectItems{
-          text-transform: uppercase;
-    }
-    
-    #project1Desc{
-        margin-top: 20px;
-    }
-   </style>
+    <style>
+        .listItem {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-transform: capitalize;
+
+        }
+
+        #allProjectItems {
+            text-transform: uppercase;
+        }
+
+        #project1Desc {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -86,133 +87,133 @@
     </nav>
     <!-- basicprofile name etc -->
     <div class="container">
-           <a href="student_data">
-          <div class="view" id="profileDiv">
-            
+        <a href="student_data">
+            <div class="view" id="profileDiv">
 
-         
-           </div>
-    
-</a>
-        
+
+
+            </div>
+
+        </a>
+
         <!-- div for academic achievements -->
 
-          <a href="/api/achievementsauth/student_achievement">
-        <div class="view" id="skillsDiv">
+        <a href="/api/achievementsauth/student_achievement">
+            <div class="view" id="skillsDiv">
 
-            <div id="skillHeadingDiv">
-                <image id="achievementsImg" src="/images/AchievementsIcon.png"></image>
-                <h4 id="skillHeading" style="display: inline-block;">Achievements</h4>
+                <div id="skillHeadingDiv">
+                    <image id="achievementsImg" src="/images/AchievementsIcon.png"></image>
+                    <h4 id="skillHeading" style="display: inline-block;">Achievements</h4>
+                </div>
+
+                <div id="allAchievementItems">
+
+
+
+
+                </div>
+
+                <!-- end of achievements -->
             </div>
-
-            <div id="allAchievementItems">
-               
-
-              
-
-            </div>
-
-            <!-- end of achievements -->
-        </div>
-</a>
+        </a>
         <!-- div for non academic achievements -->
-  <a href="/api/nonacademicauth/student_non_academic_skill">
-        <div class="view" id="nonAcadSkillsDiv">
+        <a href="/api/nonacademicauth/student_non_academic_skill">
+            <div class="view" id="nonAcadSkillsDiv">
 
-            <div id="nonSkillHeadingDiv">
-                <image id="nonAcadAchievImg" src="/images/AchievementsIcon.png"></image>
-                <h4 id="nonSkillHeading" style="display: inline-block;">Non-Academic skills</h4>
+                <div id="nonSkillHeadingDiv">
+                    <image id="nonAcadAchievImg" src="/images/AchievementsIcon.png"></image>
+                    <h4 id="nonSkillHeading" style="display: inline-block;">Non-Academic skills</h4>
+                </div>
+
+                <div id="allNonAcadAchievItems">
+
+                </div>
+
+                <!-- end of non academicachievements -->
             </div>
-
-            <div id="allNonAcadAchievItems">
-               
-            </div>
-
-            <!-- end of non academicachievements -->
-        </div>
-        <!-- end ofnon academic achievements -->
-         </a>
+            <!-- end ofnon academic achievements -->
+        </a>
         <br>
-          <a href="/api/cgpa/cgpa">
+        <a href="/api/cgpa/cgpa">
 
-        <!-- for cgpa -->
-        <div class="view" id="cgpaDiv">
+            <!-- for cgpa -->
+            <div class="view" id="cgpaDiv">
 
-            <div id="cgpaHeadingDiv">
-                <image id="cgpaImg" src="/images/cgpa.png"></image>
-                <h4 id="cgpaHeading" style="display: inline-block;">CGPA Overview</h4>
+                <div id="cgpaHeadingDiv">
+                    <image id="cgpaImg" src="/images/cgpa.png"></image>
+                    <h4 id="cgpaHeading" style="display: inline-block;">CGPA Overview</h4>
+                </div>
+
+                <div id="cgpaList">
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading1">Semester 1: </h4>
+                        <div class="ListedSemCG" id="sem1cgpa"><em>7.98</em></div>
+                    </div>
+
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading2">Semester 2: </h4>
+                        <div class="ListedSemCG" id="sem2cgpa"><em>7.98</em></div>
+                    </div>
+
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading3">Semester 3: </h4>
+                        <div class="ListedSemCG" id="sem3cgpa"><em>7.98</em></div>
+                    </div>
+
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading4">Semester 4: </h4>
+                        <div class="ListedSemCG" id="sem4cgpa"><em>7.98</em></div>
+                    </div>
+
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading5">Semester 5: </h4>
+                        <div class="ListedSemCG" id="sem5cgpa"><em>7.98</em></div>
+                    </div>
+
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading6">Semester 6: </h4>
+                        <div class="ListedSemCG" id="sem6cgpa"><em>7.98</em></div>
+                    </div>
+
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading7">Semester 7: </h4>
+                        <div class="ListedSemCG" id="sem7cgpa"><em>7.98</em></div>
+                    </div>
+                </div>
+
+                <!-- overall cgpa div -->
+                <div id="overallCgpaDiv">
+                    <div id="OverallCgpaHeadingDiv">
+                        <h4 id="overallCgpaHeading">Overall</h4>
+                    </div>
+                    <span id="overallCgpa"><b>8.65</b></span>
+                </div>
+
+                <!-- end of cgpa -->
             </div>
-
-            <div id="cgpaList">
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading1">Semester 1: </h4>
-                    <div class="ListedSemCG" id="sem1cgpa"><em>7.98</em></div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading2">Semester 2: </h4>
-                    <div class="ListedSemCG" id="sem2cgpa"><em>7.98</em></div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading3">Semester 3: </h4>
-                    <div class="ListedSemCG" id="sem3cgpa"><em>7.98</em></div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading4">Semester 4: </h4>
-                    <div class="ListedSemCG" id="sem4cgpa"><em>7.98</em></div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading5">Semester 5: </h4>
-                    <div class="ListedSemCG" id="sem5cgpa"><em>7.98</em></div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading6">Semester 6: </h4>
-                    <div class="ListedSemCG" id="sem6cgpa"><em>7.98</em></div>
-                </div>
-
-                <div class="listItem">
-                    <h4 class="ListedSemesterHeading" id="semHeading7">Semester 7: </h4>
-                    <div class="ListedSemCG" id="sem7cgpa"><em>7.98</em></div>
-                </div>
-            </div>
-
-            <!-- overall cgpa div -->
-            <div id="overallCgpaDiv">
-                <div id="OverallCgpaHeadingDiv">
-                    <h4 id="overallCgpaHeading">Overall</h4>
-                </div>
-                <span id="overallCgpa"><b>8.65</b></span>
-            </div>
-
-            <!-- end of cgpa -->
-        </div>
-</a>
+        </a>
         <!-- projects overview -->
-          <a href="/api/projectauth/projects" >
+        <a href="/api/projectauth/projects">
 
-        <div class="view" id="projectDiv" onchange="get_details(this.value)">
+            <div class="view" id="projectDiv" onchange="get_details(this.value)">
 
-            <div id="skillHeadingDiv">
-                <image id="projectImg" src="/images/project.png"></image>
-                <h4 id="skillHeading" style="display: inline-block;">Projects Overview</h4>
+                <div id="skillHeadingDiv">
+                    <image id="projectImg" src="/images/project.png"></image>
+                    <h4 id="skillHeading" style="display: inline-block;">Projects Overview</h4>
+                </div>
+
+                <div id="allProjectItems">
+
+
+
+
+
+
+
+                </div>
+
+                <!-- end of achievements -->
             </div>
-
-            <div id="allProjectItems">
-               
-
-              
-              
-
-              
-
-            </div>
-
-            <!-- end of achievements -->
-        </div>
     </div>
     </a>
     <!-- end of project overview -->
@@ -228,120 +229,112 @@
             links.classList.toggle('show-links')
         })
 
-func1();
-func2();
-func3();
-func4();
+        func1();
+        func2();
+        func3();
+        func4();
 
-function func2(){
-        var start_index=0;
-        var number_of_records=10;
+        function func2() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/projectauth/get_data2?start_index=${start_index}&num_record=${number_of_records}`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
 
- const request=new XMLHttpRequest();
-  request.open('Get', `/api/projectauth/get_data2?start_index=${start_index}&num_record=${number_of_records}`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   // console.log(results);
+                let html = ``;
+                if (results.length > 0) {
 
-     
-     let html=``;
-     if(results.length>0){
-
-        results.forEach(result=>{
-             html+=`<div class="listItem">
-                    <h4 class="ListedProjectHeading" id="project1" style="text-transform:uppercase;">${result.projectTitle }</h4>
+                    results.forEach(result => {
+                        html += `<div class="listItem">
+                    <h4 class="ListedProjectHeading" id="project1" style="text-transform:uppercase;">${result.projectTitle}</h4>
                  
                     </div>
                 </div>`
-        });
-     var data=document.getElementById('allProjectItems');
-       data.innerHTML+=html;
+                    });
+                    var data = document.getElementById('allProjectItems');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+        function func1() {
+            var sttart_index = 0;
+            numberr_of_records = 10;
 
- 
-     }
-     
-  };
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/nonacademicauth/get_data2?start_index=${sttart_index}&num_record=${numberr_of_records}`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+                console.log(results);
 
-  
-  request.send()
-}
-function func1(){
-var sttart_index=0;
-numberr_of_records=10;
+                let html = ``;
 
-const request=new XMLHttpRequest();
-  request.open('Get', `/api/nonacademicauth/get_data2?start_index=${sttart_index}&num_record=${numberr_of_records}`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   console.log(results);
+                if (results.length > 0) {
 
-      let html=``;
-    
-     if(results.length>0){
-
-        results.forEach(result=>{
-             html+=` <div class="listItem">
+                    results.forEach(result => {
+                        html += ` <div class="listItem">
                     <h4 class="ListedSkillHeading" id="nonSkill1">${result.skillTitle}</h4>
                     
 
                 </div>`
 
-        });
-     var data=document.getElementById('allNonAcadAchievItems');
-       data.innerHTML+=html;
+                    });
+                    var data = document.getElementById('allNonAcadAchievItems');
+                    data.innerHTML += html;
 
-     }
-     
-  };
-  request.send()
+                }
 
-}
+            };
+            request.send()
 
-function func3(){
-var sttart_index=0;
-numberr_of_records=10;
+        }
 
-const request=new XMLHttpRequest();
-  request.open('Get', `/api/achievementsauth/get_data2?start_index=${sttart_index}&num_record=${numberr_of_records}`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   console.log(results);
+        function func3() {
+            var sttart_index = 0;
+            numberr_of_records = 10;
 
-      let html=``;
-    
-     if(results.length>0){
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/achievementsauth/get_data2?start_index=${sttart_index}&num_record=${numberr_of_records}`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+                console.log(results);
 
-        results.forEach(result=>{
-             html+= ` <div class="listItem">
+                let html = ``;
+
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += ` <div class="listItem">
                     <h4 class="ListedSkillHeading" id="skill1">${result.skillTitle}</h4>         </div>`
 
-        });
-     var data=document.getElementById('allAchievementItems');
-       data.innerHTML+=html;
+                    });
+                    var data = document.getElementById('allAchievementItems');
+                    data.innerHTML += html;
 
-     }
-     
-  };
-  request.send()
+                }
 
-}
+            };
+            request.send()
+
+        }
 
 
-function func4(){
+        function func4() {
 
-console.log("func4");
-const request=new XMLHttpRequest();
-  request.open('Get', `/api/studentProfileAuth/getDetails`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   console.log(results);
+            console.log("func4");
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/studentProfileAuth/getDetails`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+                console.log(results);
 
-      let html=``;
-    
-     if(results.length>0){
+                let html = ``;
 
-        results.forEach(result=>{
-             html+=` <div id="profileTop">
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += ` <div id="profileTop">
                 <!-- profile picture of the student -->
                 <div id="imgDiv">
                     <image src="/images/myProfilePicture.png" id="profilePic" alt="profile picture">
@@ -373,12 +366,12 @@ const request=new XMLHttpRequest();
 
                 <div class="profileLabel">
                     <h4 class="label" id="branchLabel">Branch: </h4>
-                    <span class="labelVal" id="branch">${result.department}</span>
+                    <span class="labelVal" id="branch">${result.dept}</span>
                 </div>
 
                 <div class="profileLabel">
                     <h4 class="label" id="programeLabel">Programme: </h4>
-                    <span class="labelVal" id="programe">${result.degree}</span>
+                    <span class="labelVal" id="programe">${result.program}</span>
                 </div>
 
                 <div class="profileLabel">
@@ -389,16 +382,16 @@ const request=new XMLHttpRequest();
             </div>
 `
 
-        });
-     var data=document.getElementById('profileDiv');
-       data.innerHTML+=html;
+                    });
+                    var data = document.getElementById('profileDiv');
+                    data.innerHTML += html;
 
-     }
-     
-  };
-  request.send()
+                }
 
-}
+            };
+            request.send()
+
+        }
 
 
     </script>

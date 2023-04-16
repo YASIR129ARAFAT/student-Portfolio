@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Hello</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="/assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="/assets/css/meyawo.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="#">Portfolio</a>
+            <ul class="nav">
+                {{!-- <li class="item">
+                    <a class="link" href="#home">Home</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about">About</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#testmonial">Testmonial</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#blog">Blog</a>
+                </li> --}}
+                <li class="item">
+                    <a class="link" href="/api/resetpasswordauth/reset-password2">Change Password</a>
+                </li>
+                <li class="item ml-md-3">
+                    <a href="/student_profile" class="btn btn-primary">Edit Profile</a>
+                </li>
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    </nav><!-- End of Page Navbar -->
+
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                <span class="up">HI!</span>
+                {{#each results}}
+                <span class="down">I am {{this.name}}</span>
+                {{/each}}
+            </h1>
+            {{#each results}}
+            <p class="header-subtitle">{{this.dept}}</p>
+            {{/each}}
+
+
+            <button class="btn btn-primary">Visit My Works</button> {{!-- can provide github profile link --}}
+        </div>
+    </header><!-- end of page header -->
+
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- about wrapper -->
+            <div class="about">
+                <div class="about-img-holder">
+                    <img src="/assets/imgs/man.png" class="about-img"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                </div>
+                <div class="about-caption">
+                    <p class="section-subtitle">Who Am I ?</p>
+                    <h2 class="section-title mb-3">About Me</h2>
+                    <p> {{!-- can create description of the user with existing details or create a new field --}}
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquid ad provident aut
+                        fuga animi soluta quae eos non cupiditate voluptates dolorem, doloremque quos dicta quibusdam
+                        impedit iure nemo a iste
+                        <br>culpa! Quasi quibusdam hic recusandae delectus velit officiis explicabo voluptatibus! Nemo
+                        esse similique, voluptates labore distinctio, placeat explicabo facilis molestias, blanditiis
+                        culpa iusto voluptatem ratione eligendi a, quia temporibus velit vero ipsa sint ex voluptatum
+                        expedita aliquid! Debitis, nam!
+                    </p>
+                    <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
+                </div>
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
+
+
+    <!-- pricing section -->
+    <section class="section" id="pricing">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Did ?</p>
+            <h6 class="section-title mb-6">My Projects</h6>
+            <!-- row -->
+            <div class="pricing-wrapper" id="projects">
+
+
+
+            </div><!-- end of pricing wrapper -->
+        </div> <!-- end of container -->
+    </section><!-- end of pricing section -->
+
+    
+    <!-- blog section(academic achievements) -->
+    <section class="section" id="blog">
+        <!-- container -->
+        <div class="container text-center" id="achievements">
+            <p class="section-subtitle">What I Achieved</p>
+            <h6 class="section-title mb-6">My Achievements</h6>
+            <!-- blog-wrapper -->
+
+        </div><!-- end of container -->
+    </section><!-- end of blog section -->
+
+    <!-- non- academic extra curricular-->
+    <section class="section" id="blog">
+        <!-- container -->
+        <div class="container text-center" id="non-acad">
+            <p class="section-subtitle">Non Acads</p>
+            <h6 class="section-title mb-6">My Extra Curriculars</h6>
+            <!-- blog-wrapper -->
+
+        </div><!-- end of container -->
+    </section><!-- end of blog section -->
+
+    <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <p class="section-subtitle">How can you communicate?</p>
+            <h6 class="section-title mb-5">Contact Me</h6>
+            <!-- contact form -->
+            <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="email" class="form-control" placeholder="Enter Email" requried>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <textarea name="comment" id="comment" rows="6" class="form-control"
+                            placeholder="Write Something"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
+                    </div>
+                </div>
+            </form><!-- end of contact form -->
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <p class="mb-0">Copyright
+                <script>document.write(new Date().getFullYear())</script> &copy; <a
+                    href="#">Student Portfolio</a>
+            </p>
+            <div class="social-links text-right m-auto ml-sm-auto">
+                <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
+                <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
+            </div>
+        </footer>
+    </div> <!-- end of page footer -->
+
+    <!-- core  -->
+    <script src="/assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="/assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Meyawo js -->
+    <script src="/assets/js/meyawo.js"></script>
+
+    <script>
+        func2()
+        function func2() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/projectauth/get_data2`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += `
+                        <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <img class="pricing-card-icon" src="/assets/imgs/scooter.svg"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    </div>
+                    <h6 class="pricing-card-title">${result.projectTitle}</h6>
+                    <p>
+                        ${result.projectDescription}
+                    </p>
+                    <a href="${result.gitHubLink}" class="btn btn-primary mt-3 pricing-card-btn">Github Link</a>
+                </div>
+                        `
+                    });
+                    var data = document.getElementById('projects');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+
+        func1()
+        function func1() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/achievementsauth/get_data2`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += `
+                            <div class="blog-card">
+                <div class="blog-card-header">
+                    <img src="/assets/imgs/img-1.jpg" class="blog-card-img"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                </div>
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">${result.skillTitle}</h6>
+
+                        <p>${result.skillDescription}</p>
+
+
+                </div>
+            </div>
+                        `
+                    });
+                    var data = document.getElementById('achievements');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+
+        func3()
+        function func3() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/nonacademicauth/get_data2`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += `
+                            <div class="blog-card">
+                <div class="blog-card-header">
+                    <img src="/assets/imgs/img-1.jpg" class="blog-card-img"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                </div>
+                <div class="blog-card-body">
+                    <h5 class="blog-card-title">${result.skillTitle}</h6>
+
+                        <p>${result.skillDescription}</p>
+
+
+                </div>
+            </div>
+                        `
+                    });
+                    var data = document.getElementById('non-acad');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+    </script>
+
+</body>
+
+</html>

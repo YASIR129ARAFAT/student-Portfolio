@@ -21,6 +21,7 @@
       transition: all 0.4s ease-in-out;
       overflow: hidden;
     }
+
     .logout-btn {
       background-color: #eff2f3;
       border: none;
@@ -33,11 +34,13 @@
       font-weight: bold;
       padding: 8px 16px;
     }
+
     .logout-btn img {
       margin-right: 18px;
       width: 24px;
       height: 24px;
     }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -49,16 +52,19 @@
       color: #fff;
       padding: 0 20px;
     }
+
     .logo img {
       margin-top: 5%;
       margin-left: 50%;
       height: 500%;
       width: 70%;
     }
+
     .title {
       text-align: center;
       flex-grow: 1;
     }
+
     article a::after {
       position: absolute;
       inset-block: 0;
@@ -66,6 +72,7 @@
       cursor: pointer;
       content: "";
     }
+
     /* basic article elements styling */
     article h2 {
       margin: 0 0 18px 0;
@@ -75,30 +82,36 @@
       color: var(--title-color);
       transition: color 0.3s ease-out;
     }
+
     figure {
       margin: 0;
       padding: 0;
       aspect-ratio: 16 / 9;
       overflow: hidden;
     }
+
     article img {
       max-width: 100%;
       transform-origin: center;
       transform: scale(var(--img-scale));
       transition: transform 0.4s ease-in-out;
     }
+
     .article-body {
       padding: 24px;
     }
+
     article a {
       display: inline-flex;
       align-items: center;
       text-decoration: none;
       color: #28666e;
     }
+
     article a:focus {
       outline: 1px dotted #28666e;
     }
+
     article a .icon {
       min-width: 24px;
       width: 24px;
@@ -108,6 +121,7 @@
       opacity: var(--link-icon-opacity);
       transition: all 0.3s;
     }
+
     /* using the has() relational pseudo selector to update our custom properties */
     article:has(:hover, :focus) {
       --img-scale: 1.1;
@@ -117,6 +131,7 @@
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
         rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
+
     /************************ 
 Generic layout (demo looks)
 ************************* */
@@ -125,6 +140,7 @@ Generic layout (demo looks)
     *::after {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       /* padding: 48px 0; */
@@ -136,6 +152,7 @@ Generic layout (demo looks)
       background: linear-gradient(180deg, #14f1f5, 5%, #119dff, 50%, #107cca);
       min-height: 100vh;
     }
+
     .articles {
       display: grid;
       max-width: 1200px;
@@ -144,6 +161,7 @@ Generic layout (demo looks)
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 24px;
     }
+
     /* @media screen and (max-width: 960px) {
   article {
     container: card/inline-size;
@@ -185,12 +203,14 @@ Generic layout (demo looks)
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
+
     .sidebar {
       position: fixed;
       left: 0;
@@ -202,19 +222,23 @@ Generic layout (demo looks)
       z-index: 99;
       transition: all 0.5s ease;
     }
+
     .sidebar.open {
       width: 250px;
     }
+
     .sidebar .logo-details {
       height: 60px;
       display: flex;
       align-items: center;
       position: relative;
     }
+
     .sidebar .logo-details .icon {
       opacity: 0;
       transition: all 0.5s ease;
     }
+
     .sidebar .logo-details .logo_name {
       color: #fff;
       font-size: 20px;
@@ -222,10 +246,12 @@ Generic layout (demo looks)
       opacity: 0;
       transition: all 0.5s ease;
     }
+
     .sidebar.open .logo-details .icon,
     .sidebar.open .logo-details .logo_name {
       opacity: 1;
     }
+
     .sidebar .logo-details #btn {
       position: absolute;
       top: 50%;
@@ -238,9 +264,11 @@ Generic layout (demo looks)
       cursor: pointer;
       transition: all 0.5s ease;
     }
+
     .sidebar.open .logo-details #btn {
       text-align: right;
     }
+
     .sidebar i {
       color: #fff;
       height: 60px;
@@ -249,15 +277,18 @@ Generic layout (demo looks)
       text-align: center;
       line-height: 60px;
     }
+
     .sidebar .nav-list {
       margin-top: 20px;
       height: 100%;
     }
+
     .sidebar li {
       position: relative;
       margin: 8px 0;
       list-style: none;
     }
+
     .sidebar li .tooltip {
       position: absolute;
       top: -20px;
@@ -274,6 +305,7 @@ Generic layout (demo looks)
       pointer-events: none;
       transition: 0s;
     }
+
     .sidebar li:hover .tooltip {
       opacity: 1;
       pointer-events: auto;
@@ -281,9 +313,11 @@ Generic layout (demo looks)
       top: 50%;
       transform: translateY(-50%);
     }
+
     .sidebar.open li .tooltip {
       display: none;
     }
+
     .sidebar input {
       font-size: 15px;
       color: #FFF;
@@ -297,10 +331,12 @@ Generic layout (demo looks)
       transition: all 0.5s ease;
       background: #1d1b31;
     }
+
     .sidebar.open input {
       padding: 0 20px 0 50px;
       width: 100%;
     }
+
     .sidebar .bx-search {
       position: absolute;
       top: 50%;
@@ -310,14 +346,17 @@ Generic layout (demo looks)
       background: #1d1b31;
       color: #FFF;
     }
+
     .sidebar.open .bx-search:hover {
       background: #50b3fa;
       color: #FFF;
     }
+
     .sidebar .bx-search:hover {
       background: #FFF;
       color: #11101d;
     }
+
     .sidebar li a {
       display: flex;
       height: 100%;
@@ -328,9 +367,11 @@ Generic layout (demo looks)
       transition: all 0.4s ease;
       background: #06263e;
     }
+
     .sidebar li a:hover {
       background: #FFF;
     }
+
     .sidebar li a .links_name {
       color: #fff;
       font-size: 15px;
@@ -340,21 +381,25 @@ Generic layout (demo looks)
       pointer-events: none;
       transition: 0.4s;
     }
+
     .sidebar.open li a .links_name {
       opacity: 1;
       pointer-events: auto;
     }
+
     .sidebar li a:hover .links_name,
     .sidebar li a:hover i {
       transition: all 0.5s ease;
       color: #11101D;
     }
+
     .sidebar li i {
       height: 50px;
       line-height: 50px;
       font-size: 18px;
       border-radius: 12px;
     }
+
     .sidebar li.profile {
       position: fixed;
       height: 60px;
@@ -366,14 +411,17 @@ Generic layout (demo looks)
       transition: all 0.5s ease;
       overflow: hidden;
     }
+
     .sidebar.open li.profile {
       width: 250px;
     }
+
     .sidebar li .profile-details {
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
     }
+
     .sidebar li img {
       height: 45px;
       width: 45px;
@@ -381,6 +429,7 @@ Generic layout (demo looks)
       border-radius: 6px;
       margin-right: 10px;
     }
+
     .sidebar li.profile .name,
     .sidebar li.profile .job {
       font-size: 15px;
@@ -388,9 +437,11 @@ Generic layout (demo looks)
       color: #fff;
       white-space: nowrap;
     }
+
     .sidebar li.profile .job {
       font-size: 12px;
     }
+
     .sidebar .profile #log_out {
       position: absolute;
       top: 50%;
@@ -403,10 +454,12 @@ Generic layout (demo looks)
       border-radius: 0px;
       transition: all 0.5s ease;
     }
+
     .sidebar.open .profile #log_out {
       width: 50px;
       background: none;
     }
+
     .home-section {
       position: relative;
       background: #E4E9F7;
@@ -417,10 +470,12 @@ Generic layout (demo looks)
       transition: all 0.5s ease;
       z-index: 2;
     }
+
     .sidebar.open~.home-section {
       left: 250px;
       width: calc(100% - 250px);
     }
+
     .home-section .text {
       display: inline-block;
       color: #11101d;
@@ -428,16 +483,18 @@ Generic layout (demo looks)
       font-weight: 500;
       margin: 18px
     }
-    
-		#hey {
-			color: red;
-		}
+
+    #hey {
+      color: red;
+    }
+
     @media (max-width: 420px) {
       .sidebar li .tooltip {
         display: none;
       }
     }
-    .container1{
+
+    .container1 {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -445,13 +502,12 @@ Generic layout (demo looks)
       width: 100vw;
       s
     }
-    #articles{
-      
 
+    #articles {}
+
+    ::-webkit-scrollbar {
+      display: none;
     }
-    ::-webkit-scrollbar{
-    display: none;
-}
   </style>
   <title>Sample Articles</title>
 </head>
@@ -478,9 +534,9 @@ Generic layout (demo looks)
         <ul class="nav-list">
           <li>
             <i class='bx bx-search'></i>
-           
-              <input  onchange="func4()" id="searchUser" name="val" type="search" placeholder="Search...">
-            
+
+            <input onchange="func4()" id="searchUser" name="val" type="search" placeholder="Search...">
+
             <span class="tooltip">Search</span>
           </li>
           <li>
@@ -492,19 +548,19 @@ Generic layout (demo looks)
           </li>
           <li>
             <a href="/api/adminRegisterAuth/change_password">
-              <i class='bx bx-user' ></i>
+              <i class='bx bx-user'></i>
               <span class="links_name">Change Password</span>
             </a>
             <span class="tooltip">Change Password</span>
           </li>
           <li>
             <a href="/api/adminRegisterAuth/login_admin">
-              <i class='bx bx-log-out' ></i>
+              <i class='bx bx-log-out'></i>
               <span class="links_name">Log out</span>
             </a>
             <span class="tooltip">Log out</span>
           </li>
-         
+
           <li class="profile">
             <div class="profile-details">
 
@@ -547,53 +603,53 @@ Generic layout (demo looks)
   </header>
 
   <section id="articles" class="articles">
-   
-        <article>
-          <div class="article-wrapper">
-            <figure>
-              <img src="https://img.freepik.com/free-icon/user_318-175743.jpg" alt="" />
-            </figure>
-            <div class="article-body">
-              <h2>New User</h2>
-              <p>
-                Add a New User
-              </p>
-              <a href="/api/adminRegisterAuth/admin_add_new_user" class="read-more">
-                Add User <span class="sr-only">about this is some title</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill="currentColor"
-                    d="M9 4a1 1 0 011 1v3h3a1 1 0 010 2h-3v3a1 1 0 01-2 0v-3H4a1 1 0 010-2h3V5a1 1 0 011-1z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </article>
+
+    <article>
+      <div class="article-wrapper">
+        <figure>
+          <img src="https://img.freepik.com/free-icon/user_318-175743.jpg" alt="" />
+        </figure>
+        <div class="article-body">
+          <h2>New User</h2>
+          <p>
+            Add a New User
+          </p>
+          <a href="/api/adminRegisterAuth/admin_add_new_user" class="read-more">
+            Add User <span class="sr-only">about this is some title</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill="currentColor"
+                d="M9 4a1 1 0 011 1v3h3a1 1 0 010 2h-3v3a1 1 0 01-2 0v-3H4a1 1 0 010-2h3V5a1 1 0 011-1z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
   </section>
   <section class="articles">
   </section>
 
 
   <script>
-  var flg=0;
-  
-   function func4(){
-var key=document.getElementById('searchUser').value;
-console.log(key);
+    var flg = 0;
+
+    function func4() {
+      var key = document.getElementById('searchUser').value;
+      console.log(key);
 
 
-const request=new XMLHttpRequest();
-  request.open('Get', `/api/adminRegisterAuth/search/${key}`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   console.log(results);
+      const request = new XMLHttpRequest();
+      request.open('Get', `/api/adminRegisterAuth/search/${key}`);
+      request.onload = () => {
+        const results = JSON.parse(request.responseText);
+        console.log(results);
 
-      let html=``;
-     console.log(results.length);
+        let html = ``;
+        console.log(results.length);
 
-     if(results.length>0){
+        if (results.length > 0) {
 
-        results.forEach(result=>{
-             html+= `
+          results.forEach(result => {
+            html += `
               <article>
         <div class="article-wrapper">
           <figure>
@@ -627,55 +683,55 @@ const request=new XMLHttpRequest();
              
               `
 
-        });
-         flg=1;
+          });
+          flg = 1;
 
-     var data=document.getElementById('articles');
-       data.innerHTML=html;
+          var data = document.getElementById('articles');
+          data.innerHTML = html;
 
-     }
+        }
 
-     
-     else{
 
-               
-              var data=document.getElementById('articles');
-       data.innerHTML=` <div class="container1">
+        else {
+
+
+          var data = document.getElementById('articles');
+          data.innerHTML = ` <div class="container1">
    <h1 id="hey">No Data Found</h1>
 	
 </div>`;
-     }
-     
-  };
-  request.send()
+        }
 
-}
+      };
+      request.send()
 
-
-   func3();
+    }
 
 
+    func3();
 
 
-  
 
 
-   function func3(){
-var sttart_index=0;
-numberr_of_records=10;
 
-const request=new XMLHttpRequest();
-  request.open('Get', `/api/adminRegisterAuth/get_data2`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   console.log(results);
 
-      let html=``;
-    
-     if(results.length>0){
-         
-        results.forEach(result=>{
-             html+= `
+
+    function func3() {
+      var sttart_index = 0;
+      numberr_of_records = 10;
+
+      const request = new XMLHttpRequest();
+      request.open('Get', `/api/adminRegisterAuth/get_data2`);
+      request.onload = () => {
+        const results = JSON.parse(request.responseText);
+        console.log(results);
+
+        let html = ``;
+
+        if (results.length > 0) {
+
+          results.forEach(result => {
+            html += `
               <article>
         <div class="article-wrapper">
           <figure>
@@ -709,30 +765,31 @@ const request=new XMLHttpRequest();
              
               `
 
-        });
-     var data=document.getElementById('articles');
-       data.innerHTML+=html;
+          });
+          var data = document.getElementById('articles');
+          data.innerHTML += html;
 
-     }
-     
-  };
-  request.send()
+        }
 
-}
-async function XMLGET(url){
-  return new Promise((Resolve,Reject)=>{
-    let XHML= new XMLHttpRequest();
-  XHML.open('Get', url);
- XHML.onload =()=>{
-     const results=JSON.parse(XHML.responseText);
-      Resolve(results);}
-  XHML.send();
-  })
-}
-async function getDetails(key){
+      };
+      request.send()
 
-window.location.replace(`/api/adminRegisterAuth/details/${key}`)
-}
+    }
+    async function XMLGET(url) {
+      return new Promise((Resolve, Reject) => {
+        let XHML = new XMLHttpRequest();
+        XHML.open('Get', url);
+        XHML.onload = () => {
+          const results = JSON.parse(XHML.responseText);
+          Resolve(results);
+        }
+        XHML.send();
+      })
+    }
+    async function getDetails(key) {
+
+      window.location.replace(`/api/adminRegisterAuth/details/${key}`)
+    }
   </script>
 </body>
 

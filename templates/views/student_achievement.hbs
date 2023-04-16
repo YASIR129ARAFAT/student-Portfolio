@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
   <title>Student Skills</title>
   <style>
@@ -9,12 +9,12 @@
       color: #333;
       font-family: Arial, sans-serif;
     }
- 
+
     h1 {
       color: #333;
       text-align: center;
     }
- 
+
     .skill {
       background-color: #fff;
       border-radius: 10px;
@@ -25,12 +25,12 @@
       margin-left: 18%;
       transition: all 0.3s ease-in-out;
     }
- 
+
     .skill:hover {
       transform: translateY(-5px);
       box-shadow: 1px 12px 12px rgba(0, 0, 0, 0.2);
     }
- 
+
     .skill-title {
       font-size: 24px;
       font-weight: bold;
@@ -40,12 +40,12 @@
       color: #f5f5f5;
       border-radius: 6px;
     }
- 
+
     .skill-description {
       font-size: 18px;
       line-height: 1.5;
     }
- 
+
     .edit-btn,
     .delete-btn,
     .add-btn {
@@ -60,7 +60,7 @@
       margin-top: 10px;
       text-decoration: none;
     }
- 
+
     .edit-btn:hover,
     .delete-btn:hover,
     .add-btn:hover {
@@ -71,32 +71,32 @@
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
       transition: box-shadow 0.2s ease-in-out;
     }
- 
+
     @keyframes gradient-animation {
       0% {
         background-position: 0% 50%;
       }
- 
+
       50% {
         background-position: 100% 50%;
       }
- 
+
       100% {
         background-position: 0% 50%;
       }
     }
- 
+
     .add-btn {
       margin-top: 10px;
       width: 50%;
       margin-bottom: 70px;
     }
- 
+
     .addBtnDiv {
       display: flex;
       justify-content: center;
     }
- 
+
     /* navbar */
     nav {
       background-color: white;
@@ -105,21 +105,21 @@
       box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       height: 80px;
- 
+
     }
- 
+
     nav.scrolled {
-    
+
       top: 0;
       left: 0;
       right: 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
- 
+
     .logo {
       margin-left: 20px
     }
- 
+
     nav ul {
       position: relative;
       list-style-type: none;
@@ -127,7 +127,7 @@
       padding: 0;
       overflow: hidden;
     }
- 
+
     nav li {
       float: left;
       text-decoration: solid;
@@ -135,7 +135,7 @@
       font-weight: 600;
       font-style: oblique;
     }
- 
+
     nav a {
       display: block;
       padding: 8px;
@@ -144,22 +144,22 @@
       text-decoration: none;
       border-radius: 10px;
     }
- 
+
     nav a:hover {
       background-color: #164A83;
       color: white;
     }
- 
+
     .logo:hover {
       background-color: white;
     }
- 
+
     /* Remove default margin and padding on body element */
     body {
       margin: 0;
       padding: 0;
     }
- 
+
     .no_data_avl {
       text-align: center;
       font-size: 20px;
@@ -168,136 +168,142 @@
     }
 
 
-    
-     form {
-        background-color: rgb(244, 244, 244);
-        color: #164A83;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        width: 30%;
-        margin: 50px auto;
-    }
- 
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
- 
-    input[type="text"],
-    textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: 'smokewhite';
-    }
-    #cont2{
-        display: none;
-    }
- 
-    input[type="submit"] {
-       
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
- 
-    input[type="submit"]:hover {
-        background-color: #063670;
-    }
-    button{
-        background-color: #063670;
-    }
- 
-    input,textarea{
-        outline: 2px solid #2371c6;
-    }
-    .heading {
-        color: #063670;
-    
-        margin: 10px auto;
-        text-align: center;
+
+    form {
+      background-color: rgb(244, 244, 244);
+      color: #164A83;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      width: 30%;
+      margin: 50px auto;
     }
 
- 
-    #submitBtn {
-        display: block;
-        margin: 0 auto;
-        background-color: #063670;
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    #backBtn{
-        border: none;
-        box-shadow: none;
-        cursor: pointer;
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: 'smokewhite';
+    }
+
+    #cont2 {
+      display: none;
+    }
+
+    input[type="submit"] {
+
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #063670;
+    }
+
+    button {
+      background-color: #063670;
+    }
+
+    input,
+    textarea {
+      outline: 2px solid #2371c6;
+    }
+
+    .heading {
+      color: #063670;
+
+      margin: 10px auto;
+      text-align: center;
+    }
+
+
+    #submitBtn {
+      display: block;
+      margin: 0 auto;
+      background-color: #063670;
+    }
+
+    #backBtn {
+      border: none;
+      box-shadow: none;
+      cursor: pointer;
     }
   </style>
 </head>
- 
-<body>
-   <div   id="cont1">
-  <nav>
-    <div class="logo">
-      <a href="#"><img src="../../public/userImages/student-portfolio-logo.png" alt="Logo"></a>
-    </div>
-    <ul>
-     <li><a href='/profile'>Profile</a></li>
-      <li><a href='/api/projectauth/projects'>Projects</a></li>
-      <li><a href='/api/achievementsauth/student_achievement'>Achievements</a></li>
-        <li><a href='/api/nonacademicauth/student_non_academic_skill'>Non Acad Achievements</a></li>
-      <li><a href='/api/cgpa/cgpa'>Grades</a></li>
-    </ul>
-  </nav>
- 
- 
-  <h1>Academic Skills</h1>
-  {{#unless skills}}
-  <p class="no_data_avl">No Skills added</p>
-  {{/unless}}
-  {{#each skills}}
-  <div class="skill">
-    <div class="skill-title">{{this.skillTitle}}</div>
-    <div class="skill-description">
-      {{this.skillDescription}}
-    </div>
-    {{#if this.isVerified}}
-    <p style="color: green; font-weight:800;">Verified <span>&#10003;&#10003;</span></p>
-    {{else}}
-    <p style="color: red; font-weight:800;">Unverified!! <span>&#10539;&#10539;</span></p>
-    {{/if}}
-    <div>
-      <button id="editBtn" onclick="func({{this.id}})" class="edit-btn">Edit</button>
-      <a class="delete-btn" href="/api/achievementsauth/deleteAcadSkill?id={{this.id}}">Delete</a>
-    </div>
-  </div>
-  {{/each}}
-  <br><br><br>
-  <div class="addBtnDiv"><button id="addBtn" class="add-btn">Add Skill</button></div>
 
-</div>
+<body>
+  <div id="cont1">
+    <nav>
+      <div class="logo">
+        <a href="#"><img src="../../public/userImages/student-portfolio-logo.png" alt="Logo"></a>
+      </div>
+      <ul>
+        <li><a href='/student_profile'>Profile</a></li>
+        <li><a href='/api/projectauth/projects'>Projects</a></li>
+        <li><a href='/api/achievementsauth/student_achievement'>Achievements</a></li>
+        <li><a href='/api/nonacademicauth/student_non_academic_skill'>Non Acad Achievements</a></li>
+        <li><a href='/api/cgpa/cgpa'>Grades</a></li>
+      </ul>
+    </nav>
+
+
+    <h1>Academic Skills</h1>
+    {{#unless skills}}
+    <p class="no_data_avl">No Skills added</p>
+    {{/unless}}
+    {{#each skills}}
+    <div class="skill">
+      <div class="skill-title">{{this.skillTitle}}</div>
+      <div class="skill-description">
+        {{this.skillDescription}}
+      </div>
+      {{#if this.isVerified}}
+      <p style="color: green; font-weight:800;">Verified <span>&#10003;&#10003;</span></p>
+      {{else}}
+      <p style="color: red; font-weight:800;">Unverified!! <span>&#10539;&#10539;</span></p>
+      {{/if}}
+      <div>
+        <button id="editBtn" onclick="func({{this.id}})" class="edit-btn">Edit</button>
+        <a class="delete-btn" href="/api/achievementsauth/deleteAcadSkill?id={{this.id}}">Delete</a>
+      </div>
+    </div>
+    {{/each}}
+    <br><br><br>
+    <div class="addBtnDiv"><button id="addBtn" class="add-btn">Add Skill</button></div>
+
+  </div>
 
   <div style="" class="containerr" style="" id="cont2">
-        <button type="button" id="backBtn" style="background-color: #164A83;"><span style="background-color: #164A83; color:white; font-size:30px;">&#8592;</span></button>
-<h2 class="heading">Add Skill</h2>
-<form  id="form1" method="post" action="" >
-    <label for="skillTitle">Skill Title:</label>
+    <button type="button" id="backBtn" style="background-color: #164A83;"><span
+        style="background-color: #164A83; color:white; font-size:30px;">&#8592;</span></button>
+    <h2 class="heading">Add Skill</h2>
+    <form id="form1" method="post" action="">
+      <label for="skillTitle">Skill Title:</label>
 
-    <input type="text" id="project-title" name="skillTitle" ><br><br>
- 
-    <label for="skillDescription">Skill Description:</label>
-    <textarea id="project-description" name="skillDescription" required></textarea><br><br>
- 
-    
-    
- 
-    <input id="submitBtn" type="submit" value="Submit">
-</form>
- 
-    </div>
+      <input type="text" id="project-title" name="skillTitle"><br><br>
+
+      <label for="skillDescription">Skill Description:</label>
+      <textarea id="project-description" name="skillDescription" required></textarea><br><br>
+
+
+
+
+      <input id="submitBtn" type="submit" value="Submit">
+    </form>
+
+  </div>
   <script>
     window.addEventListener('scroll', function () {
       var nav = document.querySelector('nav');
@@ -311,17 +317,17 @@
 
     //add skill
 
-     document.getElementById('addBtn').addEventListener('click', () => {
-         //   window.location.href = '/api/projectauth/addProjects';
-            document.getElementById('cont1').style.display='none';
-            document.getElementById('cont2').style.display='block';
-              document.getElementById('form1').action='/api/achievementsauth/add_project';
+    document.getElementById('addBtn').addEventListener('click', () => {
+      //   window.location.href = '/api/projectauth/addProjects';
+      document.getElementById('cont1').style.display = 'none';
+      document.getElementById('cont2').style.display = 'block';
+      document.getElementById('form1').action = '/api/achievementsauth/add_project';
 
 
 
-        });
+    });
 
- 
+
     ///all conformition dilogue to all delete btn.. btn are variable in number whose values are not known
     var deleteBtn = document.getElementsByClassName('delete-btn');
     for (var i = 0; i < deleteBtn.length; ++i) {
@@ -332,62 +338,62 @@
       })
     }
     //////////////////////////////
-//edit
+    //edit
 
     document.getElementById('submitBtn').addEventListener('click', () => {
-         //   window.location.href = '/api/projectauth/addProjects';
-            document.getElementById('cont1').style.display='block';
-            document.getElementById('cont2').style.display='none';
-        });
+      //   window.location.href = '/api/projectauth/addProjects';
+      document.getElementById('cont1').style.display = 'block';
+      document.getElementById('cont2').style.display = 'none';
+    });
 
 
-  var id;
+    var id;
 
-            function func(d){
-               console.log(d);
-             document.body.style.backgroundColor = " #063670"
-             document.getElementById('cont1').style.display='none';
-            document.getElementById('cont2').style.display='block';
-
-             
-            const request=new XMLHttpRequest();
-  request.open('Get', `/api/achievementsauth/get_data?id=${d}`);
-  request.onload =()=>{
-     const results=JSON.parse(request.responseText);
-   // console.log(results);
-  console.log(results);
-     
-     let html=``;
-     if(results.length>0){
-
-         document.getElementById('project-title').value=results[0].skillTitle;
-          document.getElementById('project-description').value=results[0].skillDescription;
-        
-               document.getElementById('form1').action=`/api/achievementsauth/updateProjects?id=${results[0].id}`;
-            
-
-     }
-     
-  };
-  request.send()
+    function func(d) {
+      console.log(d);
+      document.body.style.backgroundColor = " #063670"
+      document.getElementById('cont1').style.display = 'none';
+      document.getElementById('cont2').style.display = 'block';
 
 
-                  
-            }
-       
+      const request = new XMLHttpRequest();
+      request.open('Get', `/api/achievementsauth/get_data?id=${d}`);
+      request.onload = () => {
+        const results = JSON.parse(request.responseText);
+        // console.log(results);
+        console.log(results);
 
-       
-          
+        let html = ``;
+        if (results.length > 0) {
+
+          document.getElementById('project-title').value = results[0].skillTitle;
+          document.getElementById('project-description').value = results[0].skillDescription;
+
+          document.getElementById('form1').action = `/api/achievementsauth/updateProjects?id=${results[0].id}`;
+
+
+        }
+
+      };
+      request.send()
+
+
+
+    }
+
+
+
+
            // var    
 
- 
 
 
 
 
 
- 
+
+
   </script>
 </body>
- 
+
 </html>
