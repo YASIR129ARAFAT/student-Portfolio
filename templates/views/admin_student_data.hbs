@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #006699;
+      color: white;
+      padding: 10px;
+      padding-top: 0px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    table {
+
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10%;
+    }
+
+    table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .row-heading {
+      font-weight: bold;
+      background-color: #f5f5f5;
+    }
+
+    .row-data {
+      text-align: center;
+    }
+
+    #hell {
+      text-align: center;
+    }
+
+    td {
+      text-transform: capitalize;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    #editBtn{
+      margin-top:4px;
+    }
+     #backBtn{
+      margin-left: 1%;
+      
+      text-decoration: none;
+      color: white;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class='header'>
+    <a id="backBtn" href="/api/adminRegisterAuth/admin_home">back</a>
+    <h1 style="text-align:center;">User details</h1>
+  </div>
+  <main>
+    <table>
+
+      <tr class="row-heading">
+        <td>Name</td>
+        <td>{{result.[0].name}}</td>
+      </tr>
+      <tr class="row-heading">
+
+        <td>Email</td>
+        <td>{{result.[0].email}} </td>
+      </tr>
+      <tr class="row-heading">
+
+        <td>Mobile Number</td>
+        <td>{{result.[0].mobile_no}} </td>
+      </tr>
+
+
+      <tr class="row-heading">
+        <td>Date of Birth</td>
+        {{!-- <td>{{result.[0].dob}}</td> --}}
+        <td>{{result.[0].dob}}</td>
+      </tr>
+      <tr class="row-heading">
+
+        <td>Address</td>
+        <td> {{result.[0].address}}</td>
+      </tr>
+      <tr class="row-heading">
+        <td>Enrolment Number</td>
+        <td> {{result.[0].enroll_no}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Programme</td>
+        <td>  {{result.[0].program}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Department</td>
+        <td>  {{result.[0].dept}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Year</td>
+        <td>  {{result.[0].year}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Semester</td>
+        <td>  {{result.[0].semester}}</td>
+      </tr>
+
+
+
+    </table>
+    
+  </main>
+  <script>
+    var newDob = ${result.[0].dob}
+    newDob.slice(0,16);
+  </script>
+</body>
+
+</html>

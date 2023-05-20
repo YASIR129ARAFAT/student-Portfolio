@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Links</title>
+  <style>
+    body {
+      background-color: #F2F2F2;
+    }
+
+    form {
+      background-color: white;
+      color: #164A83;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      width: 50%;
+      margin: 50px auto;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    input[type="url"] {
+      width: 95%;
+      padding: 9px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #F2F2F2;
+    }
+
+    input[type="submit"] {
+      background-color: #164A83;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0a305a;
+    }
+
+    input,
+    textarea {
+      outline: 2px solid #164A83;
+    }
+
+    .heading {
+      color: #164A83;
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    #submitBtn {
+      display: block;
+      margin: 0 auto;
+    }
+
+    #backBtn {
+      border: none;
+      box-shadow: none;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 20px;
+      padding: 5px 10px;
+      background-color: #F2F2F2;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <button type="button" id="backBtn">&#8592;</button>
+  <br><br>
+  <h2 class="heading">Social Media Links</h2>
+  
+  <form method="post" action="/addLinks">
+    <label for="githubLink">GitHub Link:</label>
+    <input type="url" id="githubLink" name="gitHubLink" placeholder="https://github.com/your-username"><br>
+
+    <label for="instagramLink">Instagram Link:</label>
+    <input type="url" id="instagramLink" name="instagramLink" placeholder="https://www.instagram.com/your-username/"><br>
+
+    <label for="twitterLink">Twitter Link:</label>
+    <input type="url" id="twitterLink" name="twitterLink" placeholder="https://twitter.com/your-username"><br>
+
+    <input id="submitBtn" type="submit" value="Save Links">
+  </form>
+
+  <script>
+    var backBtn = document.getElementById('backBtn');
+    backBtn.addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+
+</html>

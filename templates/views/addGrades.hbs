@@ -79,7 +79,7 @@
 </style>
  
 <body>
-    <a href="/cgpa" style="text-decoration:none;"><span style="color: #fdfdfd; font-size:30px;">&#8592;</span></a>
+    <a href="/api/cgpa/adminCgpa" style="text-decoration:none;"><span style="color: #fdfdfd; font-size:30px;">&#8592;</span></a>
     <h1 style="text-align: center; color: white;">Add Semester's Grades</h1>
     {{#if flag}}
     <h4 id="successMessage" style="text-align: center; color: rgb(212, 117, 28);">Succesfully added</h4>
@@ -88,8 +88,7 @@
         <label for="semester">Semester:</label>
         <input type="number" name="semester" required placeholder="Semester number"><br>
  
-        <label for="enrollment">Enrollment Number:</label>
-        <input type="text" name="enrollment" required placeholder="enrollment number"><br>
+        
  
         <label for="num_subjects">Number of Subjects:</label>
         <select id="num-subjects" name="num_subjects" required>

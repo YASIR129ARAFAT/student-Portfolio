@@ -1,98 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    body {
-        background-color: #164A83;
-    }
- 
-    form {
-        background-color: white;
-        color: #164A83;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        width: 30%;
-        margin: 50px auto;
-    }
- 
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
- 
-    input[type="text"],
-    textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: smokewhite;
-    }
- 
-    input[type="submit"] {
-        background-color: #164A83;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
- 
-    input[type="submit"]:hover {
-        background-color: #063670;
-    }
- 
-    input,textarea{
-        outline: 2px solid #2371c6;
-    }
-    .heading {
-        color: white;
-        margin: 10px auto;
-        text-align: center;
-    }
- 
-    #submitBtn {
-        display: block;
-        margin: 0 auto;
-    }
-    #backBtn{
-        border: none;
-        box-shadow: none;
-        cursor: pointer;
-    }
-</style>
+        body {
+            background-color: #164A83;
+        }
+
+        form {
+            background-color: white;
+            color: #164A83;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 30%;
+            margin: 50px auto;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 95%;
+            padding: 9px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: smokewhite;
+        }
+
+        input[type="submit"] {
+            background-color: #164A83;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #063670;
+        }
+
+        input,
+        textarea {
+            outline: 2px solid #2371c6;
+        }
+
+        .heading {
+            color: white;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        #submitBtn {
+            display: block;
+            margin: 0 auto;
+        }
+
+        #backBtn {
+            border: none;
+            box-shadow: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
 
-<button type="button" id="backBtn" style="background-color: #164A83;"><span style="background-color: #164A83; color:white; font-size:30px;">&#8592;</span></button>
-<h2 class="heading">Edit Projects</h2>
-<form  method="post" action="/api/projectauth/updateProjects"  >
-   
- 
-    <label for="projectDescription">Project Description:</label>
-    <textarea id="project-description" name="projectDescription" required></textarea><br><br>
- 
-    <label for="gitHubLink">GitHub Link:</label>
-    <input type="text" id="github-link" name="gitHubLink" required><br><br>
- 
-    <label for="instructor">Instructors:</label>
-    <input type="text" id="instructors" name="instructor"><br><br>
- 
-    <input id="submitBtn" type="submit" value="Submit">
-</form>
- 
-<script>
-    var backBtn = document.getElementById('backBtn');
-    backBtn.addEventListener('click',()=>{
-        window.location.href = '/projects';
-    })
-</script>
+    <button type="button" id="backBtn" style="background-color: #164A83;"><span
+            style="background-color: #164A83; color:white; font-size:30px;">&#8592;</span></button>
+    <h2 class="heading">Edit Projects</h2>
+    <form method="post" action="/api/projectauth/updateProjects">
+
+        <label for="projectDescription">Project Description:</label>
+        <textarea type="text" id="project-description" name="projectDescription" required>{{result.[0].projectDescription}}</textarea><br><br>
+
+        <label for="gitHubLink">GitHub Link:</label>
+        <input type="text" id="github-link" name="gitHubLink" value="{{result.[0].gitHubLink}}" required><br><br>
+
+        <label for="instructor">Instructors:</label>
+        <input type="text" id="instructors" name="instructor" value="{{result.[0].instructor}}"><br><br>
+        <input type="hidden" name="id" value="{{result.[0].id}}">
+        <input id="submitBtn" type="submit" value="Submit">
+    </form>
+
+    <script>
+        var backBtn = document.getElementById('backBtn');
+        backBtn.addEventListener('click', () => {
+            window.location.href = '/api/projectauth/projects';
+        })
+    </script>
 </body>
+
 </html>

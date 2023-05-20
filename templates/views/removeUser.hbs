@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove User</title>
+    <style>
+        body {
+            background-color: white;
+            color: white;
+        }
+
+        form {
+            margin: 50px auto;
+            width: 50%;
+            padding: 20px;
+            background-color:  #164A83;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color:  #092748;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #heading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10% 0px auto;
+            color: #130f40;
+        }
+    </style>
+</head>
+<body>
+
+     <a href="/api/adminRegisterAuth/admin_home" style="text-decoration:none;"><span style="color: #164A83; font-size:30px;">&#8592;</span></a>
+    <h1 id="heading">Remove user</h1>
+    <form action="/api/registerauth/remove" method="post">
+        <label>userId</label>
+        <input type="text" name="userId">
+        <input id="submitBtn" type="submit" value="Remove">
+    </form>
+    <script>
+        
+    </script>
+</body>
+</html>

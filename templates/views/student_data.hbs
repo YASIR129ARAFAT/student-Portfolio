@@ -1,35 +1,187 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Student Details</title>
-  </head>
-  <body>
-    <h1>Student Details</h1>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #164A83;
+      color: white;
+      padding: 10px;
+      padding-top: 0px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    table {
+
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10%;
+    }
+
+    table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .row-heading {
+      font-weight: bold;
+      background-color: #f5f5f5;
+    }
+
+    .row-data {
+      text-align: center;
+    }
+
+    #hell {
+      text-align: center;
+    }
+
+    td {
+      text-transform: capitalize;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    #editBtn {
+      margin-top: 4px;
+    }
+
+    #backBtn {
+      margin-left: 1%;
+
+      text-decoration: none;
+      color: white;
+    }
+
+    #message {
+      color: coral;
+    }
+
+    .toggleDiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .toggleDiv a{
+      margin: 5px 10px;
+      text-decoration: none;
+      text-transform: capitalize;
+      color: whitesmoke;
+
+    }
+
+    #editBtn{
+      background-color:  #164A83;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+    
+
+
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class='header'>
+    <a id="backBtn" href="/student_profile">Back</a>
+    <h1 style="text-align:center;">User details</h1>
+  </div>
+  <h3 id="message" style="text-align: center;">{{message}}</h3>
+  <main>
     <table>
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Gender</th>
-        <th>Address</th>
+
+
+      <tr class="row-heading">
+        <td>Name</td>
+        <td>{{result.[0].name}}</td>
       </tr>
-      <tr>
-        <td>John Doe</td>
-        <td>19</td>
-        <td>Male</td>
-        <td>123 Main Street, Anytown USA</td>
+      <tr class="row-heading">
+
+        <td>Email</td>
+        <td>{{result.[0].email}} </td>
       </tr>
-      <tr>
-        <td>Jane Smith</td>
-        <td>21</td>
-        <td>Female</td>
-        <td>456 Oak Avenue, Anytown USA</td>
+      <tr class="row-heading">
+
+        <td>Mobile Number</td>
+        <td>{{result.[0].mobile_no}} </td>
       </tr>
-      <tr>
-        <td>Alex Johnson</td>
-        <td>20</td>
-        <td>Non-binary</td>
-        <td>789 Elm Drive, Anytown USA</td>
+
+
+      <tr class="row-heading">
+        <td>Date of Birth</td>
+        {{!-- <td>{{result.[0].dob}}</td> --}}
+        <td>{{result.[0].dob}}</td>
       </tr>
+      <tr class="row-heading">
+
+        <td>Address</td>
+        <td> {{result.[0].address}}</td>
+      </tr>
+      <tr class="row-heading">
+        <td>Enrolment Number</td>
+        <td> {{result.[0].enroll_no}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Programme</td>
+        <td> {{result.[0].program}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Department</td>
+        <td> {{result.[0].dept}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Year</td>
+        <td> {{result.[0].year}}</td>
+      </tr>
+
+      <tr class="row-heading">
+        <td>Semester</td>
+        <td> {{result.[0].semester}}</td>
+      </tr>
+
+
+
     </table>
-  </body>
+
+    <div class="toggleDiv">
+      <a id="editBtn"
+        href="/api/linkauth/getEditMyProfile?mobile_no={{result.[0].mobile_no}}&address={{result.[0].address}}&year={{result.[0].year}}&email={{result.[0].email}}">edit
+        details
+      </a>
+      
+    </div>
+  </main>
+  <script>
+    var message = document.getElementById('message');
+    setTimeout(() => {
+      message.innerHTML = '';
+    }, 2500)
+  </script>
+</body>
+
 </html>

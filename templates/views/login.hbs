@@ -1,176 +1,3 @@
-{{!-- <html>
-
-<head>
-  <title>Login</title>
-
-  <style>
-    body {
-      height: 100vh;
-      width: 100vw;
-      background-color: white;
-    }
-
-
-    h1 {
-      text-align: center;
-      font-size: 36px;
-      margin-bottom: 50px;
-    }
-
-    form {
-      width: 400px;
-      margin: 0 auto;
-      padding: 30px;
-      opacity: 1;
-
-      background-color: rgb(243, 243, 243);
-      border-radius: 10px;
-    }
-
-    label {
-      font-size: 20px;
-      width: 100%;
-      text-align: left;
-      margin-bottom: 10px;
-
-    }
-
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 18px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      color: #000000;
-    }
-
-    input[type="submit"] {
-      width: 100%;
-
-      padding: 12px 20px;
-      background-color: #6ebbeb;
-      color: rgb(255, 255, 255);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    img {
-      height: 100vh;
-      width: 100vw;
-    }
-
-    label {
-      text-transform: capitalize;
-      color: #b08585;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px 20px;
-      background-color: #52b6d7;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-      margin-top: 20px;
-    }
-
-    .forms {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffffff;
-      color: #000000;
-      border-radius: 20px;
-      text-transform: uppercase;
-
-    }
-
-    h1 {
-      color: rgb(255, 0, 106);
-    }
-
-    img {
-      height: 20px;
-      width: 20px;
-    }
-
-    .social_account {
-      display: flex;
-      height: 30px;
-      align-items: center;
-      justify-content: center;
-      margin-block-start: 10px;
-      padding: 10px 10px;
-    }
-
-    a {
-      margin-left: 30px;
-    }
-
-    h1 {
-      color: #92a5b0;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="forms">
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}} &times;</span>
-    </div>
-
-  </div>
-
-
-  <div class="main">
-
-
-    <div class="container">
-
-    </div>
-    <div class="container2">
-      <h1>LOGIN</h1>
-
-      <form action="/api/loginauth/login" method="post" name="login">
-
-        <input type="text" id="username" name="custid" placeholder="ID"><br><br>
-        <input type="password" id="password" name="password" placeholder="password"><br><br>
-
-        <input id="btn" type="submit" value="Login">
-        <button><span>Don't have an account?</span><a href="/api/registerauth/register">Register</a></button>
-
-
-        <button><a href="/api/auth/forget-password/">Forget Password</a></button>
-        <div class="social_account">
-          <h4>Sign in With Socail Account</h1>
-            <a href="/auth/google"><img src="images/google.png" alt=""></a>
-            {{!-- <a href="/auth/facebook"><img src="images/facebook.png" alt=""></a>
-            <a href="/auth/github"><img src="images/github-logo.png" alt=""></a> --}}
-        </div>
-
-      </form>
-    </div>
-  </div>
-  <script>
-
-    console.log({{ email }});
-
-  </script>
-</body>
-
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -179,77 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Radius - Signin/Signup</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+
+      
     <script>
-        function checkCombination(Password) {
-            let flag_alpha = false;
-            let flag_num = false;
-            let flag_nonalphanum = false;
-            for (let i = 0; i < Password.length; ++i) {
-                if ('0' <= Password[i] && Password[i] <= '9') {
-                    flag_num = true;
-                }
-                if (('a' <= Password[i] && Password[i] <= 'z') || ('A' <= Password[i] && Password[i] <= 'Z')) {
-                    flag_alpha = true;
-                } else {
-                    flag_nonalphanum = true;
-                }
-            }
-            return flag_alpha && flag_nonalphanum && flag_num;
-        }
+
 
         function validateForm() {
-            var fullName = document.forms["register"]["fullName"].value;
+            // get form elements
             var email = document.forms["register"]["email"].value;
-            var Password = document.forms["register"]["Password"].value;
+            var fullName = document.forms["register"]["fullName"].value;
+            var id = document.forms["register"]["id"].value;
 
-            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            var mobileNumberRegex = /^[6-9]\d{9}$/;
-            var passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
-
-            if (!fullName || !email || !Password) {
-                alert("All fields are required");
+            // check if required fields are empty
+            if (email == "" || fullName == "" || id == "") {
+                swal("Please fill in all required fields.");
                 return false;
             }
 
+            // check email format
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert("Enter a valid email address");
+                alert("Please enter a valid email address.");
                 return false;
             }
 
-            if (!checkCombination(Password)) {
-                alert("Password must conatain alpha, num, non-alphanumerics");
-                return false;
-            }
-
-            if (Password.length < 8) {
-                alert("Password must be of 8 or more characters");
-                return false;
-            }
-            const xhr = new XMLHttpRequest();
-            xhr.open("post", "/checkemail");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    const response = JSON.parse(xhr.responseText);
-                    if (response.exists) {
-                        document.getElementById("emailError").innerHTML =
-                            "This email is already taken. Please choose a different email.";
-                        alert("This email is already taken. Please choose a different email");
-                        return false;
-                    } else {
-                        document.getElementById("emailError").innerHTML = "";
-                        document.getElementById("myForm").submit();
-                    }
-                } else {
-                    document.getElementById("emailError").innerHTML =
-                        "Error occurred while checking email. Please try again later.";
-                    alert("Error occurred while checking email. Please try again later");
-                    return false;
-                }
-            };
-            xhr.send(JSON.stringify({
-                email: email
-            }));
+            // form is valid
             return true;
         }
     </script>
@@ -268,7 +51,7 @@
         .wrapper {
             height: 120%;
             width: 100%;
-            background: linear-gradient(180deg, #14f1f5, 5%, #119dff, 50%, #107cca);
+            background: linear-gradient(180deg, #695aa6, 5%, #7f85ae, 50%, #7c82b0);
             position: absolute;
         }
 
@@ -505,8 +288,8 @@
 
         button {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background: #008ecf;
+            border: 1px solid #695aa6;
+            background: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -518,8 +301,8 @@
 
         #button {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background-color: #008ecf;
+            border: 1px solid #695aa6;
+            background-color: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -531,8 +314,8 @@
 
         #button1 {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background-color: #008ecf;
+            border: 1px solid #695aa6;
+            background-color: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -600,8 +383,7 @@
         }
 
         .overlay {
-            background: #ff416c;
-            background: linear-gradient(to right, #008ecf, #008ecf) no-repeat 0 0 / cover;
+            background: #5c6096;
             color: #fff;
             position: relative;
             left: -100%;
@@ -666,7 +448,15 @@
         .container.right-panel-active .overlay-right {
             transform: translateY(20%);
         }
+        #flash{
+            z-index: 1;
+            margin-bottom: 40px;
+            text-transform: capitalize
+            ;
+            color: rgb(215, 109, 201);
+        }
     </style>
+ 
 </head>
 
 <body>
@@ -689,11 +479,12 @@
         <div><span class="dot"></span></div>
         <div><span class="dot"></span></div>
     </div>
-
-
+        
+         <h3 id="flash"> {{message}}</h1>
+        
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="/api/adminRegisterAuth/register" method="post" id="register" onsubmit="return validateForm()">
+            <form action="/api/registerauth/register" method="post" id="register" onsubmit="return validateForm()">
                 <h1>Create Account</h1>
                 <br>
                 <span>or use your social account for registration</span>
@@ -703,32 +494,16 @@
                 </div>
                 <input name="email" placeholder="Email" type="text" />
                 <input name="fullName" placeholder="Full Name" type="text" />
-                <input name="Password" placeholder="Password" type="Password" />
+                <input name="id" placeholder="ID" type="text" />
                 <input id="button" value="Sign Up" type="submit" />
 
             </form>
         </div>
         <div class="form-container sign-in-container">
-            {{!-- <form action="/api/adminRegisterAuth/login" method="post" id="login">
-                <h1>Sign in</h1>
-                <br>
-                <span>or use your account
-                </span>
-
-                <div class="social-container">
-                    <a href="#" class="social"><img src="https://img.freepik.com/free-icon/search_318-265146.jpg"><i
-                            class="fab fa-google-plus-g"></i></a>
-                </div>
-                <input name="email" placeholder="Email" type="text" />
-                <input name="Password" placeholder="Password" type="Password" />
-                <a href="">Forgot your password?</a>
-                <input id="button1" class="btn" type="submit" value="Sign In">
-
-            </form> --}}
             <form action="/api/loginauth/login" method="post" name="login">
                 <h1>Sign in</h1>
                 <br>
-                <span>or use yout account</span>
+                <span>or use your account</span>
                 <div class="social-container">
                     <a href="#" class="social"><img src="https://img.freepik.com/free-icon/search_318-265146.jpg"><i
                             class="fab fa-google-plus-g"></i></a>
@@ -742,7 +517,8 @@
 
                 {{!-- <input id="btn" class="btn" type="submit" value="Login"> --}}
                 <input id="button1" class="btn" type="submit" value="Sign In">
-                {{!-- <button><span>Don't have an account?</span><a href="/api/registerauth/register">Register</a></button> --}}
+                {{!-- <button><span>Don't have an account?</span><a
+                        href="/api/registerauth/register">Register</a></button> --}}
 
 
             </form>
@@ -772,7 +548,14 @@
 
         signInButton.addEventListener('click', () =>
             container.classList.remove('right-panel-active'));
+          let id= document.getElementById('flash');
+        setTimeout(function(){
+    // Find the alert element and hide it
+    var alertElement = document.getElementById("flash");
+    alertElement.style.display = "none";
+}, 3000);
     </script>
+   
 </body>
 
 </html>

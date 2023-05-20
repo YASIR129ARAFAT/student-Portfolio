@@ -5,7 +5,7 @@ var store = require("store-js");
 
 const middlewares = require("../utils/verifyUser.js");
 //to render project page
-router.get("/student_non_academic_skill", middlewares.verifyUser, async (req, res) => {
+router.get("/student_non_academic_skill", middlewares.verifyUser, async (req, res) =>{
   try {
     var sql = `SELECT * FROM non_academic_achievements  where enrolment_no="${req.user.enroll_no}"`;
     con.query(sql, (error, result) => {
@@ -120,12 +120,12 @@ router.get("/get_data2", middlewares.verifyUser, (req, res, next) => {
 //edit non acad skill
 router.post("/updateProjects", (req, res, next) => {
   var projectDes = req.body.skillDescription;
-   
+  var skillTitle = req.body.skillTitle;
 
   var id = req.query.id;
-  //console.log(id + "update");
+  console.log(skillTitle);
 
-  var sql = `update   non_academic_achievements set skillDescription="${projectDes}"    where id=?`;
+  var sql = `update   non_academic_achievements set skillDescription="${projectDes}", skillTitle='${skillTitle}' where id=?`;
   con.query(sql, [id], function (err, result) {
     if (err) {
       //  req.flash("message", "customer Id already exist");
@@ -140,12 +140,25 @@ router.post("/updateProjects", (req, res, next) => {
   });
 });
 
-
-
-
-
-
-//to get data from project overview table and show in database
+///
+router.get("/admin_student_non_academic_skill", middlewares.verifyUser, async (req, res) =>{
+  try {
+    var sql = `SELECT * FROM non_academic_achievements  where enrolment_no="${req.user.enroll_no}"`;
+    con.query(sql, (error, result) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.render("admin_student_non_academic_skill", {
+          skills: result,
+        });
+      }
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+});
 
 
 

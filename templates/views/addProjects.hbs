@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+<style>
     body {
         background-color: #164A83;
+        background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+        /*ch*/
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     }
- 
+
     form {
         background-color: white;
         color: #164A83;
@@ -19,13 +16,13 @@
         width: 30%;
         margin: 50px auto;
     }
- 
+
     label {
         display: block;
         font-weight: bold;
         margin-bottom: 10px;
     }
- 
+
     input[type="text"],
     textarea {
         width: 100%;
@@ -35,7 +32,7 @@
         border-radius: 5px;
         background-color: smokewhite;
     }
- 
+
     input[type="submit"] {
         background-color: #164A83;
         color: white;
@@ -44,57 +41,57 @@
         border-radius: 5px;
         cursor: pointer;
     }
- 
+
     input[type="submit"]:hover {
         background-color: #063670;
     }
- 
-    input,textarea{
+
+    input,
+    textarea {
         outline: 2px solid #2371c6;
     }
+
     .heading {
         color: white;
         margin: 10px auto;
         text-align: center;
     }
- 
+
     #submitBtn {
         display: block;
         margin: 0 auto;
     }
-    #backBtn{
+
+    #backBtn {
         border: none;
         box-shadow: none;
         cursor: pointer;
+        background-color: #1c437a;
     }
 </style>
-</head>
-<body>
-
-<button type="button" id="backBtn" style="background-color: #164A83;"><span style="background-color: #164A83; color:white; font-size:30px;">&#8592;</span></button>
+<br><br>
+<button type="button" id="backBtn" style="background-color: transparent;"><span
+        style="background-color: transparent; color:white; font-size:30px;">&#8592;</span></button>
 <h2 class="heading">Add Projects</h2>
-<form  method="post" action="/api/projectauth/add_project"  >
-    <label for="projectTitle">Project Title:</label>
-
+<form action="/api/projectauth/add_project" method="post">
+    <label for="project-title">Project Title:</label>
     <input type="text" id="project-title" name="projectTitle" required><br><br>
- 
-    <label for="projectDescription">Project Description:</label>
+
+    <label for="project-description">Project Description:</label>
     <textarea id="project-description" name="projectDescription" required></textarea><br><br>
- 
-    <label for="gitHubLink">GitHub Link:</label>
+
+    <label for="github-link">GitHub Link:</label>
     <input type="text" id="github-link" name="gitHubLink" required><br><br>
- 
-    <label for="instructor">Instructors:</label>
+
+    <label for="instructors">Instructors:</label>
     <input type="text" id="instructors" name="instructor"><br><br>
- 
+
     <input id="submitBtn" type="submit" value="Submit">
 </form>
- 
+
 <script>
     var backBtn = document.getElementById('backBtn');
-    backBtn.addEventListener('click',()=>{
-        window.location.href = '/projects';
+    backBtn.addEventListener('click', () => {
+        window.location.href = '/api/projectauth/projects';
     })
 </script>
-</body>
-</html>

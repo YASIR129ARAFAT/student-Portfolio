@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Meyawo landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Hello</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="/assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="/assets/css/meyawo.css">
+    <style>
+        #search {
+            float: left;
+        }
+
+        #search-results {
+            position: absolute;
+            overflow-y: auto;
+            height: 100px;
+            display: none;
+            margin-top: 5px;
+            border-radius: 10px;
+            width: 200px;
+            border: 1px solid rgb(67, 0, 11);
+            background-color: #FFF;
+
+        }
+
+        #imgId {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <img id="imgId" src="/images/user.png" alt="">
+            <a class="logo" href="#">Portfolio</a>
+            <ul class="nav">
+
+                <li class="item ml-md-3">
+                    <a href="/api/loginauth/user_land" class="link">Return To Home Page</a>
+                </li>
+
+
+
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    </nav><!-- End of Page Navbar -->
+
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+
+        <div class="header-content container" id="namedept">
+            {{!-- body from func4 --}}
+        </div>
+
+
+
+    </header><!-- end of page header -->
+
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- about wrapper -->
+            <div class="about">
+                <div class="about-img-holder">
+                    <img src="/assets/imgs/man.png" class="about-img"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                </div>
+                <div class="about-caption" id="aboutMe">
+
+                    {{!-- from fun4 --}}
+
+                </div>
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
+
+
+    <!-- pricing section -->
+    <section class="section" id="pricing">
+        <div class="container text-center">
+            <p class="section-subtitle">What I Did ?</p>
+            <h6 class="section-title mb-6">My Projects</h6>
+            <!-- row -->
+            <div class="pricing-wrapper" id="projects">
+
+
+
+            </div><!-- end of pricing wrapper -->
+        </div> <!-- end of container -->
+    </section><!-- end of pricing section -->
+
+
+
+    <!-- blog section(academic achievements) -->
+    <section class="section" id="blog">
+        <!-- container -->
+        <div class="container text-center">
+            <p class="section-subtitle">What I Achieved</p>
+            <h6 class="section-title mb-6">My Achievements</h6>
+            <!-- blog-wrapper -->
+            <div class="pricing-wrapper" id="achievements">
+
+
+
+            </div>
+        </div><!-- end of container -->
+    </section><!-- end of blog section -->
+    <!-- non- academic extra curricular-->
+    <section class="section" id="blog">
+        <!-- container -->
+        <div class="container text-center" id="non-acad">
+            <p class="section-subtitle">Non Acads</p>
+            <h6 class="section-title mb-6">My Extra Curriculars</h6>
+            <!-- blog-wrapper -->
+            <div class="pricing-wrapper" id="extra-cur">
+
+
+
+            </div>
+        </div><!-- end of container -->
+    </section><!-- end of blog section -->
+
+    <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <p class="section-subtitle">How can you communicate?</p>
+            <h6 class="section-title mb-5">Contact Me</h6>
+            <!-- contact form -->
+            <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="email" class="form-control" placeholder="Enter Email" requried>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <textarea name="comment" id="comment" rows="6" class="form-control"
+                            placeholder="Write Something"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="Send Message" class="btn btn-outline-primary rounded">
+                    </div>
+                </div>
+            </form><!-- end of contact form -->
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">
+            <p class="mb-0">Copyright
+                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#">Student Portfolio</a>
+            </p>
+            <div class="social-links text-right m-auto ml-sm-auto" id="social">
+
+                {{!-- from func4 --}}
+
+            </div>
+        </footer>
+    </div> <!-- end of page footer -->
+
+    <!-- core  -->
+    <script src="/assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="/assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Meyawo js -->
+    <script src="/assets/js/meyawo.js"></script>
+
+    <script>
+        // fetching projects
+        func2()
+        function func2() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/searchedUser/get_data2`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += `
+                         <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <img class="pricing-card-icon" src="/assets/imgs/scooter.svg"
+                            alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                    </div>
+                    <h6 class="pricing-card-title">${result.projectTitle}</h6>
+                    <p>
+                        ${result.projectDescription}
+                    </p>
+                    <a href="${result.gitHubLink}" class="btn btn-primary mt-3 pricing-card-btn">Github Link</a>
+                </div>
+                        `
+                    });
+                    var data = document.getElementById('projects');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+
+        // fetching achievements
+        func1()
+        function func1() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/searchedUser/get_data3`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += `
+                           <div class="pricing-card">
+                <div class="pricing-card-header">
+                    <img class="pricing-card-icon"src="/images/achievement.png"
+                        alt="not found">
+                </div>
+            
+                    <h5 class="pricing-card-title">${result.skillTitle}</h6>
+
+                        <p>${result.skillDescription}</p>
+
+
+            
+            </div>
+                        `
+                    });
+                    var data = document.getElementById('achievements');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+
+        // fetching non-academin (extra-curricular)
+        func3()
+        function func3() {
+            var start_index = 0;
+            var number_of_records = 10;
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/searchedUser/get_data4`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html += `
+                            <div  class="pricing-card">
+                <div class="pricing-card-header">
+                    <img class="pricing-card-icon" src="/images/champion.png"
+                        alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
+                </div>
+                
+                    <h5 class="pricing-card-title">${result.skillTitle}</h6>
+
+                        <p>${result.skillDescription}</p>
+
+
+
+            </div>
+                        `
+                    });
+                    var data = document.getElementById('extra-cur');
+                    data.innerHTML += html;
+                }
+            };
+            request.send()
+        }
+
+        // name, github link, p_description, resume
+        func4();
+        function func4() {
+
+            const request = new XMLHttpRequest();
+            request.open('Get', `/api/searchedUser/get_data5`);
+            request.onload = () => {
+                const results = JSON.parse(request.responseText);
+
+                let html = ``;
+                if (results.length > 0) {
+                    console.log(results[0].profile_pic);
+                    if (results[0].profile_pic != '') {
+                        document.getElementById('imgId').src = `/images/${results[0].profile_pic}`
+                    }
+                    results.forEach(result => {
+                        html += `
+
+            <h1 class="header-title">
+                <span class="up">HI!</span>
+                <span class="down">I am ${result.name}</span>
+            </h1>
+            <p class="header-subtitle">${result.dept}</p>
+
+            <a href="${result.github}" target="_blank" class="btn btn-primary">Visit My Works</a>
+
+                        `
+                    });
+                    var data = document.getElementById('namedept');
+                    data.innerHTML = html;
+                }
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html = `
+                        <p class="section-subtitle">Who Am I ?</p>
+                    <h2 class="section-title mb-3">About Me</h2>
+                    <p> 
+                        ${result.descp}
+                    </p>
+                    <a href="${result.resume}" target="_blank" class="btn-rounded btn btn-outline-primary mt-4">Resume</a>
+                        `
+                    });
+                    var data = document.getElementById('aboutMe');
+                    data.innerHTML = html;
+                }
+                if (results.length > 0) {
+
+                    results.forEach(result => {
+                        html = `
+                        <a href="${result.twitter}" target="_blank" class="link"><i class="ti-twitter-alt"></i></a>
+                        <a href="${result.instagram}" target="_blank" class="link"><i class="ti-instagram"></i></a>
+                        <a href="${result.github}" target="_blank" class="link"><i class="ti-github"></i></a>
+                        `
+                    });
+                    var data = document.getElementById('social');
+                    data.innerHTML = html;
+                }
+            };
+            request.send()
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
+
+{{!-- function for name, github link, person description, resume --}}

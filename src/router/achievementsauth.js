@@ -7,6 +7,8 @@ const middlewares = require("../utils/verifyUser.js");
 
 router.get("/student_achievement", middlewares.verifyUser, async (req, res) => {
   try {
+    
+
     var sql = `SELECT * FROM academic_achievements where enrolment_no="${req.user.enroll_no}" `;
     con.query(sql, (err, result) => {
       if (err) {
@@ -14,6 +16,7 @@ router.get("/student_achievement", middlewares.verifyUser, async (req, res) => {
       } else {
         res.render("student_achievement", {
           skills: result,
+          
         });
       }
     });
@@ -30,8 +33,8 @@ router.get("/deleteAcadSkill", async (req, res) => {
     var sql = `DELETE FROM academic_achievements where id=?`;
     con.query(sql, [id], (error, result) => {
       if (error) {
-       // console.log(error);
-          res.redirect("student_achievement");
+        // console.log(error);
+        res.redirect("student_achievement");
       } else {
         res.redirect("student_achievement");
       }
@@ -46,7 +49,7 @@ router.get("/deleteAcadSkill", async (req, res) => {
 
 router.post("/updateProjects", (req, res, next) => {
   var projectDes = req.body.skillDescription;
-     var projecttitle = req.body.skillTitle;
+  var projecttitle = req.body.skillTitle;
   var id = req.query.id;
   //console.log(id + "update");
 
@@ -76,7 +79,7 @@ router.get("/get_data", (req, res, next) => {
     con.query(sql, [id], (error, result) => {
       if (error) console.log(error);
       else {
-       // console.log(result);
+        // console.log(result);
 
         res.json(result);
       }
@@ -97,8 +100,8 @@ router.get("/get_data2", middlewares.verifyUser, (req, res, next) => {
     con.query(sql, [id], (error, result) => {
       if (error) console.log(error);
       else {
-     //   console.log("pa");
-    //    console.log(result);
+        //   console.log("pa");
+        //    console.log(result);
 
         res.json(result);
       }
@@ -111,7 +114,7 @@ router.get("/get_data2", middlewares.verifyUser, (req, res, next) => {
 });
 
 
-router.post("/add_project",middlewares.verifyUser, (req, res, next) => {
+router.post("/add_project", middlewares.verifyUser, (req, res, next) => {
   //console.log(data);
 
   var title = req.body.skillTitle;
@@ -139,4 +142,25 @@ router.post("/add_project",middlewares.verifyUser, (req, res, next) => {
 });
 
 
-module.exports=router;
+router.get("/admin_student_achievement", middlewares.verifyUser, async (req, res) => {
+  try {
+
+
+    var sql = `SELECT * FROM academic_achievements where enrolment_no="${req.user.enroll_no}" `;
+    con.query(sql, (err, result) => {
+      if (err) {
+        res.render("adminStudentAchievementView");
+      } else {
+        res.render("adminStudentAchievementView", {
+          skills: result,
+        });
+      }
+    });
+  } catch (error) {
+    if (error) {
+      // console.log(error);
+    }
+  }
+});
+
+module.exports = router;

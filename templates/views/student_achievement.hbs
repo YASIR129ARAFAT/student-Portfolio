@@ -36,7 +36,7 @@
       font-weight: bold;
       margin-bottom: 10px;
       text-align: center;
-      background-color: #164A83;
+      background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
       color: #f5f5f5;
       border-radius: 6px;
     }
@@ -49,7 +49,7 @@
     .edit-btn,
     .delete-btn,
     .add-btn {
-      background-color: #164A83;
+      background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
       border: none;
       border-radius: 10px;
       color: #fff;
@@ -187,8 +187,8 @@
 
     input[type="text"],
     textarea {
-      width: 100%;
-      padding: 10px;
+      width: 95%;
+      padding: 9px;
       margin-bottom: 20px;
       border: none;
       border-radius: 5px;
@@ -240,6 +240,13 @@
       box-shadow: none;
       cursor: pointer;
     }
+
+    .logoimage {
+      width: 10rem;
+      height: 3rem;
+      align-items: center;
+      padding: 1rem;
+    }
   </style>
 </head>
 
@@ -247,9 +254,10 @@
   <div id="cont1">
     <nav>
       <div class="logo">
-        <a href="#"><img src="../../public/userImages/student-portfolio-logo.png" alt="Logo"></a>
+        <a href="#"><img class="logoimage" src="/images/student-portfolio-logo.png" alt="Logo"></a>
       </div>
       <ul>
+        <li><a href='/api/loginauth/user_land'>Home</a></li>
         <li><a href='/student_profile'>Profile</a></li>
         <li><a href='/api/projectauth/projects'>Projects</a></li>
         <li><a href='/api/achievementsauth/student_achievement'>Achievements</a></li>
@@ -275,8 +283,11 @@
       <p style="color: red; font-weight:800;">Unverified!! <span>&#10539;&#10539;</span></p>
       {{/if}}
       <div>
+        {{#if flag_edit}}
+        {{else}}
         <button id="editBtn" onclick="func({{this.id}})" class="edit-btn">Edit</button>
         <a class="delete-btn" href="/api/achievementsauth/deleteAcadSkill?id={{this.id}}">Delete</a>
+        {{/if}}
       </div>
     </div>
     {{/each}}
@@ -286,8 +297,8 @@
   </div>
 
   <div style="" class="containerr" style="" id="cont2">
-    <button type="button" id="backBtn" style="background-color: #164A83;"><span
-        style="background-color: #164A83; color:white; font-size:30px;">&#8592;</span></button>
+    <a href="/api/achievementsauth/student_achievement" id="backBtn" style="background-color: transparent;text-decoration:none;"><span
+        style="background-color: transparent; color:#063670; font-size:30px;">&#8592;</span></a>
     <h2 class="heading">Add Skill</h2>
     <form id="form1" method="post" action="">
       <label for="skillTitle">Skill Title:</label>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
   <title>Grades</title>
   <style>
@@ -9,12 +9,12 @@
       color: #333;
       font-family: Arial, sans-serif;
     }
- 
+
     h1 {
       color: #333;
       text-align: center;
     }
- 
+
     .semester {
       background-color: #fff;
       border-radius: 10px;
@@ -25,48 +25,49 @@
       margin-left: 18%;
       transition: all 0.3s ease-in-out;
     }
- 
+
     .semester:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 12px rgba(0, 0, 0, 0.2);
     }
- 
- 
- 
+
+
+
     .semester-title {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 10px;
       text-align: center;
     }
- 
+
     .semester-description {
       font-size: 18px;
       line-height: 1.5;
     }
- 
+
     table {
       border-collapse: collapse;
       width: 100%;
     }
- 
+
     th,
     td {
       text-align: center;
       padding: 8px;
       border-bottom: 1px solid #ddd;
     }
- 
+
     th {
-      background-color: #164A83;
+      background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
       border-radius: 5px;
     }
- 
+
     .subCode {
       width: 24%;
     }
- 
+
     .edit-btn,
     .delete-btn,
     .addGradeBtn {
@@ -81,10 +82,10 @@
       padding: 10px 20px;
       text-decoration: none;
     }
- 
- 
+
+
     @media only screen and (max-width: 768px) {
- 
+
       .edit-btn,
       .delete-btn,
       .addGradeBtn {
@@ -94,9 +95,9 @@
         margin-top: 10px;
       }
     }
- 
+
     @media only screen and (max-width: 480px) {
- 
+
       .edit-btn,
       .delete-btn,
       .addGradeBtn {
@@ -106,7 +107,7 @@
         margin-top: 8px;
       }
     }
- 
+
     .edit-btn:hover,
     .delete-btn:hover,
     .addGradeBtn :hover {
@@ -117,34 +118,34 @@
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
       transition: box-shadow 0.2s ease-in-out;
     }
- 
+
     @keyframes gradient-animation {
       0% {
         background-position: 0% 50%;
       }
- 
+
       50% {
         background-position: 100% 50%;
       }
- 
+
       100% {
         background-position: 0% 50%;
       }
     }
- 
- 
- 
+
+
+
     .addGradeBtn {
       margin-top: 10px;
       width: 40%;
       margin-bottom: 70px;
     }
- 
+
     .addBtnDiv {
       display: flex;
       justify-content: center;
     }
- 
+
     .avgCgpa {
       margin-left: 45%;
       color: #164A83;
@@ -156,29 +157,29 @@
       border-radius: 10px;
       padding: 5px 10px;
     }
- 
+
     /* Small screens */
     @media only screen and (max-width: 600px) {
       .avgCgpa {
         margin-left: 10%;
       }
     }
- 
+
     /* Medium screens */
     @media only screen and (min-width: 601px) and (max-width: 1024px) {
       .avgCgpa {
         margin-left: 25%;
       }
     }
- 
+
     /* Large screens */
     @media only screen and (min-width: 1025px) {
       .avgCgpa {
         margin-left: 45%;
       }
     }
- 
- 
+
+
     nav {
       background-color: white;
       display: flex;
@@ -186,9 +187,9 @@
       box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       height: 80px;
- 
+
     }
- 
+
     nav.scrolled {
       position: fixed;
       top: 0;
@@ -196,18 +197,18 @@
       right: 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
- 
+
     .logo {
       margin-left: 20px
     }
- 
+
     nav ul {
       list-style-type: none;
       margin: 10px auto;
       padding: 0;
       overflow: hidden;
     }
- 
+
     nav li {
       float: left;
       text-decoration: solid;
@@ -215,7 +216,7 @@
       font-weight: 600;
       font-style: oblique;
     }
- 
+
     nav a {
       display: block;
       padding: 8px;
@@ -224,22 +225,22 @@
       text-decoration: none;
       border-radius: 10px;
     }
- 
+
     nav a:hover {
       background-color: #164A83;
       color: white;
     }
- 
+
     .logo:hover {
       background-color: white;
     }
- 
+
     /* Remove default margin and padding on body element */
     body {
       margin: 0;
       padding: 0;
     }
- 
+
     /*when no data is available*/
     #no_data_avl {
       text-align: center;
@@ -247,370 +248,365 @@
       color: red;
       font-weight: 800;
     }
+
+    .logoimage {
+      width: 10rem;
+      height: 3rem;
+      align-items: center;
+      padding: 1rem;
+    }
   </style>
 </head>
- 
+
 <body>
   <nav>
     <div class="logo">
-      <a href="#"><img src="../../public/userImages/student-portfolio-logo.png" alt="Logo"></a>
+      <a href="#"><img class="logoimage" src="/images/student-portfolio-logo.png" alt="Logo"></a>
     </div>
     {{!-- <span class="navItemDiv"> --}}
       <ul>
-      <li><a href='/student_profile'>Profile</a></li>
-      <li><a href='/api/projectauth/projects'>Projects</a></li>
-      <li><a href='/api/achievementsauth/student_achievement'>Achievements</a></li>
+        <li><a href='/api/loginauth/user_land'>Home</a></li>
+        <li><a href='/student_profile'>Profile</a></li>
+        <li><a href='/api/projectauth/projects'>Projects</a></li>
+        <li><a href='/api/achievementsauth/student_achievement'>Achievements</a></li>
         <li><a href='/api/nonacademicauth/student_non_academic_skill'>Non Acad Achievements</a></li>
-      <li><a href='/api/cgpa/cgpa'>Grades</a></li>
+        <li><a href='/api/cgpa/cgpa'>Grades</a></li>
       </ul>
       {{!--
     </span> --}}
   </nav>
- 
+
   <h1>Semester Grades</h1>
 
-    
-    <div class="forms">
-        <div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}}  &times;</span>
+
+  <div class="forms">
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"> {{message}} &times;</span>
     </div>
 
-  {{#if sem1.sem1}}
-  <div class="semester">
-    <div class="semester-title">Semester 1</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem1.sem1}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-            {{!-- <td>{{this.enrollment_no}}</td> --}}
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
+    {{#if sem1.sem1}}
+    <div class="semester">
+      <div class="semester-title">Semester 1</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem1.sem1}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+              {{!-- <td>{{this.enrollment_no}}</td> --}}
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem1.avgCgpa}}</span>
+      </div>
     </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=1" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem1.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
- 
-  {{!-- semester2 --}}
-  {{#if sem2.sem2}}
-  <div class="semester">
-    <div class="semester-title">Semester 2</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem2.sem2}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=2" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem2.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
- 
-  {{!-- semester 3 --}}
-  {{#if sem3.sem3}}
-  <div class="semester">
-    <div class="semester-title">Semester 3</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem3.sem3}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=3" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem3.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
-  {{!-- semester 4 --}}
-  {{#if sem4.sem4}}
-  <div class="semester">
-    <div class="semester-title">Semester 4</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem4.sem4}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=4" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem4.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
-  {{!-- semester 5 --}}
-  {{#if sem5.sem5}}
-  <div class="semester">
-    <div class="semester-title">Semester 5</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem5.sem5}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=5" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem5.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
-  {{!-- semester 6 --}}
-  {{#if sem6.sem6}}
-  <div class="semester">
-    <div class="semester-title">Semester 6</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem6.sem6}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=6" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem6.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
-  {{!-- semester 7 --}}
-  {{#if sem7.sem7}}
-  <div class="semester">
-    <div class="semester-title">Semester 7</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem7.sem7}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="/deleteGrade?enrollment_no={{Enroll}}&semester=7" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem7.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
-  {{!-- semester 8 --}}
-  {{#if sem8.sem8}}
-  <div class="semester">
-    <div class="semester-title">Semester 8</div>
-    <div class="semester-description">
-      <table>
-        <thead>
-          <tr>
-            <th class="subCode">Subject Code</th>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th> CGPA </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each sem8.sem8}}
-          <tr>
-            <td>{{this.courseId}}</td>
-            <td>{{this.courseName}}</td>
-            <td>{{this.credits}}</td>
-            <td>{{this.cgpa}}</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-    <div><br>
-      <a class="edit-btn">Edit</a>
-      <a href="deleteGrade?enrollment_no={{Enroll}}&semester=8" class="delete-btn">Delete</a>
-      <span class="avgCgpa">Average CGPA: {{sem8.avgCgpa}}</span>
-    </div>
-  </div>
-  {{/if}}
- 
- 
-  {{!-- if no sem is availabe --}}
-  {{#unless sem1.sem1}}
-  {{#unless sem2.sem2}}
-  {{#unless sem3.sem3}}
-  {{#unless sem4.sem4}}
-  {{#unless sem5.sem5}}
-  {{#unless sem6.sem6}}
-  {{#unless sem7.sem7}}
-  {{#unless sem8.sem8}}
-  <p id="no_data_avl">No data avilable!!</p>
-  {{/unless}}
-  {{/unless}}
-  {{/unless}}
-  {{/unless}}
-  {{/unless}}
-  {{/unless}}
-  {{/unless}}
-  {{/unless}}
- 
+    {{/if}}
 
 
- 
-  {{!-- <input type="hidden" name="myField" value="{{this.enrollment_no}}"><br><br> --}}
- 
-  <div class="addBtnDiv">
-    <button id="addGradeBtn" class="addGradeBtn">Add Report</button>
-  </div>
- 
-  <script>
-    window.addEventListener('scroll', function () {
-      var nav = document.querySelector('nav');
-      if (window.pageYOffset > 0) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
- 
-    var addGradeBtn = document.getElementById('addGradeBtn');
-    addGradeBtn.addEventListener('click', () => {
-      window.location.href = '/api/cgpa/addGrades';
-    })
- 
-    // Get all hyperlinks with the "delete-link" class
-    var deleteBtn = document.getElementsByClassName('delete-btn');
- 
-    // Attach a click event listener to each hyperlink
-    for (var i = 0; i < deleteBtn.length; i++) {
-      deleteBtn[i].addEventListener('click', function (event) {
-        // Show a confirmation dialog
-        if (!confirm('Are you sure you want to delete this item?')) {
-          // User clicked "Cancel", prevent the hyperlink from navigating to its href
-          event.preventDefault();
+    {{!-- semester2 --}}
+    {{#if sem2.sem2}}
+    <div class="semester">
+      <div class="semester-title">Semester 2</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem2.sem2}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem2.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+
+    {{!-- semester 3 --}}
+    {{#if sem3.sem3}}
+    <div class="semester">
+      <div class="semester-title">Semester 3</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem3.sem3}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem3.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+    {{!-- semester 4 --}}
+    {{#if sem4.sem4}}
+    <div class="semester">
+      <div class="semester-title">Semester 4</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem4.sem4}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem4.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+    {{!-- semester 5 --}}
+    {{#if sem5.sem5}}
+    <div class="semester">
+      <div class="semester-title">Semester 5</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem5.sem5}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem5.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+    {{!-- semester 6 --}}
+    {{#if sem6.sem6}}
+    <div class="semester">
+      <div class="semester-title">Semester 6</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem6.sem6}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem6.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+    {{!-- semester 7 --}}
+    {{#if sem7.sem7}}
+    <div class="semester">
+      <div class="semester-title">Semester 7</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem7.sem7}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem7.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+    {{!-- semester 8 --}}
+    {{#if sem8.sem8}}
+    <div class="semester">
+      <div class="semester-title">Semester 8</div>
+      <div class="semester-description">
+        <table>
+          <thead>
+            <tr>
+              <th class="subCode">Subject Code</th>
+              <th>Subject Name</th>
+              <th>Credits</th>
+              <th> CGPA </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each sem8.sem8}}
+            <tr>
+              <td>{{this.courseId}}</td>
+              <td>{{this.courseName}}</td>
+              <td>{{this.credits}}</td>
+              <td>{{this.cgpa}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div><br>
+        
+        <span class="avgCgpa">Average CGPA: {{sem8.avgCgpa}}</span>
+      </div>
+    </div>
+    {{/if}}
+
+
+    {{!-- if no sem is availabe --}}
+    {{#unless sem1.sem1}}
+    {{#unless sem2.sem2}}
+    {{#unless sem3.sem3}}
+    {{#unless sem4.sem4}}
+    {{#unless sem5.sem5}}
+    {{#unless sem6.sem6}}
+    {{#unless sem7.sem7}}
+    {{#unless sem8.sem8}}
+    <p id="no_data_avl">No data avilable!!</p>
+    {{/unless}}
+    {{/unless}}
+    {{/unless}}
+    {{/unless}}
+    {{/unless}}
+    {{/unless}}
+    {{/unless}}
+    {{/unless}}
+
+
+
+
+    {{!-- <input type="hidden" name="myField" value="{{this.enrollment_no}}"><br><br> --}}
+    <script>
+      window.addEventListener('scroll', function () {
+        var nav = document.querySelector('nav');
+        if (window.pageYOffset > 0) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
         }
       });
-    }
- 
 
-    
- 
-  </script>
+      var addGradeBtn = document.getElementById('addGradeBtn');
+      addGradeBtn.addEventListener('click', () => {
+        window.location.href = '/api/cgpa/addGrades';
+      })
+
+      // Get all hyperlinks with the "delete-link" class
+      var deleteBtn = document.getElementsByClassName('delete-btn');
+
+      // Attach a click event listener to each hyperlink
+      for (var i = 0; i < deleteBtn.length; i++) {
+        deleteBtn[i].addEventListener('click', function (event) {
+          // Show a confirmation dialog
+          if (!confirm('Are you sure you want to delete this item?')) {
+            // User clicked "Cancel", prevent the hyperlink from navigating to its href
+            event.preventDefault();
+          }
+        });
+      }
+
+
+
+
+    </script>
 </body>
- 
+
 </html>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 
@@ -48,7 +46,7 @@
         }
     </script>
 
-
+    {{!-- main background css --}}
     <style>
         article {
             --img-scale: 1.001;
@@ -59,7 +57,7 @@
             position: relative;
             border-radius: 16px;
             box-shadow: none;
-            background: #aed6e9;
+            background: #a5aad0;
             transform-origin: center;
             transition: all 0.4s ease-in-out;
             overflow: hidden;
@@ -89,7 +87,7 @@
             justify-content: space-between;
             align-items: center;
             height: 100px;
-            background-color: #50b3fa;
+            background-color: #6d60a2;
             /* background-image: linear-gradient(45deg, #9297e0, #ff73b3); */
             /* background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423); */
             color: #fff;
@@ -152,7 +150,7 @@
         }
 
         article a:focus {
-            outline: 1px dotted #28666e;
+            outline: 1px dotted #454b77;
         }
 
         article a .icon {
@@ -168,7 +166,7 @@
         /* using the has() relational pseudo selector to update our custom properties */
         article:has(:hover, :focus) {
             --img-scale: 1.1;
-            --title-color: #28666e;
+            --title-color: #454b77;
             --link-icon-translate: 0;
             --link-icon-opacity: 1;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
@@ -192,7 +190,7 @@ Generic layout (demo looks)
             font-size: 1.2rem;
             line-height: 1.6rem;
             /* background-image: linear-gradient(45deg, #9297e0, #ff73b3); */
-            background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423);
+            background: linear-gradient(180deg, #695aa6, 5%, #7f85ae, 50%, #7c82b0);
             min-height: 100vh;
         }
 
@@ -205,36 +203,6 @@ Generic layout (demo looks)
             gap: 24px;
         }
 
-        /* @media screen and (max-width: 960px) {
-  article {
-    container: card/inline-size;
-  }
-  .article-body p {
-    display: none;
-  }
-}
-
-@container card (min-width: 380px) {
-  .article-wrapper {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px;
-  }
-  .article-body {
-    padding-left: 0;
-  }
-  figure {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  figure img {
-    height: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
-} */
-
         .sr-only:not(:focus):not(:active) {
             clip: rect(0 0 0 0);
             clip-path: inset(50%);
@@ -246,6 +214,8 @@ Generic layout (demo looks)
         }
     </style>
 
+
+    {{!-- sidebar css --}}
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -262,7 +232,7 @@ Generic layout (demo looks)
             top: 0;
             height: 100%;
             width: 78px;
-            background: #07426c;
+            background: #6c739e;
             padding: 6px 14px;
             z-index: 99;
             transition: all 0.5s ease;
@@ -339,7 +309,7 @@ Generic layout (demo looks)
             top: -20px;
             left: calc(100% + 15px);
             z-index: 3;
-            background: #0c5376;
+            background: #656da5;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
             padding: 6px 12px;
             border-radius: 4px;
@@ -393,7 +363,7 @@ Generic layout (demo looks)
         }
 
         .sidebar.open .bx-search:hover {
-            background: #50b3fa;
+            background: #656da5;
             color: #FFF;
         }
 
@@ -410,7 +380,7 @@ Generic layout (demo looks)
             align-items: center;
             text-decoration: none;
             transition: all 0.4s ease;
-            background: #06263e;
+            background: #454b77;
         }
 
         .sidebar li a:hover {
@@ -535,6 +505,8 @@ Generic layout (demo looks)
             }
         }
     </style>
+
+    {{!-- form css --}}
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
@@ -612,6 +584,7 @@ Generic layout (demo looks)
             justify-content: center;
             align-items: center;
             text-align: center;
+
         }
 
 
@@ -625,8 +598,8 @@ Generic layout (demo looks)
 
         button {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background: #008ecf;
+            border: 1px solid #695aa6;
+            background: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -635,6 +608,7 @@ Generic layout (demo looks)
             text-transform: uppercase;
             transition: transform 80ms ease-in;
             margin-top: 5%;
+            margin-bottom: 60px;
         }
 
         button:active {
@@ -671,6 +645,14 @@ Generic layout (demo looks)
             opacity: 0;
             margin: auto;
         } */
+        #flash {
+            z-index: 1;
+            margin-bottom: 40px;
+            text-transform: capitalize;
+            text-align: center;
+
+            color: rgb(215, 109, 201);
+        }
     </style>
     <title>Sample Articles</title>
 </head>
@@ -678,13 +660,14 @@ Generic layout (demo looks)
 
 
 <body>
+
     <header>
         <div class="logo">
             <img src="https://cdn-icons-png.flaticon.com/128/893/893505.png" alt="your-logo">
         </div>
         <div class="title">
             <h1>Student Portfolio</h1>
-            <h3>(Admin Home)</h3>
+            <h3>(Admin)</h3>
         </div>
         <div class="input-group">
 
@@ -697,32 +680,33 @@ Generic layout (demo looks)
                 <ul class="nav-list">
                     <li>
                         <i class='bx bx-search'></i>
-                        <form action="/search" method="post" id="search">
-                            <input name="val" type="search" placeholder="Search...">
-                        </form>
+
+                        <input onchange="func4()" id="searchUser" name="val" type="search" placeholder="Search...">
+
                         <span class="tooltip">Search</span>
                     </li>
                     <li>
-                        <a href="/admin_home.ejs">
+                        <a href="/api/adminRegisterAuth/admin_home">
                             <i class='bx bx-grid-alt'></i>
                             <span class="links_name">Dashboard</span>
                         </a>
                         <span class="tooltip">Dashboard</span>
                     </li>
                     <li>
-                        <a href="/change_password.ejs">
+                        <a href="/api/adminRegisterAuth/change_password">
                             <i class='bx bx-user'></i>
                             <span class="links_name">Change Password</span>
                         </a>
                         <span class="tooltip">Change Password</span>
                     </li>
                     <li>
-                        <a href="/login_admin.ejs">
+                        <a href="/api/adminRegisterAuth/login_admin">
                             <i class='bx bx-log-out'></i>
                             <span class="links_name">Log out</span>
                         </a>
                         <span class="tooltip">Log out</span>
                     </li>
+
                     <li class="profile">
                         <div class="profile-details">
 
@@ -741,23 +725,20 @@ Generic layout (demo looks)
                 let sidebar = document.querySelector(".sidebar");
                 let closeBtn = document.querySelector("#btn");
                 let searchBtn = document.querySelector(".bx-search");
-
                 closeBtn.addEventListener("click", () => {
                     sidebar.classList.toggle("open");
-                    menuBtnChange(); //calling the function(optional)
+                    menuBtnChange();//calling the function(optional)
                 });
-
                 searchBtn.addEventListener("click", () => { // Sidebar open when you click on the search iocn
                     sidebar.classList.toggle("open");
                     menuBtnChange(); //calling the function(optional)
                 });
-
                 // following are the code to change sidebar button(optional)
                 function menuBtnChange() {
                     if (sidebar.classList.contains("open")) {
-                        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right"); //replacing the iocns class
+                        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
                     } else {
-                        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
+                        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");//replacing the iocns class
                     }
                 }
             </script>
@@ -767,9 +748,10 @@ Generic layout (demo looks)
         </div>
     </header>
 
-    <div class="container" id="container">
-        <div class="form-container sign-in-container">
-            <!-- <form action="/reset_pass" method="post" id="reset_pass" onsubmit="return validateForm()">
+    <h3 id="flash"> {{message}}</h1>
+        <div class="container" id="container">
+            <div class="form-container sign-in-container">
+                <!-- <form action="/reset_pass" method="post" id="reset_pass" onsubmit="return validateForm()">
                 <h2>Change Password</h2>
                 <br>
 
@@ -779,24 +761,32 @@ Generic layout (demo looks)
 
                 <button class="btn" type="submit" value="Reset Password">Change</button>
             </form> -->
-            <form action="/api/adminRegisterAuth/new_user_admin" method="post" id="new_user_admin" onsubmit="return validateForm()">
-                <br>
-                <h2>Add New User</h2>
-                <br>
-                <input name="Name" placeholder="Name" type="text" />
-                <input name="rollno" placeholder="Enrollment Number" type="text" />
-                <input name="Email" placeholder="Email" type="text" />
-                <input name="mobileno" placeholder="Mobile Number" type="text" />
-                <input name="dob" placeholder="Date of Birth" type="date" />
-                <input name="address" placeholder="Address" type="text" />
-                <input name="program" placeholder="Programme" type="text" />
-                <input name="dept" placeholder="Department" type="text" />
-                <input name="year" placeholder="Year" type="text" />
-                <input name="Semester" placeholder="Semester" type="text" />
-                <button class="btn" type="submit" value="Register User">Add</button>
-            </form>
+                <form action="/api/adminRegisterAuth/new_user_admin" method="post" id="new_user_admin"
+                    onsubmit="return validateForm()">
+                    <br>
+                    <h2 style="margin-top: 35px;">Add New User</h2>
+                    <br>
+                    <input name="Name" placeholder="Name" type="text" />
+                    <input name="rollno" placeholder="Enrollment Number" type="text" />
+                    <input name="Email" placeholder="Email" type="text" />
+                    <input name="mobileno" placeholder="Mobile Number" type="text" />
+                    <input name="dob" placeholder="Date of Birth" type="date" />
+                    <input name="address" placeholder="Address" type="text" />
+                    <input name="program" placeholder="Programme" type="text" />
+                    <input name="dept" placeholder="Department" type="text" />
+                    <input name="year" placeholder="Year" type="text" />
+                    <input name="Semester" placeholder="Semester" type="text" />
+                    <button class="btn" type="submit" value="Register User">Add</button>
+                </form>
+            </div>
         </div>
-    </div>
+        <script>
+            setTimeout(function () {
+                // Find the alert element and hide it
+                var alertElement = document.getElementById("flash");
+                alertElement.style.display = "none";
+            }, 3000);
+        </script>
 </body>
 
 </html>

@@ -1,627 +1,670 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
 
-        @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
 
+:root {
+    /* dark shades of primary color*/
+    --clr-primary-1: hsl(205, 86%, 17%);
+    --clr-primary-2: hsl(205, 77%, 27%);
+    --clr-primary-3: hsl(205, 72%, 37%);
+    --clr-primary-4: hsl(205, 63%, 48%);
+    /* primary/main color */
+    --clr-primary-5: hsl(205, 78%, 60%);
+    /* lighter shades of primary color */
+    --clr-primary-6: hsl(205, 89%, 70%);
+    --clr-primary-7: hsl(205, 90%, 76%);
+    --clr-primary-8: hsl(205, 86%, 81%);
+    --clr-primary-9: hsl(205, 90%, 88%);
+    --clr-primary-10: hsl(205, 100%, 96%);
+    /* darkest grey - used for headings */
+    --clr-grey-1: hsl(209, 61%, 16%);
+    --clr-grey-2: hsl(211, 39%, 23%);
+    --clr-grey-3: hsl(209, 34%, 30%);
+    --clr-grey-4: hsl(209, 28%, 39%);
+    /* grey used for paragraphs */
+    --clr-grey-5: hsl(210, 22%, 49%);
+    --clr-grey-6: hsl(209, 23%, 60%);
+    --clr-grey-7: hsl(211, 27%, 70%);
+    --clr-grey-8: hsl(210, 31%, 80%);
+    --clr-grey-9: hsl(212, 33%, 89%);
+    --clr-grey-10: hsl(210, 36%, 96%);
+    --clr-white: #fff;
+    --clr-red-dark: hsl(360, 67%, 44%);
+    --clr-red-light: hsl(360, 71%, 66%);
+    --clr-green-dark: hsl(125, 67%, 44%);
+    --clr-green-light: hsl(125, 71%, 66%);
+    --clr-black: #222;
+    --ff-primary: "Roboto", sans-serif;
+    --ff-secondary: "Open Sans", sans-serif;
+    --transition: all 0.3s linear;
+    --spacing: 0.1rem;
+    --radius: 0.25rem;
+    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --max-width: 1170px;
+    --fixed-width: 620px;
+}
 
-        :root {
-            /* dark shades of primary color*/
-            --clr-primary-1: hsl(205, 86%, 17%);
-            --clr-primary-2: hsl(205, 77%, 27%);
-            --clr-primary-3: hsl(205, 72%, 37%);
-            --clr-primary-4: hsl(205, 63%, 48%);
-            /* primary/main color */
-            --clr-primary-5: hsl(205, 78%, 60%);
-            /* lighter shades of primary color */
-            --clr-primary-6: hsl(205, 89%, 70%);
-            --clr-primary-7: hsl(205, 90%, 76%);
-            --clr-primary-8: hsl(205, 86%, 81%);
-            --clr-primary-9: hsl(205, 90%, 88%);
-            --clr-primary-10: hsl(205, 100%, 96%);
-            /* darkest grey - used for headings */
-            --clr-grey-1: hsl(209, 61%, 16%);
-            --clr-grey-2: hsl(211, 39%, 23%);
-            --clr-grey-3: hsl(209, 34%, 30%);
-            --clr-grey-4: hsl(209, 28%, 39%);
-            /* grey used for paragraphs */
-            --clr-grey-5: hsl(210, 22%, 49%);
-            --clr-grey-6: hsl(209, 23%, 60%);
-            --clr-grey-7: hsl(211, 27%, 70%);
-            --clr-grey-8: hsl(210, 31%, 80%);
-            --clr-grey-9: hsl(212, 33%, 89%);
-            --clr-grey-10: hsl(210, 36%, 96%);
-            --clr-white: #fff;
-            --clr-red-dark: hsl(360, 67%, 44%);
-            --clr-red-light: hsl(360, 71%, 66%);
-            --clr-green-dark: hsl(125, 67%, 44%);
-            --clr-green-light: hsl(125, 71%, 66%);
-            --clr-black: #222;
-            --ff-primary: "Roboto", sans-serif;
-            --ff-secondary: "Open Sans", sans-serif;
-            --transition: all 0.3s linear;
-            --spacing: 0.1rem;
-            --radius: 0.25rem;
-            --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            --max-width: 1170px;
-            --fixed-width: 620px;
-        }
-
-        /*
+/*
 ===============
 Global Styles
 ===============
 */
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
     display: none;
 }
-        *,
-        ::after,
-        ::before {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: var(--ff-secondary);
-            background: var(--clr-grey-10);
-            color: var(--clr-grey-1);
-            line-height: 1.5;
-            font-size: 0.875rem;
-            height: 100vh;
-            width: 100vw;
-        }
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        ul {
-            list-style-type: none;
-        }
+body {
+    font-family: var(--ff-secondary);
+    background: var(--clr-grey-10);
+    color: var(--clr-grey-1);
+    line-height: 1.5;
+    font-size: 0.875rem;
+    height: 100vh;
+    width: 100vw;
+}
 
-        a {
-            text-decoration: none;
-        }
+ul {
+    list-style-type: none;
+}
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            letter-spacing: var(--spacing);
-            text-transform: capitalize;
-            line-height: 1.25;
-            margin-bottom: 0.75rem;
-            font-family: var(--ff-primary);
-        }
+a {
+    text-decoration: none;
+}
 
-        h1 {
-            font-size: 3rem;
-        }
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: var(--spacing);
+    text-transform: capitalize;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    font-family: var(--ff-primary);
+}
 
-        h2 {
-            font-size: 2rem;
-        }
+h1 {
+    font-size: 3rem;
+}
 
-        h3 {
-            font-size: 1.25rem;
-        }
+h2 {
+    font-size: 2rem;
+}
 
-        h4 {
-            font-size: 0.875rem;
-        }
+h3 {
+    font-size: 1.25rem;
+}
 
-        p {
-            margin-bottom: 1.25rem;
-            color: var(--clr-grey-5);
-        }
+h4 {
+    font-size: 0.875rem;
+}
 
-        @media screen and (min-width: 800px) {
-            h1 {
-                font-size: 4rem;
-            }
+p {
+    margin-bottom: 1.25rem;
+    color: var(--clr-grey-5);
+}
 
-            h2 {
-                font-size: 2.5rem;
-            }
+@media screen and (min-width: 800px) {
+    h1 {
+        font-size: 4rem;
+    }
 
-            h3 {
-                font-size: 1.75rem;
-            }
+    h2 {
+        font-size: 2.5rem;
+    }
 
-            h4 {
-                font-size: 1rem;
-            }
+    h3 {
+        font-size: 1.75rem;
+    }
 
-            body {
-                font-size: 1rem;
-            }
+    h4 {
+        font-size: 1rem;
+    }
 
-            h1,
-            h2,
-            h3,
-            h4 {
-                line-height: 1;
-            }
-        }
+    body {
+        font-size: 1rem;
+    }
 
-        /* global classes */
+    h1,
+    h2,
+    h3,
+    h4 {
+        line-height: 1;
+    }
+}
 
-        /* section */
-        .section {
-            padding: 5rem 0;
-        }
+/* global classes */
 
-        .section-center {
-            width: 90vw;
-            margin: 0 auto;
-            max-width: 1170px;
-        }
+/* section */
+.section {
+    padding: 5rem 0;
+}
 
-        @media screen and (min-width: 992px) {
-            .section-center {
-                width: 95vw;
-            }
-        }
+.section-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 1170px;
+}
 
-        main {
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-        }
+@media screen and (min-width: 992px) {
+    .section-center {
+        width: 95vw;
+    }
+}
 
-        /*
+main {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+/*
 ===============
 Navbar
 ===============
 */
-        nav {
-            background: var(--clr-white);
-            box-shadow: var(--light-shadow);
-        }
+nav {
+    background: var(--clr-white);
+    box-shadow: var(--light-shadow);
+}
 
-        .nav-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-        }
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
 
-        .logoimage {
-            width: 220px;
-            height: 90px;
-            align-items: center;
-            padding: 1rem;
-        }
-
-
-        #profileDiv {
-            display: inline-block;
-            height: 270px;
-            width: 400px;
-            margin: 50px 20px 50px 20px;
-            /* position: absolute; */
-            /* background-color: rgba(255, 166, 0, 0.814); */
-            background-color: white;
-            border: 2px black;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
-        }
-
-        #profileDiv:hover {
-            margin: 47px 17px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
-        }
-
-        #profilePic {
-            display: inline-block;
-            margin: 0px 5px;
-            padding: 2px;
-            height: 90px;
-            width: 75px;
-            border-radius: 2000px;
-        }
-
-        #profileTop {
-            display: inline-block;
-            width: 100%;
-            height: 40%;
-            margin: 0px 0px 0px 0px;
-            background: #164A83;
-            border-radius: 10px;
-        }
-
-        #imgDiv {
-            margin: 5px 5px;
-            /* background-color: red; */
-            display: inline-block;
-            border-radius: 10px;
-            width: 85px;
-            height: 100px
-        }
-
-        .label {
-            display: inline-block;
-            margin-left: 15px;
-            font-size: 16px;
-        }
-
-        #name_emailDiv {
-            /* position: absolute; */
-            width: 172px;
-            height: 70px;
-            margin: 22px 5px;
-            /* background-color: yellow; */
-            display: inline-block;
-            border-radius: 10px;
-        }
-
-        #name {
-            display: inline-block;
-            margin: 1px 1px 1px 1px;
-            font-weight: 900;
-            font-size: 25px;
-            size: 16px;
-            color: whitesmoke;
-            /* background-color: rgb(35, 134, 52); */
-        }
-
-        #email {
-            display: inline-block;
-            margin: 1px 1px 1px 1px;
-            font-size: 12px;
-            color: whitesmoke;
-            /* background-color: rgb(35, 134, 52); */
-        }
-
-        .profileLabel {
-            margin: -7px 0px 0px 1px;
-        }
-
-        /* Academic skills */
-        #skillsDiv {
-            /* position: absolute; */
-            display: inline-block;
-            width: 400px;
-            height: 270px;
-            margin: 50px 20px 50px 40px;
-            border-radius: 10px;
-            left: 900px;
-            /* background-color: rgba(255, 166, 0, 0.814); */
-            background-color: white;
-            border: 2px black;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
-        }
-
-        #skillsDiv:hover {
-            margin: 47px 17px 47px 38px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
-            /* box-shadow: 4px 4px #d6d6d5; */
-        }
-
-        #skillHeadingDiv {
-            height: 27px;
-            background-color: #164A83;
-            border-radius: 10px;
-        }
-
-        #skillHeading {
-            /* position: absolute; */
-            margin: 4px 9px;
-            color: #fff;
-            background-color: #164A83;
-        }
-
-        #achievementsImg {
-            width: 20px;
-            height: 20px;
-            margin: auto auto -5px 3px;
-        }
+.logoimage {
+    width: 220px;
+    height: 90px;
+    align-items: center;
+    padding: 1rem;
+}
 
 
-        .listItem {
-            margin: 5px 11px;
-        }
+#profileDiv {
+    display: inline-block;
+    height: 270px;
+    width: 400px;
+    margin: 50px 20px 50px 20px;
+    /* position: absolute; */
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    border: 2px black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
 
-        .ListedSkillDescription {
-            font-family: italic;
-            margin: 2px 5px;
-        }
+#profileDiv:hover {
+    margin: 47px 17px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+}
 
-        #allAchievementItems {
-            overflow: auto;
-            height: 210px;
-            width: 395px;
-            margin-top: 15px;
-        }
+#profilePic {
+    display: inline-block;
+    margin: 0px 5px;
+    padding: 2px;
+    height: 90px;
+    width: 75px;
+    border-radius: 2000px;
+}
 
-        #profileBottom {
-            margin: 7px 1px 1px 1px;
-        }
+#profileTop {
+    display: inline-block;
+    width: 100%;
+    height: 40%;
+    margin: 0px 0px 0px 0px;
+    background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+    border-radius: 10px;
+}
 
-        .ListedSkillHeading {
-            margin: 2px;
-        }
+#imgDiv {
+    margin: 5px 5px;
+    /* background-color: red; */
+    display: inline-block;
+    border-radius: 10px;
+    width: 85px;
+    height: 100px
+}
 
+.label {
+    display: inline-block;
+    margin-left: 15px;
+    font-size: 16px;
+}
 
-        /* non academic */
-        #nonAcadSkillsDiv {
-            /* position: absolute; */
-            display: inline-block;
-            width: 400px;
-            height: 270px;
-            margin: 50px 20px 50px 40px;
-            left: 440px;
-            border-radius: 10px;
-            /* background-color: rgba(255, 166, 0, 0.814); */
-            background-color: white;
-            border: 2px black;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
-        }
+#name_emailDiv {
+    /* position: absolute; */
+    /* width: 172px;
+    height: 70px; */
+    display: inline-block;
+    margin: 0px 5px;
+    margin-top: 2px;
+    /* background-color: yellow; */
+    /* border-radius: 10px; */
+}
 
-        #nonAcadSkillsDiv:hover {
-            margin: 47px 17px 47px 38px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
-            /* box-shadow: 4px 4px #d6d6d5; */
-        }
+#name {
+    display: inline-block;
+    margin: 1px 1px 23px 1px;
+    font-weight: 900;
+    font-size: 25px;
+    size: 16px;
+    color: whitesmoke;
+    /* background-color: rgb(35, 134, 52); */
+}
 
-        #nonSkillHeadingDiv {
-            height: 27px;
-            background-color: #164A83;
-            border-radius: 10px;
-        }
+#email {
+    display: inline-block;
+    margin: 1px 1px 30px 1px;
+    padding: 1px 1px 1px 1px;
+    font-size: 12px;
+    color: whitesmoke;
+    /* background-color: rgb(35, 134, 52); */
+}
 
-        #nonSkillHeading {
-            /* position: absolute; */
-            margin: 4px 9px;
-            color: #fff;
-            background-color: #164A83;
-        }
+.profileLabel {
+    margin: -7px 0px 0px 1px;
+}
 
-        #nonAcadAchievImg {
-            width: 20px;
-            height: 20px;
-            margin: auto auto -5px 3px;
-        }
+/* Academic skills */
+#skillsDiv {
+    /* position: absolute; */
+    display: inline-block;
+    width: 400px;
+    height: 270px;
+    margin: 50px 20px 50px 40px;
+    border-radius: 10px;
+    left: 900px;
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    border: 2px black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
 
+#skillsDiv:hover {
+    margin: 47px 17px 47px 38px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+    /* box-shadow: 4px 4px #d6d6d5; */
+}
 
-        #allNonAcadAchievItems {
-            overflow: auto;
-            height: 210px;
-            width: 395px;
-            margin-top: 15px;
-        }
+#skillHeadingDiv {
+    height: 27px;
+    background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+    border-radius: 10px;
+}
 
-        /* semester cgpa */
-        .ListedSemesterHeading {
-            display: inline-block;
-            margin: 5px 8px;
+#skillHeading {
+    /* position: absolute; */
+    margin: 4px 9px;
+    color: #fff;
+    background: transparent;
+}
 
-        }
-
-        .ListedSemCG {
-            display: inline-block;
-        }
-
-        #cgpaDiv {
-            /* position: absolute; */
-            top: 427px;
-            display: inline-block;
-            width: 400px;
-            height: 270px;
-            margin: 50px 20px;
-            border-radius: 10px;
-            /* background-color: rgba(255, 166, 0, 0.814); */
-            background-color: white;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
-        }
-
-        #cgpaDiv:hover {
-            margin: 47px 17px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
-        }
-
-        #cgpaHeadingDiv {
-            height: 27px;
-            background-color: #164A83;
-            border-radius: 10px;
-        }
-
-        #cgpaImg {
-            width: 20px;
-            height: 20px;
-            margin: 3px 4px -3px 5px;
-        }
-
-        #cgpaHeading {
-            color: white;
-        }
-
-        #cgpaList {
-            overflow: scroll;
-            height: 14rem;
-            width: 14rem;
-
-            margin-top: 15px;
-            display: inline-block;
-        }
-
-        #overallCgpaDiv {
-            position: relative;
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            border-radius: 10px;
-            top: -129px;
-            left: 34px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        #OverallCgpaHeadingDiv {
-            position: absolute;
-            height: 20px;
-            background-color: #164A83;
-            border-radius: 5px;
-        }
+#achievementsImg {
+    width: 20px;
+    height: 20px;
+    margin: auto auto -5px 3px;
+}
 
 
-        #overallCgpaHeading {
-            color: white;
-            margin: 0px 18px;
-            padding: 2px 2px;
-        }
+.listItem {
+    margin: 5px 11px;
+}
+
+.ListedSkillDescription {
+    font-family: italic;
+    margin: 2px 5px;
+}
+
+#allAchievementItems {
+    overflow: auto;
+    height: 210px;
+    width: 395px;
+    margin-top: 15px;
+}
+
+#profileBottom {
+    margin: 7px 1px 1px 1px;
+}
 
 
-        #overallCgpa {
-            color: orange;
-            position: relative;
-            font-size: 40px;
-            top: 26px;
-            left: 10px;
-        }
-        
-        
-        #projectDiv {
-            display: inline-block;
-            width: 400px;
-            height: 270px;
-            margin: 50px 20px 50px 40px;
-            border-radius: 10px;
-            left: 440px;
-            top: 427px;
-            /* background-color: rgba(255, 166, 0, 0.814); */
-            background-color: white;
-            border: 2px black;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
-        }
-        #projectDiv:hover {
-            margin: 47px 17px 47px 38px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
-            /* box-shadow: 4px 4px #d6d6d5; */
-        }
-        #projectHeadingDiv {
-            height: 27px;
-            background-color: #164A83;
-            border-radius: 10px;
-        }
-        #projectHeading {
-            /* position: absolute; */
-            margin: 4px 9px;
-            color: #fff;
-            background-color: #164A83;
-        }
-        #projectImg {
-            width: 20px;
-            height: 20px;
-            margin: auto auto -6px 6px;
-        }
-        .ListedProjectDescription {
-            font-family: italic;
-            margin: 2px 5px;
-        }
-        #allProjectItems {
-            overflow: auto;
-            height: 210px;
-            width: 395px;
-            margin-top: 15px;
-        }
-        .ListedProjectHeading {
-            margin: 2px;
-        }
-        .nav-toggle {
-            font-size: 1.5rem;
-            color: var(--clr-primary-5);
-            background: transparent;
-            border-color: transparent;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        .nav-toggle:hover {
-            color: var(--clr-primary-1);
-            transform: rotate(90deg);
-        }
-        .logo {
-            height: 40px;
-        }
-        .links a {
-            color: var(--clr-grey-3);
-            font-size: 1rem;
-            text-transform: capitalize;
-            letter-spacing: var(--spacing);
-            display: block;
-            padding: 0.5rem 1rem;
-            transition: var(--transition);
-        }
-        .links a:hover {
-            background: var(--clr-primary-8);
-            color: var(--clr-primary-5);
-            padding-left: 1.5rem;
-        }
-        .social-icons {
-            display: none;
-        }
-        .links {
-            height: 0;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        .show-links {
-            height: 10rem;
-        }
-        .view {
-            height: 14rem;
-            width: 24rem;
-        }
-        @media screen and (min-width: 800px) {
-            .nav-center {
-                max-width: 1170px;
-                margin: 0 auto;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 1rem;
-            }
-            .nav-header {
-                padding: 0;
-            }
-            .nav-toggle {
-                display: none;
-            }
-            .links {
-                height: auto;
-                display: flex;
-            }
-            .links a {
-                padding: 0;
-                margin: 0 0.5rem;
-            }
-            .links a:hover {
-                padding: 0;
-                background: transparent;
-            }
-            .social-icons {
-                display: flex;
-            }
-            .social-icons a {
-                margin: 0 0.5rem;
-                color: var(--clr-primary-5);
-                transition: var(--transition);
-            }
-            .social-icons a:hover {
-                color: var(--clr-primary-7);
-            }
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap:wrap;
-        }
 
-          .listItem{
+
+/* non academic */
+#nonAcadSkillsDiv {
+    /* position: absolute; */
+    display: inline-block;
+    width: 400px;
+    height: 270px;
+    margin: 50px 20px 50px 40px;
+    left: 440px;
+    border-radius: 10px;
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    border: 2px black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
+
+#nonAcadSkillsDiv:hover {
+    margin: 47px 17px 47px 38px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+    /* box-shadow: 4px 4px #d6d6d5; */
+}
+
+#nonSkillHeadingDiv {
+    height: 27px;
+    background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+    border-radius: 10px;
+}
+
+#nonSkillHeading {
+    /* position: absolute; */
+    margin: 4px 9px;
+    color: #fff;
+    background-color: transparent;
+}
+
+#nonAcadAchievImg {
+    width: 20px;
+    height: 20px;
+    margin: auto auto -5px 3px;
+}
+
+
+#allNonAcadAchievItems {
+    overflow: auto;
+    height: 210px;
+    width: 395px;
+    margin-top: 15px;
+}
+
+/* semester cgpa */
+.ListedSemesterHeading {
+    /* display: inline-block; */
+    margin: 5px 8px;
+    color: #164A83;
+    font-size: 20px;
+    font-weight: 900;
+    font-weight: bold;
+}
+
+.ListedSemCG {
+    /* display: inline-block; */
+    color: coral;
+}
+
+#cgpaDiv {
+    /* position: absolute; */
+    top: 427px;
+    display: inline-block;
+    width: 400px;
+    height: 270px;
+    margin: 50px 20px;
+    border-radius: 10px;
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
+
+#cgpaDiv:hover {
+    margin: 47px 17px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+}
+
+#cgpaHeadingDiv {
+    height: 27px;
+    background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+    border-radius: 10px;
+}
+
+#cgpaImg {
+    width: 20px;
+    height: 20px;
+    margin: 3px 4px -3px 5px;
+}
+
+#cgpaHeading {
+    color: white;
+}
+
+#cgpaList {
+    overflow: scroll;
+    height: 14rem;
+    width: 14rem;
+
+    margin-top: 15px;
+    display: inline-block;
+}
+
+#overallCgpaDiv {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    top: -50%;
+    left: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#OverallCgpaHeadingDiv {
+    position: absolute;
+    height: 23%;
+    background: linear-gradient(to bottom, #3c75b2, #0f2a5f);
+    border-radius: 5px;
+}
+
+
+#overallCgpaHeading {
+    color: white;
+    margin: 0px 18px;
+    padding: 2px 2px;
+}
+
+
+#overallCgpa {
+    color: coral;
+    position: relative;
+    font-size: 40px;
+    top: 26px;
+    left: 10px;
+}
+
+
+#projectDiv {
+    display: inline-block;
+    width: 400px;
+    height: 270px;
+    margin: 50px 20px 50px 40px;
+    border-radius: 10px;
+    left: 440px;
+    top: 427px;
+    /* background-color: rgba(255, 166, 0, 0.814); */
+    background-color: white;
+    border: 2px black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.23);
+}
+
+#projectDiv:hover {
+    margin: 47px 17px 47px 38px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.45), 0 6px 20px 0 rgba(0, 0, 0, 0.35);
+    /* box-shadow: 4px 4px #d6d6d5; */
+}
+
+#projectHeadingDiv {
+    height: 27px;
+    background-color: #164A83;
+    border-radius: 10px;
+}
+
+#projectHeading {
+    /* position: absolute; */
+    margin: 4px 9px;
+    color: #fff;
+    background-color: #164A83;
+}
+
+#projectImg {
+    width: 20px;
+    height: 20px;
+    margin: auto auto -6px 6px;
+}
+
+.ListedProjectDescription {
+    font-family: italic;
+    margin: 2px 5px;
+}
+
+#allProjectItems {
+    overflow: auto;
+    height: 210px;
+    width: 395px;
+    margin-top: 15px;
+}
+
+#alllinks {
+    overflow: auto;
+    height: 210px;
+    width: 395px;
+    margin-top: 15px;
+}
+
+.ListedProjectHeading {
+    margin: 2px;
+}
+
+.nav-toggle {
+    font-size: 1.5rem;
+    color: var(--clr-primary-5);
+    background: transparent;
+    border-color: transparent;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.nav-toggle:hover {
+    color: var(--clr-primary-1);
+    transform: rotate(90deg);
+}
+
+.logo {
+    height: 40px;
+}
+
+.links a {
+    color: var(--clr-grey-3);
+    font-size: 1rem;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+}
+
+.links a:hover {
+    background: var(--clr-primary-8);
+    color: var(--clr-primary-5);
+    padding-left: 1.5rem;
+}
+
+.social-icons {
+    display: none;
+}
+
+.links {
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.show-links {
+    height: 10rem;
+}
+
+.view {
+    height: 14rem;
+    width: 24rem;
+}
+
+@media screen and (min-width: 800px) {
+    .nav-center {
+        max-width: 1170px;
+        margin: 0 auto;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-top: 15px;
-      }
-      .anchor{
-        color: black;
-        text-transform: capitalize;
-        margin-left: 30px;
-      }
+        justify-content: space-between;
+        padding: 0;
+    }
+
+    .nav-header {
+        padding: 0;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    .links {
+        height: auto;
+        display: flex;
+    }
+
+    .links a {
+        padding: 0;
+        margin: 0 0.5rem;
+    }
+
+    .links a:hover {
+        padding: 0;
+        background: transparent;
+    }
+
+    .social-icons {
+        display: flex;
+    }
+
+    .social-icons a {
+        margin: 0 0.5rem;
+        color: var(--clr-primary-5);
+        transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+        color: var(--clr-primary-7);
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.anchor {
+    color: black;
+    text-transform: capitalize;
+    margin-left: 30px;
+}
+
+.ListedSkillHeading {
+    margin: 2px;
+    display: inline-block;
+}

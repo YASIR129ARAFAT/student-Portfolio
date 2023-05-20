@@ -8,9 +8,7 @@ const middlewares = require('../utils/verifyUser.js')
 var store = require("store-js"); 
 //to render project page
 router.get("/projects",middlewares.verifyUser, async (req, res) => {
-  try {
-
-        
+  try {   
     var sql = `SELECT * FROM projects where enrolment_no="${req.user.enroll_no}" `;
     db.query(sql, (error, result) => {
       if (error) console.log(error);
@@ -37,7 +35,7 @@ router.post("/add_project", middlewares.verifyUser, (req, res, next) => {
   var githubLink = req.body.gitHubLink;
   var instructor = req.body.instructor;
   // var enroll=req.body.enrolment_no;
-  var isVerified = req.body.isVerified;
+  // var isVerified = req.body.isVerified;
 
   //console.log(global.global_enrollment);
   //var enr = store.get("global_enrollment");
@@ -50,13 +48,13 @@ router.post("/add_project", middlewares.verifyUser, (req, res, next) => {
   }",${1})`;
   db.query(sql, function (err, result) {
     if (err) {
-      middlewares.errhandle(err);
+      // middlewares.errhandle(err);
       //  req.flash("message", "customer Id already exist");
       res.render("projects");
       console.log(err);
     } else {
       console.log("Row has been updated");
-      res.redirect("projects");
+      res.redirect("/api/projectauth/projects");
       //  req.flash("message", "seccessfully registered");
       //  res.render("student_project");
     }
@@ -66,6 +64,20 @@ router.post("/add_project", middlewares.verifyUser, (req, res, next) => {
 router.get("/addProjects", (req, res, next) => {
   res.render("addProjects");
 });
+
+router.get("/editProjects",(req,res)=>{
+  var id = req.query.id;
+  console.log(id);
+  var sql = `SELECT * FROM projects where id=?`;
+    db.query(sql, [id], (error, result) => {
+      if (error) console.log(error);
+      else {
+       console.log(result);
+
+        res.render("editProjects",{result});
+      }
+    })
+})
 
 router.get("/get_data", (req, res, next) => {
   try {
@@ -117,17 +129,18 @@ router.post("/updateProjects", (req, res, next) => {
   var projectDes = req.body.projectDescription;
   var githubLink = req.body.gitHubLink;
   var instructor = req.body.instructor;
+  console.log(instructor + "update");
   // var enroll=req.body.enrolment_no;
 
   //console.log(global.global_enrollment);
   //var enr = store.get("global_enrollment");
   //console.log(enr);
 
-  var id = req.query.id;
-  console.log(id + "update");
+  var id = req.body.id;
+  console.log("id: "+id);
 
-  var sql = `update   projects  set projectDescription="${projectDes}" ,gitHubLink="${githubLink}", instructor="${instructor}"   where id=?`;
-  db.query(sql, [id], function (err, result) {
+  var sql = `update projects set projectDescription="${projectDes}",gitHubLink="${githubLink}", instructor="${instructor}" where id=${id}`;
+  db.query(sql,function (err, result) {
     if (err) {
       //  req.flash("message", "customer Id already exist");
       res.render("projects");
@@ -160,6 +173,26 @@ router.get("/deleteProject", (req, res, next) => {
   }
 });
 
-// to add new project
+
+router.get("/adminProjectsView",middlewares.verifyUser, async (req, res) => {
+  try {   
+    var sql = `SELECT * FROM projects where enrolment_no="${req.user.enroll_no}" `;
+    db.query(sql, (error, result) => {
+      if (error) console.log(error);
+      else {
+        // console.log(result);
+
+        res.render("adminProject", {
+          projects: result,
+        });
+      }
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+});
+
 
 module.exports = router;

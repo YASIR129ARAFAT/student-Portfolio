@@ -1,20 +1,17 @@
 var mysql = require("mysql2");
 var db = mysql.createConnection({
-  host: "localhost",
+  host: "127.0.0.1",
   user: "root",
-  password: "abcd1234",
-  database: "se_project",
+  password: "Nasir@21",
+  database: "software_engg",
 });
 
-    db.connect(function (err) {
-      if (err) {
-        console.log("some error ");
-      } else {
-        console.log("connected");
-      }
-    });
+db.connect(function (err) {
+  if (err) {
+    console.log("some error ");
+  } else {
+    console.log("connected");
+  }
+});
 
-
-
-module.exports=db;
-
+module.exports = db;

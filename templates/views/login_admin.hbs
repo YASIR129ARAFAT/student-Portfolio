@@ -98,7 +98,7 @@
         .wrapper {
             height: 120%;
             width: 100%;
-            background: linear-gradient(180deg, #14f1f5, 5%, #119dff, 50%, #107cca);
+            background: linear-gradient(180deg, #695aa6, 5%, #7f85ae, 50%, #7c82b0);
             position: absolute;
         }
 
@@ -335,8 +335,8 @@
 
         button {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background: #008ecf;
+            border: 1px solid #695aa6;
+            background: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -345,10 +345,11 @@
             text-transform: uppercase;
             transition: transform 80ms ease-in;
         }
-          #button {
+
+        #button {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background-color: #008ecf;
+            border: 1px solid #695aa6;
+            background-color: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -358,10 +359,10 @@
             transition: transform 80ms ease-in;
         }
 
-  #button1 {
+        #button1 {
             border-radius: 20px;
-            border: 1px solid #008ecf;
-            background-color: #008ecf;
+            border: 1px solid #695aa6;
+            background-color: #695aa6;
             color: #fff;
             font-size: 12px;
             font-weight: bold;
@@ -374,14 +375,16 @@
         button:active {
             transform: scale(.95);
         }
-          #button:active {
+
+        #button:active {
             transform: scale(.95);
         }
 
         button:focus {
             outline: none;
         }
-         #button:focus {
+
+        #button:focus {
             outline: none;
         }
 
@@ -389,7 +392,8 @@
             background: transparent;
             border-color: #fff;
         }
-          #button.ghost {
+
+        #button.ghost {
             background: transparent;
             border-color: #fff;
         }
@@ -426,8 +430,7 @@
         }
 
         .overlay {
-            background: #ff416c;
-            background: linear-gradient(to right, #008ecf, #008ecf) no-repeat 0 0 / cover;
+            background: #5c6096;
             color: #fff;
             position: relative;
             left: -100%;
@@ -492,6 +495,13 @@
         .container.right-panel-active .overlay-right {
             transform: translateY(20%);
         }
+
+         #flash{
+            z-index: 1;
+            margin-bottom: 40px;
+            text-transform: capitalize;
+            color: rgb(227, 54, 204);
+        }
     </style>
 </head>
 
@@ -516,7 +526,8 @@
         <div><span class="dot"></span></div>
     </div>
 
-
+       <h3 id="flash">{{message}}</h1>
+        
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="/api/adminRegisterAuth/register" method="post" id="register" onsubmit="return validateForm()">
@@ -535,8 +546,8 @@
                 <input name="email" placeholder="Email" type="text" />
                 <input name="fullName" placeholder="Full Name" type="text" />
                 <input name="Password" placeholder="Password" type="Password" />
-                 <input  id="button" value="Sign Up" type="submit" />
-              
+                <input id="button" value="Sign Up" type="submit" />
+
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -560,9 +571,9 @@
                 <input type="password" placeholder="Password" /> -->
                 <input name="email" placeholder="Email" type="text" />
                 <input name="Password" placeholder="Password" type="Password" />
-                <a href="">Forgot your password?</a>
-             <input  id="button1" class="btn" type="submit" value="Sign In" >
-               
+                <a href="/api/loginauth/adminForgotPassword">Forgot your password?</a>
+                <input id="button1" class="btn" type="submit" value="Sign In">
+
             </form>
         </div>
         <div class="overlay-container">
@@ -591,6 +602,13 @@
 
         signInButton.addEventListener('click', () =>
             container.classList.remove('right-panel-active'));
+
+
+             setTimeout(function(){
+    // Find the alert element and hide it
+    var alertElement = document.getElementById("flash");
+    alertElement.style.display = "none";
+}, 3000);
     </script>
 </body>
 

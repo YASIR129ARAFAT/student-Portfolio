@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+        .listItem {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-transform: capitalize;
+
+        }
+
+        #allProjectItems {
+            text-transform: uppercase;
+        }
+
+        #project1Desc {
+            margin-top: 20px;
+        }
+
+        #imgId {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-center">
+            <!-- nav header -->
+            <div class="nav-header">
+                <img src="/images/student-portfolio-logo.png" class="logoimage" alt="logo" />
+                <button class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- links -->
+            <ul class="links">
+                <li>
+                    <a href="/api/adminRegisterAuth/admin_home">Home</a>
+                </li>
+                
+            </ul>
+            <!-- social media -->
+            {{!-- <ul class="social-icons">
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com">
+                        <i class="fab fa-sketch"></i>
+                    </a>
+                </li>
+            </ul> --}}
+        </div>
+    </nav>
+    <!-- Page Navbar -->
+    {{!--
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home"></body>
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20" style="background-color: purple;">
+        <div class="container">
+            <a href=""> <img id="imgId" src="/images/user.png" alt=""></a>
+
+            <a class="logo" href="#">Portfolio</a>
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="/api/resetpasswordauth/reset-password2">Change Password</a>
+                </li>
+
+                <li class="item">
+                    <a class="link" href="/api/registerauth/changeProfile">Change Image</a>
+                </li>
+                <li class="item ml-md-3">
+                    <a href="/student_profile" class="link">Edit Profile</a>
+                </li>
+
+                <li id="search" class="item">
+                    <i class='bx bx-search'></i>
+
+                    <input onkeyup="searchFunction()" id="search-box" name="val" type="search" placeholder="Search...">
+
+                    <div id="search-results">
+
+                    </div>
+                </li>
+                <li class="item">
+                    <a class="btn btn-primary" href="/api/adminRegisterAuth/logout">Log Out</a>
+                </li>
+
+
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>
+    </nav><!-- End of Page Navbar --> --}}
+
+    <!-- basicprofile name etc -->
+    <div class="container">
+        <a href="/api/linkauth/admin_student_data">
+            <div class="view" id="profileDiv">
+
+
+
+            </div>
+
+        </a>
+
+        <!-- div for academic achievements -->
+
+        <a href="/api/achievementsauth/admin_student_achievement">
+            <div class="view" id="skillsDiv">
+
+                <div id="skillHeadingDiv">
+                    <image id="achievementsImg" src="/images/AchievementsIcon.png"></image>
+                    <h4 id="skillHeading" style="display: inline-block;">Achievements</h4>
+                </div>
+
+                <div id="allAchievementItems">
+
+
+
+
+                </div>
+
+                <!-- end of achievements -->
+            </div>
+        </a>
+        <!-- div for non academic achievements -->
+        <a href="/api/nonacademicauth/admin_student_non_academic_skill">
+            <div class="view" id="nonAcadSkillsDiv">
+
+                <div id="nonSkillHeadingDiv">
+                    <image id="nonAcadAchievImg" src="/images/AchievementsIcon.png"></image>
+                    <h4 id="nonSkillHeading" style="display: inline-block;">Non-Academic skills</h4>
+                </div>
+
+                <div id="allNonAcadAchievItems">
+
+                </div>
+
+                <!-- end of non academicachievements -->
+            </div>
+            <!-- end ofnon academic achievements -->
+        </a>
+        <br>
+        <a href="/api/cgpa/adminCgpa">
+
+            <!-- for cgpa -->
+            <div class="view" id="cgpaDiv">
+
+                <div id="cgpaHeadingDiv">
+                    <image id="cgpaImg" src="/images/cgpa.png"></image>
+                    <h4 id="cgpaHeading" style="display: inline-block;">CGPA Overview</h4>
+                </div>
+
+                <div id="cgpaList">
+
+                    {{#if sem1.sem1}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading1">Semester 1: <span class="ListedSemCG"
+                                id="sem1cgpa"><em>{{sem1.avgCgpa}}</em></span></span>
+
+                    </div>
+                    {{/if}}
+
+
+                    {{#if sem2.sem2}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading2">Semester 2: <span class="ListedSemCG"
+                                id="sem2cgpa"><em>{{sem2.avgCgpa}}</em></span>
+                        </span>
+
+                    </div>
+                    {{/if}}
+
+                    {{#if sem3.sem3}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading3">Semester 3: <span class="ListedSemCG"
+                                id="sem3cgpa"><em>{{sem3.avgCgpa}}</em></span>
+                        </span>
+
+                    </div>
+                    {{/if}}
+
+                    {{#if sem4.sem4}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading4">Semester 4: <span class="ListedSemCG"
+                                id="sem4cgpa"><em>{{sem4.avgCgpa}}</em></span></span>
+
+                    </div>
+                    {{/if}}
+
+                    {{#if sem5.sem5}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading5">Semester 5: <span class="ListedSemCG"
+                                id="sem5cgpa"><em>{{sem5.avgCgpa}}</em></span></span>
+
+                    </div>
+                    {{/if}}
+
+                    {{#if sem6.sem6}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading6">Semester 6: <span class="ListedSemCG"
+                                id="sem6cgpa"><em>{{sem6.avgCgpa}}</em></span></span>
+
+                    </div>
+                    {{/if}}
+
+                    {{#if sem7.sem7}}
+                    <div class="listItem">
+                        <span class="ListedSemesterHeading" id="semHeading7">Semester 7: <span class="ListedSemCG"
+                                id="sem7cgpa"><em>{{sem7.avgCgpa}}</em></span></span>
+
+                    </div>
+                    {{/if}}
+
+                    {{#if sem8.sem8}}
+                    <div class="listItem">
+                        <h4 class="ListedSemesterHeading" id="semHeading7">Semester 8: <span class="ListedSemCG"
+                                id="sem7cgpa"><em>{{sem8.avgCgpa}}</em></span></h4>
+
+                    </div>
+                    {{/if}}
+                </div>
+
+                <!-- overall cgpa div -->
+                <div id="overallCgpaDiv">
+                    <div id="OverallCgpaHeadingDiv">
+                        <h4 id="overallCgpaHeading">Overall</h4>
+                    </div>
+                    <span id="overallCgpa"><b>{{overallAvg}}</b></span>
+                </div>
+
+                <!-- end of cgpa -->
+            </div>
+        </a>
+        <!-- projects overview -->
+        <a href="/api/projectauth/adminProjectsView">
+
+            <div class="view" id="projectDiv" onchange="get_details(this.value)">
+
+                <div id="skillHeadingDiv">
+                    <image id="projectImg" src="/images/project.png"></image>
+                    <h4 id="skillHeading" style="display: inline-block;">Projects Overview</h4>
+                </div>
+                <div id="allProjectItems">
+
+
+                </div>
+            </div>
+        </a>
+        <!-- end of project overview -->
+        <!--  -->
+
+        {{!-- links for social apps --}}
+
+
+        <div class="view" id="projectDiv">
+
+            <div id="skillHeadingDiv">
+                <image id="projectImg" src="/images/project.png"></image>
+                <h4 id="skillHeading" style="display: inline-block;">Profile Links</h4>
+            </div>
+            <div id="alllinks">
+                <a style="color: #164A83;" href="{{links.[0].github}}">
+                    <p style="font-weight: 800; margin-left:5%;"><span style="color:coral; ">Github:
+                        </span>{{links.[0].github}}
+                </a>
+                {{#if links.[0].twitter}}
+                <a style="color: #164A83;" href="{{links.[0].twitter}}">
+                    <p style="font-weight:800; margin-left:5%;"><span style="color:coral; ">Twitter:
+                        </span>{{links.[0].twitter}}
+                </a>
+                {{/if}}
+                {{#if links.[0].instagram}}
+                <a style="color: #164A83;" href="{{links.[0].instagram}}">
+                    <p style="margin-left:5%;"><span style="color:coral; ">Instagram:
+                        </span>{{links.[0].instagram}}
+                </a>
+                {{/if}}
+            </div>
+        </div>
+
+
+        <!-- javascript -->
+        <script src="/js/main.js"></script>
+        <script>
+            const navToggle = document.querySelector('.nav-toggle')
+            const links = document.querySelector('.links')
+
+            navToggle.addEventListener('click', function () {
+                links.classList.toggle('show-links')
+            })
+
+            func1();
+            func2();
+            func3();
+            func4();
+
+            function func2() {
+                var start_index = 0;
+                var number_of_records = 10;
+                const request = new XMLHttpRequest();
+                request.open('Get', `/api/projectauth/get_data2?start_index=${start_index}&num_record=${number_of_records}`);
+                request.onload = () => {
+                    const results = JSON.parse(request.responseText);
+
+                    let html = ``;
+                    if (results.length > 0) {
+
+                        results.forEach(result => {
+                            html += `<div class="listItem">
+                    <h4 class="ListedProjectHeading" id="project1" style="text-transform:uppercase; color:#164A83; ">${result.projectTitle}</h4>
+                 
+                    </div>
+                </div>`
+                        });
+                        var data = document.getElementById('allProjectItems');
+                        data.innerHTML += html;
+                    }
+                };
+                request.send()
+            }
+            function func1() {
+                var sttart_index = 0;
+                numberr_of_records = 10;
+
+                const request = new XMLHttpRequest();
+                request.open('Get', `/api/nonacademicauth/get_data2?start_index=${sttart_index}&num_record=${numberr_of_records}`);
+                request.onload = () => {
+                    const results = JSON.parse(request.responseText);
+                    console.log(results);
+
+                    let html = ``;
+
+                    if (results.length > 0) {
+
+                        results.forEach(result => {
+                            html += ` <div class="listItem">
+                    <h4 class="ListedSkillHeading" id="nonSkill1" style="color:#164A83;">${result.skillTitle}</h4>
+                    
+
+                </div>`
+
+                        });
+                        var data = document.getElementById('allNonAcadAchievItems');
+                        data.innerHTML += html;
+
+                    }
+
+                };
+                request.send()
+
+            }
+
+            function func3() {
+                var sttart_index = 0;
+                numberr_of_records = 10;
+
+                const request = new XMLHttpRequest();
+                request.open('Get', `/api/achievementsauth/get_data2?start_index=${sttart_index}&num_record=${numberr_of_records}`);
+                request.onload = () => {
+                    const results = JSON.parse(request.responseText);
+                    console.log(results);
+
+                    let html = ``;
+
+                    if (results.length > 0) {
+
+                        results.forEach(result => {
+                            html += ` <div class="listItem">
+                    <h4 class="ListedSkillHeading" id="skill1" style="color:#164A83;">${result.skillTitle}</h4>         </div>`
+
+                        });
+                        var data = document.getElementById('allAchievementItems');
+                        data.innerHTML += html;
+
+                    }
+
+                };
+                request.send()
+
+            }
+
+
+            function func4() {
+
+                console.log("func4");
+                const request = new XMLHttpRequest();
+                request.open('Get', `/api/loginauth/get_data2`);
+                request.onload = () => {
+                    const results = JSON.parse(request.responseText);
+                    console.log(results);
+
+                    let html = ``;
+
+                    if (results.length > 0) {
+
+                        results.forEach(result => {
+                            html += ` <div id="profileTop">
+                <!-- profile picture of the student -->
+                <div id="imgDiv">
+                    <image src="/images/${result.profile_pic}" id="profilePic" alt="profile picture">
+                    </image>
+                </div>
+
+                <!-- name and email of the student -->
+                <div id="name_emailDiv">
+                    <div><h4 id="name">${result.name}</h4></div>
+                    <div id="email">${result.email}</div>
+                </div>
+            </div>
+            <!-- bottom of profile -->
+            <div id="profileBottom">
+                <div class="profileLabel">
+                    <h4 class="label" id="enrollmentLabel" style="color:#164A83;">Enrollment Number: </h4>
+                    <span class="labelVal" id="enrollment" style="color:#164A83;">${result.enroll_no}</span>
+                </div>
+
+                <div class="profileLabel">
+                    <h4 class="label" id="YearLabel" style="color:#164A83;">Year : </h4>
+                    <span class="labelVal" id="Year" style="color:#164A83;">Second</span>
+                </div>
+
+                <div class="profileLabel">
+                    <h4 class="label" id="sectionLabel" style="color:#164A83;">Address: </h4>
+                    <span class="labelVal" id="section" style="color:#164A83;">${result.address}</span>
+                </div>
+
+                <div class="profileLabel">
+                    <h4 class="label" id="branchLabel" style="color:#164A83;">Branch: </h4>
+                    <span class="labelVal" id="branch" style="color:#164A83;">${result.dept}</span>
+                </div>
+
+                <div class="profileLabel">
+                    <h4 class="label" id="programeLabel" style="color:#164A83;">Programme: </h4>
+                    <span class="labelVal" id="programe" style="color:#164A83;">${result.program}</span>
+                </div>
+
+                <div class="profileLabel">
+                    <h4 class="label" id="phoneLabel" style="color:#164A83;">Phone Number: </h4>
+                    <span class="labelVal" id="programe" style="color:#164A83;">${result.mobile_no}</span>
+                </div>
+
+            </div>
+`
+
+                        });
+                        var data = document.getElementById('profileDiv');
+                        data.innerHTML += html;
+                    }
+                };
+                request.send()
+            }
+        </script>
+</body>
+
+</html>

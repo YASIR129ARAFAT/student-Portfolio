@@ -25,4 +25,6 @@ router.get("/getDetails", middlewares.verifyUser, (req, res, next) => {
     }
   }
 });
+
+
 module.exports=router;

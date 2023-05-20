@@ -16,7 +16,7 @@
       position: relative;
       border-radius: 16px;
       box-shadow: none;
-      background: #aed6e9;
+      background: #a5aad0;
       transform-origin: center;
       transition: all 0.4s ease-in-out;
       overflow: hidden;
@@ -46,7 +46,7 @@
       justify-content: space-between;
       align-items: center;
       height: 100px;
-      background-color: #50b3fa;
+      background-color: #6d60a2;
       /* background-image: linear-gradient(45deg, #9297e0, #ff73b3); */
       /* background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423); */
       color: #fff;
@@ -105,11 +105,11 @@
       display: inline-flex;
       align-items: center;
       text-decoration: none;
-      color: #28666e;
+      color: #454b77;
     }
 
     article a:focus {
-      outline: 1px dotted #28666e;
+      outline: 1px dotted #454b77;
     }
 
     article a .icon {
@@ -125,7 +125,7 @@
     /* using the has() relational pseudo selector to update our custom properties */
     article:has(:hover, :focus) {
       --img-scale: 1.1;
-      --title-color: #28666e;
+      --title-color: #454b77;
       --link-icon-translate: 0;
       --link-icon-opacity: 1;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
@@ -149,7 +149,7 @@ Generic layout (demo looks)
       line-height: 1.6rem;
       /* background-image: linear-gradient(45deg, #9297e0, #ff73b3); */
       /* background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423); */
-      background: linear-gradient(180deg, #14f1f5, 5%, #119dff, 50%, #107cca);
+      background: linear-gradient(180deg, #695aa6, 5%, #7f85ae, 50%, #7c82b0);
       min-height: 100vh;
     }
 
@@ -201,6 +201,7 @@ Generic layout (demo looks)
     }
   </style>
 
+  {{!-- sidebar css --}}
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
@@ -217,7 +218,7 @@ Generic layout (demo looks)
       top: 0;
       height: 100%;
       width: 78px;
-      background: #07426c;
+      background: #6c739e;
       padding: 6px 14px;
       z-index: 99;
       transition: all 0.5s ease;
@@ -294,7 +295,7 @@ Generic layout (demo looks)
       top: -20px;
       left: calc(100% + 15px);
       z-index: 3;
-      background: #0c5376;
+      background: #656da5;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
       padding: 6px 12px;
       border-radius: 4px;
@@ -365,7 +366,7 @@ Generic layout (demo looks)
       align-items: center;
       text-decoration: none;
       transition: all 0.4s ease;
-      background: #06263e;
+      background: #454b77;
     }
 
     .sidebar li a:hover {
@@ -503,13 +504,21 @@ Generic layout (demo looks)
       s
     }
 
-    #articles {}
+    #articles {
+      margin-bottom: 30px;
+    }
 
     ::-webkit-scrollbar {
       display: none;
     }
+
+    #removeUserBtn {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+    }
   </style>
-  <title>Sample Articles</title>
+  <title>Admin Home</title>
 </head>
 
 
@@ -521,7 +530,7 @@ Generic layout (demo looks)
     </div>
     <div class="title">
       <h1>Student Portfolio</h1>
-      <h3>(Admin Home)</h3>
+      <h3>(Admin)</h3>
     </div>
     <div class="input-group">
 
@@ -554,7 +563,7 @@ Generic layout (demo looks)
             <span class="tooltip">Change Password</span>
           </li>
           <li>
-            <a href="/api/adminRegisterAuth/login_admin">
+            <a href="/api/adminRegisterAuth/logout">
               <i class='bx bx-log-out'></i>
               <span class="links_name">Log out</span>
             </a>
@@ -574,6 +583,7 @@ Generic layout (demo looks)
           </li>
         </ul>
       </div>
+      <a id="removeUserBtn" href="/api/registerauth/removeUser">Remove User</a>
 
       <script>
         let sidebar = document.querySelector(".sidebar");
@@ -662,9 +672,9 @@ Generic layout (demo looks)
             <p>
               Enrollment Number : ${result.enroll_no}
                 <br>
-                Programme :${result.degree}
+                Program :${result.program}
                   <br>
-                  Department : ${result.department}
+                  Department : ${result.dept}
                     <br>
                     Semester : ${result.semester}
             </p>
@@ -735,7 +745,7 @@ Generic layout (demo looks)
               <article>
         <div class="article-wrapper">
           <figure>
-            <img src="https://picsum.photos/id/1011/800/450" alt="" />
+            <img src="https://img.freepik.com/free-icon/user_318-175743.jpg" alt="" />
           </figure>
           <div class="article-body">
             <h2>
@@ -744,9 +754,9 @@ Generic layout (demo looks)
             <p>
               Enrollment Number : ${result.enroll_no}
                 <br>
-                Programme :${result.degree}
+                Programme :${result.program}
                   <br>
-                  Department : ${result.department}
+                  Department : ${result.dept}
                     <br>
                     Semester : ${result.semester}
             </p>
